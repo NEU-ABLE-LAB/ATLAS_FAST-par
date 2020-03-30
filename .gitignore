@@ -1,0 +1,60 @@
+##---------------------------------------------------
+##Large Files stored in Google Drive
+##---------------------------------------------------
+
+# Only save the `_Controller` folder in the final version
+FINAL/*
+!FINAL/_Controller*
+!FINAL/Main.m*
+
+# Changed controllers
+!*FINAL_MLC_IPC.mdl
+!*FINAL_MLC_IPC_r2018a.mdl
+
+# Turbine Load Cases (~152 MB)
+_Inputs/
+
+# Baseline Results for comparison (~112MB)
+_BaselineResults/
+
+# Output files from key runs
+_Outputs/
+*.mat
+
+##---------------------------------------------------
+##MATLAB.gitignore
+##https://github.com/github/gitignore/blob/master/Global/MATLAB.gitignore
+##---------------------------------------------------
+
+# Windows default autosave extension
+*.asv
+*.bak
+*~$*
+
+# OSX / *nix default autosave extension
+*.m~
+
+# Compiled MEX binaries (all platforms)
+*.mex*
+
+# Packaged app and toolbox files
+*.mlappinstall
+*.mltbx
+
+# Generated helpsearch folders
+helpsearch*/
+
+# Simulink code generation folders
+slprj/
+sccprj/
+
+# Matlab code generation folders
+codegen/
+
+# Simulink autosave extension
+*.autosave
+*.slxc
+*.original
+
+# Octave session info
+octave-workspace
