@@ -32,8 +32,8 @@ pitch_init = str2double(fGetVal(ed,'BlPitch(1)'))  ;
 Parameter = struct();
 % --- Turbine  
 Parameter.Turbine.Omega_rated = rpm2radPs(12.1);       % [rad/s]
-Parameter.Turbine.P_el_rated  = 5e6;                      % [W]
-Parameter.Turbine.i  = 1/97;
+Parameter.Turbine.P_el_rated  = 5e6;                   % [W]
+Parameter.Turbine.i  = 1/97;                           % The gear ratio
 % --- Generator
 Parameter.Generator.eta_el      	= 0.944;                % [-]
 Parameter.Generator.M_g_dot_max     = 15e3;                 % [-]
@@ -51,7 +51,7 @@ Parameter.PitchActuator.Delay           = 0.2;              % [s]
 %% --- SIMULATION Dependent parameters 
 % --------------------------------------------------------------------------------{
 % -- Initial Conditions at 13.5934 m/s - NEED TO BE REPLACED
-fprintf('Simulation params: T=%.0f - pitch_0=%.1f\n',TMax,pitch_init); 
+% fprintf('Simulation params: T=%.0f - pitch_0=%.1f\n',TMax,pitch_init); 
 Parameter.IC.theta                      = deg2rad(pitch_init);  	% [rad]              
 Parameter.IC.M_g                        = 43093.55;       	% [Nm] 
 Parameter.IC.Omega                      = rpm2radPs(12.1); 	% [rad/s]
