@@ -25,9 +25,6 @@ if isa(in, 'Simulink.SimulationInput')
     Challenge = in.Variables(strcmp({in.Variables.Name},...
         'Challenge')).Value;
     
-    statsBase = in.Variables(strcmp({in.Variables.Name},...
-        'statsBase')).Value;
-    
 end
 
 newOut.runCase         = runCase         ;
@@ -100,7 +97,8 @@ metricsCtrl = fEvaluateMetrics(statsCtrl, pMetrics);
 statsRunBase = getBaseStats(statsBase,runCase);
 metricsRunBase = fEvaluateMetrics(statsRunBase, pMetrics);
 
-% Compare to baseline
+%% cost function
+% Compare the two 
 [CF, CF_Comp, CF_Vars, CF_Freq] = fCostFunction(metricsCtrl.Values, ...
     metricsRunBase.Values, pMetrics);
 

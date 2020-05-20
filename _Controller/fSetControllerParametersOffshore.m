@@ -1,4 +1,5 @@
-function [Parameter] = fSetControllerParametersOffshore(Parameter)
+function [Parameter] = fSetControllerParametersOffshore(Parameter,...
+    MLC_parameters)
 % Sets the controller parameter.
 % This function takes a structure and supplements it with additional fields for the controller parameters.
 % 
@@ -46,18 +47,6 @@ Parameter.CPC.Omega_g_rated       = Parameter.Turbine.Omega_rated/Parameter.Turb
 Parameter.CPC.theta_max           = Parameter.PitchActuator.theta_max; % [rad]
 Parameter.CPC.theta_min           = Parameter.PitchActuator.theta_min; % [rad]
 
-%% MLC Control parameters
-
-% System information
-Parameter.MLC.totNSensors = 110;
-Parameter.MLC.gain = 1E-2;
-
-% Constraints
-Parameter.assert.pitchVLim = 10;    % [deg/s]
-Parameter.assert.twrClear = -4;     % [m]
-Parameter.assert.twrTopAcc = 3.3;   % [m/s2]
-Parameter.assert.rotSpeed = 15.73;  % [rpm]
-Parameter.assert.minGenPwr = 1;     % [W]
 
 %% Derived MLC parameters
 if exist('MLC_parameters','var')
@@ -66,13 +55,6 @@ if exist('MLC_parameters','var')
     Parameter.outListIdx = MLC_parameters.problem_variables.outListIdx;
     Parameter.outListLen = length(fieldnames(Parameter.outListIdx));
     Parameter.sensorIdxs = MLC_parameters.problem_variables.sensorIdxs;
-
-    % Values for signal normalization
-    Parameter.sensorsNormOffset = ...
-        MLC_parameters.problem_variables.sensorsMean;    
-    Parameter.sensorNormGain = ...
-        MLC_parameters.problem_variables.sensorsDetrendRMS;
-    Parameter.sensorNormGain(isinf(Parameter.sensorNormGain)) = 0;
     
 end
 
