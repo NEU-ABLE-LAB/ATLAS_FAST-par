@@ -10,7 +10,7 @@
 %
 % ref: fRunFAST.m
 function in = FASTPreSim(in, runCase, hSetControllerParameter, ...
-    RootOutputFolder, FASTInputFolder, Challenge, statsBase)
+    RootOutputFolder, FASTInputFolder, Challenge, Controler)
 
 %% Prepend simulation name with timestamp
 tStamp = [datestr(now,'YYYYmmDD-HHMMSS') '_' dec2hex(randi(2^16),4)]; % Add a random 4 char in case two parallel processes start at the same time
@@ -32,7 +32,7 @@ fstFName  = [FASTInputFolder runName '.fst'];
     fprintf('-----------------------------------------------------------------------------\n');
     fprintf('>>> Simulating: %s \n',fstFName);
     fprintf('-----------------------------------------------------------------------------\n');
-Parameter = fSetSimulinkParameters(fstFName, hSetControllerParameter); 
+Parameter = fSetSimulinkParameters(fstFName, hSetControllerParameter, Controler); 
 
 %% Set parameters to model
     
@@ -45,7 +45,6 @@ if isa(in, 'Simulink.SimulationInput')
     in = in.setVariable('RootOutputFolder', RootOutputFolder);
     in = in.setVariable('OutputFolder', OutputFolder);
     in = in.setVariable('FASTInputFolder', FASTInputFolder);
-    in = in.setVariable('statsBase', statsBase);
     in = in.setVariable('Parameter', Parameter);
     
 elseif isa(in, 'Simulink.ModelWorkspace')
@@ -57,7 +56,6 @@ elseif isa(in, 'Simulink.ModelWorkspace')
     in.assignin('RootOutputFolder', RootOutputFolder);
     in.assignin('OutputFolder', OutputFolder);
     in.assignin('FASTInputFolder', FASTInputFolder);
-    in.assignin('statsBase', statsBase);
     in.assignin('Parameter', Parameter);
     
 else

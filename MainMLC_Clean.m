@@ -8,9 +8,10 @@ dbstop if error
 
 %% Initialization
 % ref: Main.m
-addpath(genpath([pwd,'/_Functions']));    % Matlab functions for cost function and running cases - READ ONLY
+addpath(genpath([pwd,'/_Functions']));    % Matlab functions for cost function and running cases - RaddEAD ONLY
 addpath(genpath([pwd,'/_Controller']));   % Simulink model, where user scripts and models are placed
 addpath(genpath([pwd,'/ParforProgMon'])); % Paralell progress monitor (https://github.com/fsaxen/ParforProgMon)
+addpath(genpath([pwd]))
 
 %% User Input Parameter list
 
@@ -23,8 +24,8 @@ RootOutputFolder       = [pwd '/_Outputs/']                  ; % Folder where th
 ctrlFolder             = [pwd '/_Controller/']               ; % Location of Simulink files
 verbose                = 1                                   ; % level of verbose output (0, 1, 2)
  
-sysMdl                 = 'NREL5MW_Baseline'                  ; % Reference to model for system, AKA simulink model with Fast_SFunction() block in it
-ctrlMdls               = {'none'}                            ; % if multiple controller laws are to be tested this should be a cell array of all the controler laws/parameter functions (in a .m file compatible woth the controler blocks in system model) 
+sysMdl                 = 'NREL5MW_Baseline'                    ; % Reference to model for system, AKA simulink model with Fast_SFunction() block in it
+ctrlMdls               = {[0.006275604 0.0008965149];[0.006275604 0.0001];[0.008 0.0008965149]} ; % if multiple controller laws are to be tested this should be a cell array of all the controler laws/parameter functions (in a .m file compatible woth the controler blocks in system model) 
 
 %NOTE: if system model is a stand alone simulink model with no variable
 %controlers to test input "none" in the ctrlMdls cell
@@ -77,9 +78,8 @@ parfor idx = 1 : (nCases * nControlers)
 %for idx = 1 : (nCases * nControlers)
     
     [caseN, controlerN] = ind2sub([nCases, nControlers], idx); 
-
-    % Comptue cost of individual 
     
+    % Comptue cost of individual 
     [~, simOut{idx}] = Par_eval(ctrlMdls{controlerN}, Parameters, [], caseN);
     
     % Close all Simulink system windows unconditionally

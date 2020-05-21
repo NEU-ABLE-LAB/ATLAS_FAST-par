@@ -17,13 +17,6 @@ simOut = {};
 
     % Simulink system model
     sysMdl = parameters.sysMdl;
-
-    % Controler law function (if applicable)
-    controlerflag = 0;
-    if parameters.ctrlMdl{1} ~= 'none'
-        Ctrllaw  = parameters.ctrlMdls(Controler);
-        controlerflag = 1;
-    end
     
     % Handle to function that sets controller parameters
     hSetControllerParameter = ...
@@ -86,10 +79,10 @@ simOut = {};
     % Setup simulation with presimulation function
     hws = get_param(tmpSysMdl,'modelWorkspace');
     FASTPreSim(hws,runCase, ...
-            @(pSim)hSetControllerParameter(pSim), ...
+            hSetControllerParameter, ...
             RootOutputFolder, ...
             FASTInputFolder, ...
-            Challenge, []);
+            Challenge, Controler);
 
     % Try running simulation and computing cost
     try
@@ -109,11 +102,11 @@ simOut = {};
 
         warning(e.message)
         disp('  MLC_EVAL: Simulation returned error');
-        J = parameters.badvalue;
+        J = 1000;
 
         % Switch all of the workers back to their original folder.
         close_system(tmpSysMdl, 0);
-        cd([parameters.problem_variables.RootOutputFolder '../'])
+        cd([parameters.RootOutputFolder '../'])
         try
             rmdir(tmpDir,'s');
         catch e

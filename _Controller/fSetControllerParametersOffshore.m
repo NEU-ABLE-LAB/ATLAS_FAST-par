@@ -1,5 +1,5 @@
 function [Parameter] = fSetControllerParametersOffshore(Parameter,...
-    MLC_parameters)
+    Controler)
 % Sets the controller parameter.
 % This function takes a structure and supplements it with additional fields for the controller parameters.
 % 
@@ -37,8 +37,8 @@ function [Parameter] = fSetControllerParametersOffshore(Parameter,...
 %% Controller parameters for the Collective Pitch Controller (CPC)
 % NOTE: these parameters are only used by NREL5MW_Baseline.mdl.
  % Delete them if another model is used
-KP          = 0.006275604;               % [s] detuned gains
-KI          = 0.0008965149;              % [-]
+KP          = Controler(1,1);               % [s] detuned gains
+KI          = Controler(1,2);              % [-]
                   
 Parameter.CPC.kp                  = KP;                                % [s]
 Parameter.CPC.Ti                  = KP/KI;                             % [s] 
@@ -48,14 +48,10 @@ Parameter.CPC.theta_max           = Parameter.PitchActuator.theta_max; % [rad]
 Parameter.CPC.theta_min           = Parameter.PitchActuator.theta_min; % [rad]
 
 
-%% Derived MLC parameters
-if exist('MLC_parameters','var')
-    
-    % FAST Output Array index names
-    Parameter.outListIdx = MLC_parameters.problem_variables.outListIdx;
-    Parameter.outListLen = length(fieldnames(Parameter.outListIdx));
-    Parameter.sensorIdxs = MLC_parameters.problem_variables.sensorIdxs;
-    
-end
+%% user controler parameters
+% Parameter.GainP = Controler(1,1);
+% Parameter.GainI = Controler(1,2);
+% Parameter.GainD = Controler(1,3);
+% Parameter.GainN = Controler(1,4);
 
 end
