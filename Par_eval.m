@@ -9,7 +9,7 @@
 %
 function [J, simOut] = Par_eval(Controler, parameters, hFig, caseN)
 simOut = {};
-%try
+try
     %% Extract MLC problem variables specified when calling `MLC_cfg()`
 
     % load cases
@@ -52,20 +52,6 @@ simOut = {};
     % Load the model on the worker
     load_system(tmpSysMdl)
     
-    %% Setup simulation
-    
-%    Need to incert the controlers function into the system model, Depends on how we want to set this up?
-
-%     % Parse indvidual's expressions 
-%     [~,fcnText] = MLC_exprs(Controler.formal, parameters);
-%     
-%     % Get `Fcn` block handle
-%     hb = find(slroot, '-isa', 'Stateflow.EMChart', 'Path', ...
-%         sprintf('%s/MLC_IPC/control_law', tmpSysMdl) );
-% 
-% 	% Insert the expressions into the model    	
-% 	hb.Script = fcnText;
-
     %% Run simulation
 
     % Choose a design load case in the event that input case number is not given
@@ -98,7 +84,7 @@ simOut = {};
         % Compute cost from output
         J = simOut.CF;
 
-    catch e
+     catch e
 
         warning(e.message)
         disp('  MLC_EVAL: Simulation returned error');
@@ -116,7 +102,7 @@ simOut = {};
         clear mex;
         return
         
-    end
+   end
     
     %% Switch all of the workers back to their original folder.
     
@@ -137,13 +123,22 @@ simOut = {};
             {'',sysMdl});
     end
     
-% catch e
-%     
-%     cd([parameters.RootOutputFolder '../'])
-%     warning(e.message)    
-%     J = parameters.badvalue;
-%    
-%end
+catch e
+    
+    cd([parameters.RootOutputFolder '../'])
+    warning(e.message)    
+    J = 1000;
+   
+end
+
+% Close all Simulink system windows unconditionally
+bdclose('all')
+% Clean up worker repositories
+Simulink.sdi.cleanupWorkerResources
+% https://www.mathworks.com/matlabcentral/answers/385898-parsim-function-consumes-lot-of-memory-how-to-clear-temporary-matlab-files
+sdi.Repository.clearRepositoryFile
+
+
 
 clear mex;
 end

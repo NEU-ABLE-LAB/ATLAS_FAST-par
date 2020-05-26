@@ -1,49 +1,40 @@
 Model {
-  Name			  "NREL5MW_Baseline"
+  Name			  "NREL5MW_Fcnblock"
   Version		  10.1
   SavedCharacterEncoding  "windows-1252"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.923"
+    ComputedModelVersion    "1.941"
     NumModelReferences	    0
-    NumTestPointedSignals   5
+    NumTestPointedSignals   4
     TestPointedSignal {
       SignalName	      "theta_c"
-      FullBlockPath	      "NREL5MW_Baseline/NREL Baseline Blade Pitch Control"
+      FullBlockPath	      "NREL5MW_Fcnblock/Baseline Blade Pitch Control"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      ""
-      FullBlockPath	      "NREL5MW_Baseline/NREL Baseline Generator Torque Control"
+      FullBlockPath	      "NREL5MW_Fcnblock/NREL Baseline Generator Torque Control"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      "OutData"
-      FullBlockPath	      "NREL5MW_Baseline/OpenFAST Turbine Model"
+      FullBlockPath	      "NREL5MW_Fcnblock/OpenFAST Turbine Model1"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      "y"
-      FullBlockPath	      "NREL5MW_Baseline/OpenFAST Turbine Model"
+      FullBlockPath	      "NREL5MW_Fcnblock/OpenFAST Turbine Model1"
       PortIndex		      2
       LogSignal		      1
-      MaxPoints		      5000
-      Decimation	      2
-    }
-    TestPointedSignal {
-      SignalName	      "theta_c"
-      FullBlockPath	      "NREL5MW_Baseline/NREL Baseline Blade Pitch Control/NREL 5MW Baseline Pitch Controller"
-      LogSignal		      1
-      UseCustomName	      1
-      LogName		      "theta"
       MaxPoints		      5000
       Decimation	      2
     }
@@ -57,14 +48,7 @@ Model {
     IsArchitectureModel	    0
     IsAUTOSARArchitectureModel 0
     NumParameterArguments   0
-    NumExternalFileReferences 1
-    ExternalFileReference {
-      Reference		      "simulink/Discontinuities/Saturation\nDynamic"
-      Path		      "NREL5MW_Baseline/NREL Baseline Blade Pitch Control/NREL 5MW Baseline Pitch Controller/PI Anti-Windu"
-      "p with rate feedforward/Saturation Dynamic1"
-      SID		      "6752"
-      Type		      "LIBRARY_BLOCK"
-    }
+    NumExternalFileReferences 0
     OrderedModelArguments   1
   }
   DiagnosticSuppressor	  "on"
@@ -93,7 +77,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-5.0, 0.0, 1590.0, 873.0]
+      Location		      [1518.0, 6.0, 1096.0, 860.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -113,67 +97,56 @@ Model {
       }
       Array {
 	Type			"Simulink.EditorInfo"
-	Dimension		5
+	Dimension		4
 	Object {
 	  $ObjectID		  5
 	  IsActive		  [1]
 	  IsTabbed		  [1]
 	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "6738"
-	  Extents		  [1536.0, 631.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-218.0, -201.5]
-	  SceneRectInView	  [-218.0, -201.5, 1536.0, 631.0]
+	  LoadSaveID		  "7201"
+	  Extents		  [1042.0, 618.0]
+	  ZoomFactor		  [0.8]
+	  Offset		  [-277.08203125, -360.75]
+	  SceneRectInView	  [-277.08203125, -360.75, 1302.5, 772.5]
 	}
 	Object {
 	  $ObjectID		  6
 	  IsActive		  [0]
 	  IsTabbed		  [1]
 	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "6692"
-	  Extents		  [1536.0, 631.0]
-	  ZoomFactor		  [1.75]
-	  Offset		  [77.310825892857167, -36.0]
-	  SceneRectInView	  [77.310825892857167, -36.0, 877.71428571428567, 360.57142857142856]
+	  LoadSaveID		  "7200"
+	  Extents		  [1042.0, 618.0]
+	  ZoomFactor		  [1.0]
+	  Offset		  [-14.0, 0.0]
+	  SceneRectInView	  [-14.0, 0.0, 1042.0, 618.0]
 	}
 	Object {
 	  $ObjectID		  7
 	  IsActive		  [0]
-	  IsTabbed		  [1]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "7200"
-	  Extents		  [1536.0, 631.0]
-	  ZoomFactor		  [0.5]
-	  Offset		  [-684.11190476190393, -180.30476190476242]
-	  SceneRectInView	  [-684.11190476190393, -180.30476190476242, 3072.0, 1262.0]
+	  IsTabbed		  [0]
+	  ViewObjType		  "SimulinkTopLevel"
+	  LoadSaveID		  "0"
+	  Extents		  [1042.0, 618.0]
+	  ZoomFactor		  [1.25]
+	  Offset		  [-78.37857142857132, 123.92857142857139]
+	  SceneRectInView	  [-78.37857142857132, 123.92857142857139, 833.6, 494.4]
 	}
 	Object {
 	  $ObjectID		  8
 	  IsActive		  [0]
 	  IsTabbed		  [0]
-	  ViewObjType		  "SimulinkTopLevel"
-	  LoadSaveID		  "0"
-	  Extents		  [1536.0, 631.0]
-	  ZoomFactor		  [1.75]
-	  Offset		  [0.0, 212.2]
-	  SceneRectInView	  [0.0, 212.2, 877.71428571428567, 360.57142857142856]
-	}
-	Object {
-	  $ObjectID		  9
-	  IsActive		  [0]
-	  IsTabbed		  [0]
 	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "6699"
-	  Extents		  [1536.0, 631.0]
-	  ZoomFactor		  [1.25]
-	  Offset		  [-6.9187499999999886, 130.88]
-	  SceneRectInView	  [-6.9187499999999886, 130.88, 1228.8, 504.8]
+	  LoadSaveID		  "7354"
+	  Extents		  [1042.0, 618.0]
+	  ZoomFactor		  [1.5]
+	  Offset		  [-166.16536458333331, -116.0]
+	  SceneRectInView	  [-166.16536458333331, -116.0, 694.66666666666663, 412.0]
 	}
 	PropName		"EditorsInfo"
       }
       Object {
 	$PropName		"DockComponentsInfo"
-	$ObjectID		10
+	$ObjectID		9
 	$ClassName		"Simulink.DockComponentInfo"
 	Type			"GLUE2:PropertyInspector"
 	ID			"Property Inspector"
@@ -190,15 +163,15 @@ Model {
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
       "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABjAP///wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAABrAD///8AAAYmAAACtAAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAA"
+      "QBjAHQAbwByAAAAAAD/////AAABrAD///8AAAQ4AAACpwAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAA"
       Array {
 	Type			"Cell"
 	Dimension		0
 	PropName		"PersistedApps"
       }
-      WindowUuid	      "eb0f661a-3963-454f-bc33-413649c7d1dd"
+      WindowUuid	      "7e791241-9bde-427b-a99f-0941a645fd12"
     }
-    BDUuid		    "ee78dce6-754c-49b8-8e0d-52db126b1ea6"
+    BDUuid		    "6b06f05e-1cdf-4b29-adff-563977a863fb"
   }
   HideAutomaticNames	  on
   Created		  "Fri Jan 18 10:49:48 2008"
@@ -207,9 +180,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "jveli"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat May 23 17:44:59 2020"
-  RTWModifiedTimeStamp	  466352405
-  ModelVersionFormat	  "1.%<AutoIncrement:923>"
+  LastModifiedDate	  "Mon May 25 20:01:58 2020"
+  RTWModifiedTimeStamp	  512337399
+  ModelVersionFormat	  "1.%<AutoIncrement:941>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "all"
@@ -267,13 +240,13 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    11
+    $ObjectID		    10
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "NREL5MW_Baseline"
+    model_		    "NREL5MW_Fcnblock"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "NREL5MW_Baseline"
+      Cell		      "NREL5MW_Fcnblock"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -285,59 +258,13 @@ Model {
   }
   Object {
     $PropName		    "InstrumentedSignals"
-    $ObjectID		    12
+    $ObjectID		    11
     $ClassName		    "Simulink.HMI.InstrumentedSignals"
     Array {
       Type		      "Struct"
-      Dimension		      5
+      Dimension		      4
       MATStruct {
-	UUID			"312b4178-b68a-4a78-a0e2-1ddfba3fd9a3"
-	BlockPath_		"NREL Baseline Blade Pitch Control"
-	SID_			"6692"
-	SubPath_		""
-	OutputPortIndex_	[1.0]
-	LogicalPortIndex_	[0.0]
-	SignalName_		""
-	SubSysPath_		""
-	Decimation_		[1.0]
-	MaxPoints_		[0.0]
-	TargetBufferedStreaming_ [0.0]
-	IsFrameBased_		[0.0]
-	DomainType_		""
-	Array {
-	  Type			  "Struct"
-	  Dimension		  1
-	  MATStruct {
-	  }
-	  PropName		  "DomainParams_"
-	}
-	VisualType_		""
-      }
-      MATStruct {
-	UUID			"72fec700-0f8c-404c-8bb9-f4c0c4a159df"
-	BlockPath_		"NREL Baseline Blade Pitch Control/NREL 5MW Baseline Pitch Controller"
-	SID_			"6699"
-	SubPath_		""
-	OutputPortIndex_	[1.0]
-	LogicalPortIndex_	[0.0]
-	SignalName_		""
-	SubSysPath_		""
-	Decimation_		[1.0]
-	MaxPoints_		[0.0]
-	TargetBufferedStreaming_ [0.0]
-	IsFrameBased_		[0.0]
-	DomainType_		""
-	Array {
-	  Type			  "Struct"
-	  Dimension		  1
-	  MATStruct {
-	  }
-	  PropName		  "DomainParams_"
-	}
-	VisualType_		""
-      }
-      MATStruct {
-	UUID			"c6be7548-da9b-4d4f-b806-ec081376a34f"
+	UUID			"fa812559-848f-48ba-8e21-c2483380f692"
 	BlockPath_		"NREL Baseline Generator Torque Control"
 	SID_			"7038"
 	SubPath_		""
@@ -360,8 +287,8 @@ Model {
 	VisualType_		""
       }
       MATStruct {
-	UUID			"63d43622-2271-4fd1-8a00-982a0a6be13d"
-	BlockPath_		"OpenFAST Turbine Model"
+	UUID			"b67fbcc3-c7cd-496d-8ebf-577245d41c1a"
+	BlockPath_		"OpenFAST Turbine Model1"
 	SID_			"7200"
 	SubPath_		""
 	OutputPortIndex_	[1.0]
@@ -383,11 +310,34 @@ Model {
 	VisualType_		""
       }
       MATStruct {
-	UUID			"a3e40444-d7a3-44fa-bf7a-33515703eff0"
-	BlockPath_		"OpenFAST Turbine Model"
+	UUID			"9d355044-5392-46e8-a614-7be2f2f20c78"
+	BlockPath_		"OpenFAST Turbine Model1"
 	SID_			"7200"
 	SubPath_		""
 	OutputPortIndex_	[2.0]
+	LogicalPortIndex_	[0.0]
+	SignalName_		""
+	SubSysPath_		""
+	Decimation_		[1.0]
+	MaxPoints_		[0.0]
+	TargetBufferedStreaming_ [0.0]
+	IsFrameBased_		[0.0]
+	DomainType_		""
+	Array {
+	  Type			  "Struct"
+	  Dimension		  1
+	  MATStruct {
+	  }
+	  PropName		  "DomainParams_"
+	}
+	VisualType_		""
+      }
+      MATStruct {
+	UUID			"9ca492c6-dca6-45ff-b3ed-11916bbb01be"
+	BlockPath_		"Baseline Blade Pitch Control"
+	SID_			"7201"
+	SubPath_		""
+	OutputPortIndex_	[1.0]
 	LogicalPortIndex_	[0.0]
 	SignalName_		""
 	SubSysPath_		""
@@ -436,7 +386,7 @@ Model {
     Type		    "Handle"
     Dimension		    2
     Simulink.ConfigSet {
-      $ObjectID		      13
+      $ObjectID		      12
       Version		      "20.0.1"
       DisabledProps	      []
       Description	      ""
@@ -444,7 +394,7 @@ Model {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
-	  $ObjectID		  14
+	  $ObjectID		  13
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -487,7 +437,7 @@ Model {
 	  ODENIntegrationMethod	  "ode3"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  15
+	  $ObjectID		  14
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -529,7 +479,7 @@ Model {
 	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  16
+	  $ObjectID		  15
 	  Version		  "20.0.1"
 	  Array {
 	    Type		    "Cell"
@@ -603,7 +553,7 @@ Model {
 	  EfficientTunableParamExpr off
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  17
+	  $ObjectID		  16
 	  Version		  "20.0.1"
 	  Array {
 	    Type		    "Cell"
@@ -724,7 +674,7 @@ Model {
 	  ArithmeticOperatorsInVariantConditions "warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  18
+	  $ObjectID		  17
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -774,7 +724,7 @@ Model {
 	  HardwareBoardFeatureSet "EmbeddedCoderHSP"
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  19
+	  $ObjectID		  18
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -794,7 +744,7 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  20
+	  $ObjectID		  19
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -829,7 +779,7 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  21
+	  $ObjectID		  20
 	  Version		  "20.0.1"
 	  Array {
 	    Type		    "Cell"
@@ -918,7 +868,7 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      22
+	      $ObjectID		      21
 	      Version		      "20.0.1"
 	      Array {
 		Type			"Cell"
@@ -1008,7 +958,7 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      23
+	      $ObjectID		      22
 	      Version		      "20.0.1"
 	      Array {
 		Type			"Cell"
@@ -1115,7 +1065,7 @@ Model {
 	  }
 	}
 	SlCovCC.ConfigComp {
-	  $ObjectID		  24
+	  $ObjectID		  23
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  "Simulink Coverage Configuration Component"
@@ -1163,7 +1113,7 @@ Model {
       ExtraOptions	      ""
     }
     Simulink.ConfigSet {
-      $ObjectID		      25
+      $ObjectID		      24
       Version		      "20.0.1"
       DisabledProps	      []
       Description	      ""
@@ -1171,7 +1121,7 @@ Model {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
-	  $ObjectID		  26
+	  $ObjectID		  25
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -1214,7 +1164,7 @@ Model {
 	  ODENIntegrationMethod	  "ode3"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  27
+	  $ObjectID		  26
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -1256,7 +1206,7 @@ Model {
 	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  28
+	  $ObjectID		  27
 	  Version		  "20.0.1"
 	  Array {
 	    Type		    "Cell"
@@ -1330,7 +1280,7 @@ Model {
 	  EfficientTunableParamExpr off
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  29
+	  $ObjectID		  28
 	  Version		  "20.0.1"
 	  Array {
 	    Type		    "Cell"
@@ -1451,7 +1401,7 @@ Model {
 	  ArithmeticOperatorsInVariantConditions "warning"
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  30
+	  $ObjectID		  29
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -1501,7 +1451,7 @@ Model {
 	  HardwareBoardFeatureSet "EmbeddedCoderHSP"
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  31
+	  $ObjectID		  30
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -1521,7 +1471,7 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  32
+	  $ObjectID		  31
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  ""
@@ -1556,7 +1506,7 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  33
+	  $ObjectID		  32
 	  Version		  "20.0.1"
 	  Array {
 	    Type		    "Cell"
@@ -1645,7 +1595,7 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      34
+	      $ObjectID		      33
 	      Version		      "20.0.1"
 	      Array {
 		Type			"Cell"
@@ -1735,7 +1685,7 @@ Model {
 	    }
 	    Simulink.STFCustomTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      35
+	      $ObjectID		      34
 	      Version		      "20.0.1"
 	      Array {
 		Type			"Cell"
@@ -1830,7 +1780,7 @@ Model {
 	  }
 	}
 	SlCovCC.ConfigComp {
-	  $ObjectID		  36
+	  $ObjectID		  35
 	  Version		  "20.0.1"
 	  DisabledProps		  []
 	  Description		  "Simulink Coverage Configuration Component"
@@ -1881,11 +1831,11 @@ Model {
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    25
+    $ObjectID		    24
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    37
+    $ObjectID		    36
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -2252,8 +2202,8 @@ Model {
     }
   }
   System {
-    Name		    "NREL5MW_Baseline"
-    Location		    [-5, 0, 1585, 873]
+    Name		    "NREL5MW_Fcnblock"
+    Location		    [1529, 30, 2625, 890]
     Open		    off
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
@@ -2268,39 +2218,26 @@ Model {
     TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "175"
+    ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "7336"
+    SIDHighWatermark	    "7441"
     SimulinkSubDomain	    "Simulink"
     Block {
-      BlockType		      BusCreator
-      Name		      "Bus\nCreator1"
-      SID		      "7110"
-      Ports		      [2, 1]
-      Position		      [375, 276, 380, 489]
-      ZOrder		      340
-      ShowName		      off
-      Inputs		      "2"
-      DisplayOption	      "bar"
-      InheritFromInputs	      on
-    }
-    Block {
       BlockType		      SubSystem
-      Name		      "NREL Baseline Blade Pitch Control"
-      SID		      "6692"
+      Name		      "Baseline Blade Pitch Control"
+      SID		      "7201"
       Ports		      [1, 1]
       Position		      [170, 377, 290, 493]
-      ZOrder		      337
+      ZOrder		      342
       BackgroundColor	      "green"
       RequestExecContextInheritance off
       Port {
 	PortNumber		1
 	Name			"theta_c"
-	PropagatedSignals	"theta_c "
       }
       System {
-	Name			"NREL Baseline Blade Pitch Control"
-	Location		[-5, 0, 1585, 873]
+	Name			"Baseline Blade Pitch Control"
+	Location		[1518, 6, 2614, 866]
 	Open			on
 	PortBlocksUseCompactNotation off
 	SetExecutionDomain	off
@@ -2310,18 +2247,18 @@ Model {
 	ScreenColor		"white"
 	PaperOrientation	"landscape"
 	PaperPositionMode	"auto"
-	PaperType		"A4"
-	PaperUnits		"centimeters"
-	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"175"
+	ZoomFactor		"80"
 	SimulinkSubDomain	"Simulink"
 	Block {
 	  BlockType		  Inport
 	  Name			  "y"
-	  SID			  "6694"
-	  Position		  [205, 108, 235, 122]
+	  SID			  "7202"
+	  Position		  [-235, -67, -205, -53]
 	  ZOrder		  -1
 	  BackgroundColor	  "darkGreen"
 	  Port {
@@ -2333,10 +2270,10 @@ Model {
 	Block {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector"
-	  SID			  "6696"
+	  SID			  "7430"
 	  Ports			  [1, 1]
-	  Position		  [285, 81, 290, 119]
-	  ZOrder		  6
+	  Position		  [60, -109, 65, -71]
+	  ZOrder		  415
 	  ShowName		  off
 	  OutputSignals		  "Omega_g"
 	  Port {
@@ -2347,10 +2284,10 @@ Model {
 	Block {
 	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector1"
-	  SID			  "6697"
+	  SID			  "7431"
 	  Ports			  [1, 1]
-	  Position		  [285, 136, 290, 174]
-	  ZOrder		  7
+	  Position		  [60, -54, 65, -16]
+	  ZOrder		  416
 	  ShowName		  off
 	  OutputSignals		  "theta"
 	  Port {
@@ -2360,27 +2297,126 @@ Model {
 	}
 	Block {
 	  BlockType		  Constant
+	  Name			  "Constant"
+	  SID			  "7432"
+	  Position		  [35, 130, 155, 160]
+	  ZOrder		  418
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  FontName		  "Arial"
+	  FontSize		  11
+	  Value			  "Parameter.CPC.kp"
+	}
+	Block {
+	  BlockType		  Constant
 	  Name			  "Constant1"
-	  SID			  "6704"
-	  Position		  [455, 175, 485, 205]
-	  ZOrder		  362
+	  SID			  "7433"
+	  Position		  [135, -15, 155, 5]
+	  ZOrder		  417
 	  ShowName		  off
 	  Value			  "0"
 	}
 	Block {
-	  BlockType		  SubSystem
-	  Name			  "FilterGenSpeed.Omega_g"
-	  SID			  "7183"
-	  Ports			  [1, 1]
-	  Position		  [370, 60, 485, 110]
-	  ZOrder		  363
-	  BackgroundColor	  "gray"
+	  BlockType		  Constant
+	  Name			  "Constant2"
+	  SID			  "7434"
+	  Position		  [35, 160, 155, 190]
+	  ZOrder		  419
+	  BackgroundColor	  "red"
+	  ShowName		  off
 	  FontName		  "Arial"
-	  FontSize		  12
+	  FontSize		  11
+	  Value			  "Parameter.CPC.Ti"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant3"
+	  SID			  "7435"
+	  Position		  [20, 220, 155, 250]
+	  ZOrder		  420
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  FontName		  "Arial"
+	  FontSize		  11
+	  Value			  "Parameter.CPC.theta_min"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant4"
+	  SID			  "7436"
+	  Position		  [20, 190, 155, 220]
+	  ZOrder		  421
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  FontName		  "Arial"
+	  FontSize		  11
+	  Value			  "Parameter.CPC.theta_max"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant5"
+	  SID			  "7437"
+	  Position		  [-10, 75, 155, 95]
+	  ZOrder		  422
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  FontName		  "Arial"
+	  FontSize		  11
+	  Value			  "Parameter.CPC.Omega_g_rated"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant6"
+	  SID			  "7438"
+	  Position		  [-45, 12, 155, 38]
+	  ZOrder		  424
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  Value			  "Parameter.Filter.FilterGenSpeed.T63"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant7"
+	  SID			  "7439"
+	  Position		  [-100, 42, 155, 68]
+	  ZOrder		  423
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  Value			  "Parameter.Filter.FilterGenSpeed.Omega_g.Enable"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant8"
+	  SID			  "7440"
+	  Position		  [35, 100, 155, 130]
+	  ZOrder		  426
+	  BackgroundColor	  "red"
+	  ShowName		  off
+	  FontName		  "Arial"
+	  FontSize		  11
+	  Value			  "Parameter.CPC.theta_K"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "MATLAB Function"
+	  SID			  "7441"
+	  Ports			  [11, 1]
+	  Position		  [225, -92, 495, 262]
+	  ZOrder		  425
+	  ErrorFcn		  "Stateflow.Translate.translate"
+	  PermitHierarchicalResolution "ExplicitOnly"
+	  TreatAsAtomicUnit	  on
 	  RequestExecContextInheritance	off
+	  SFBlockType		  "MATLAB Function"
+	  ContentPreviewEnabled	  on
+	  Port {
+	    PortNumber		    1
+	    Name		    "theta_c"
+	    PropagatedSignals	    "thetaout"
+	  }
 	  System {
-	    Name		    "FilterGenSpeed.Omega_g"
-	    Location		    [2160, 337, 3312, 919]
+	    Name		    "MATLAB Function"
+	    Location		    [223, 338, 826, 833]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
@@ -2396,1012 +2432,419 @@ Model {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
+	    SIDHighWatermark	    "31"
 	    SimulinkSubDomain	    "Simulink"
 	    Block {
 	      BlockType		      Inport
-	      Name		      "u"
-	      SID		      "7184"
-	      Position		      [80, 233, 110, 247]
+	      Name		      "omega"
+	      SID		      "7441::1"
+	      Position		      [20, 101, 40, 119]
 	      ZOrder		      -1
-	      BackgroundColor	      "darkGreen"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant1"
-	      SID		      "7185"
-	      Position		      [80, 287, 280, 313]
-	      ZOrder		      249
-	      BackgroundColor	      "red"
-	      ShowName		      off
-	      Value		      "Parameter.Filter.FilterGenSpeed.T63"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant3"
-	      SID		      "7186"
-	      Position		      [80, 317, 335, 343]
-	      ZOrder		      246
-	      BackgroundColor	      "red"
-	      ShowName		      off
-	      Value		      "Parameter.Filter.FilterGenSpeed.Omega_g.Enable"
-	    }
-	    Block {
-	      BlockType		      SubSystem
-	      Name		      "LowPassOrder1"
-	      SID		      "7187"
-	      Ports		      [4, 1]
-	      Position		      [405, 224, 475, 346]
-	      ZOrder		      316
-	      BackgroundColor	      "gray"
-	      RequestExecContextInheritance off
-	      System {
-		Name			"LowPassOrder1"
-		Location		[1926, 9, 3237, 955]
-		Open			off
-		PortBlocksUseCompactNotation off
-		SetExecutionDomain	off
-		ExecutionDomainType	"Deduce"
-		ModelBrowserVisibility	off
-		ModelBrowserWidth	200
-		ScreenColor		"white"
-		PaperOrientation	"landscape"
-		PaperPositionMode	"auto"
-		PaperType		"usletter"
-		PaperUnits		"inches"
-		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-		TiledPageScale		1
-		ShowPageBoundaries	off
-		ZoomFactor		"100"
-		SimulinkSubDomain	"Simulink"
-		Block {
-		  BlockType		  Inport
-		  Name			  "u0"
-		  SID			  "7188"
-		  Position		  [255, 448, 285, 462]
-		  ZOrder		  248
-		  BackgroundColor	  "darkGreen"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "u"
-		  SID			  "7189"
-		  Position		  [55, 388, 85, 402]
-		  ZOrder		  -1
-		  BackgroundColor	  "darkGreen"
-		  Port			  "2"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "T"
-		  SID			  "7190"
-		  Position		  [255, 328, 285, 342]
-		  ZOrder		  247
-		  BackgroundColor	  "darkGreen"
-		  Port			  "3"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "Enable"
-		  SID			  "7191"
-		  Position		  [425, 473, 455, 487]
-		  ZOrder		  251
-		  BackgroundColor	  "darkGreen"
-		  Port			  "4"
-		}
-		Block {
-		  BlockType		  Sum
-		  Name			  "Add3"
-		  SID			  "7192"
-		  Ports			  [2, 1]
-		  Position		  [165, 371, 195, 404]
-		  ZOrder		  146
-		  ShowName		  off
-		  IconShape		  "rectangular"
-		  Inputs		  "-+"
-		}
-		Block {
-		  BlockType		  Integrator
-		  Name			  "Integrator"
-		  SID			  "7193"
-		  Ports			  [2, 1]
-		  Position		  [425, 377, 455, 408]
-		  ZOrder		  252
-		  ShowName		  off
-		  InitialConditionSource  "external"
-		}
-		Block {
-		  BlockType		  Product
-		  Name			  "Product"
-		  SID			  "7194"
-		  Ports			  [2, 1]
-		  Position		  [320, 367, 350, 398]
-		  ZOrder		  147
-		  ShowName		  off
-		  Inputs		  "/*"
-		  RndMeth		  "Zero"
-		}
-		Block {
-		  BlockType		  Switch
-		  Name			  "Switch"
-		  SID			  "7195"
-		  Position		  [585, 440, 645, 520]
-		  ZOrder		  250
-		  ShowName		  off
-		  Criteria		  "u2 > Threshold"
-		  Threshold		  "0.5"
-		  InputSameDT		  off
-		  SaturateOnIntegerOverflow off
-		}
-		Block {
-		  BlockType		  Outport
-		  Name			  "y"
-		  SID			  "7196"
-		  Position		  [680, 473, 710, 487]
-		  ZOrder		  -2
-		  BackgroundColor	  "yellow"
-		}
-		Line {
-		  ZOrder		  1
-		  SrcBlock		  "u0"
-		  SrcPort		  1
-		  Points		  [97, 0; 0, -55]
-		  DstBlock		  "Integrator"
-		  DstPort		  2
-		}
-		Line {
-		  ZOrder		  2
-		  SrcBlock		  "Switch"
-		  SrcPort		  1
-		  DstBlock		  "y"
-		  DstPort		  1
-		}
-		Line {
-		  ZOrder		  3
-		  SrcBlock		  "Enable"
-		  SrcPort		  1
-		  DstBlock		  "Switch"
-		  DstPort		  2
-		}
-		Line {
-		  ZOrder		  4
-		  SrcBlock		  "u"
-		  SrcPort		  1
-		  Points		  [42, 0]
-		  Branch {
-		    ZOrder		    5
-		    DstBlock		    "Add3"
-		    DstPort		    2
-		  }
-		  Branch {
-		    ZOrder		    6
-		    Points		    [0, 110]
-		    DstBlock		    "Switch"
-		    DstPort		    3
-		  }
-		}
-		Line {
-		  ZOrder		  7
-		  SrcBlock		  "T"
-		  SrcPort		  1
-		  Points		  [12, 0; 0, 40]
-		  DstBlock		  "Product"
-		  DstPort		  1
-		}
-		Line {
-		  ZOrder		  8
-		  SrcBlock		  "Integrator"
-		  SrcPort		  1
-		  Points		  [30, 0]
-		  Branch {
-		    ZOrder		    9
-		    Points		    [0, -97; -340, 0]
-		    DstBlock		    "Add3"
-		    DstPort		    1
-		  }
-		  Branch {
-		    ZOrder		    10
-		    Points		    [0, 60]
-		    DstBlock		    "Switch"
-		    DstPort		    1
-		  }
-		}
-		Line {
-		  ZOrder		  11
-		  SrcBlock		  "Product"
-		  SrcPort		  1
-		  DstBlock		  "Integrator"
-		  DstPort		  1
-		}
-		Line {
-		  ZOrder		  12
-		  SrcBlock		  "Add3"
-		  SrcPort		  1
-		  DstBlock		  "Product"
-		  DstPort		  2
-		}
-	      }
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "y"
-	      SID		      "7197"
-	      Position		      [535, 278, 565, 292]
-	      ZOrder		      -14
-	      BackgroundColor	      "yellow"
-	    }
-	    Line {
-	      ZOrder		      1
-	      SrcBlock		      "LowPassOrder1"
-	      SrcPort		      1
-	      DstBlock		      "y"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      2
-	      SrcBlock		      "u"
-	      SrcPort		      1
-	      Points		      [229, 0]
-	      Branch {
-		ZOrder			3
-		Points			[0, 30]
-		DstBlock		"LowPassOrder1"
-		DstPort			2
-	      }
-	      Branch {
-		ZOrder			4
-		DstBlock		"LowPassOrder1"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      ZOrder		      5
-	      SrcBlock		      "Constant3"
-	      SrcPort		      1
-	      DstBlock		      "LowPassOrder1"
-	      DstPort		      4
-	    }
-	    Line {
-	      ZOrder		      6
-	      SrcBlock		      "Constant1"
-	      SrcPort		      1
-	      DstBlock		      "LowPassOrder1"
-	      DstPort		      3
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "NREL 5MW Baseline Pitch Controller"
-	  SID			  "6699"
-	  Ports			  [3, 1]
-	  Position		  [545, 80, 695, 210]
-	  ZOrder		  328
-	  BackgroundColor	  "green"
-	  FontName		  "Arial"
-	  FontSize		  12
-	  RequestExecContextInheritance	off
-	  Port {
-	    PortNumber		    1
-	    Name		    "theta_c"
-	    DataLoggingNameMode	    "Custom"
-	    DataLoggingName	    "theta"
-	  }
-	  System {
-	    Name		    "NREL 5MW Baseline Pitch Controller"
-	    Location		    [-5, 0, 1585, 873]
-	    Open		    off
-	    PortBlocksUseCompactNotation off
-	    SetExecutionDomain	    off
-	    ExecutionDomainType	    "Deduce"
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "A4"
-	    PaperUnits		    "centimeters"
-	    TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "125"
-	    SimulinkSubDomain	    "Simulink"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "Omega_g [rad/s]"
-	      SID		      "6729"
-	      Position		      [150, 258, 180, 272]
-	      ZOrder		      -1
-	      BackgroundColor	      "darkGreen"
-	      FontName		      "Arial"
-	      FontSize		      11
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "theta [rad]"
-	      SID		      "6730"
-	      Position		      [15, 318, 45, 332]
-	      ZOrder		      -2
-	      BackgroundColor	      "darkGreen"
-	      FontName		      "Arial"
-	      FontSize		      11
+	      Name		      "theta"
+	      SID		      "7441::22"
+	      Position		      [20, 136, 40, 154]
+	      ZOrder		      13
 	      Port		      "2"
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "theta_dot_FF [rad/s]"
-	      SID		      "6731"
-	      Position		      [480, 358, 510, 372]
-	      ZOrder		      -3
-	      BackgroundColor	      "darkGreen"
-	      FontName		      "Arial"
-	      FontSize		      11
+	      Name		      "theta_dot_FF"
+	      SID		      "7441::23"
+	      Position		      [20, 171, 40, 189]
+	      ZOrder		      14
 	      Port		      "3"
 	    }
 	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant"
-	      SID		      "6732"
-	      Position		      [480, 230, 600, 260]
-	      ZOrder		      72
-	      BackgroundColor	      "red"
-	      ShowName		      off
-	      FontName		      "Arial"
-	      FontSize		      11
-	      Value		      "Parameter.CPC.kp"
+	      BlockType		      Inport
+	      Name		      "T63"
+	      SID		      "7441::24"
+	      Position		      [20, 206, 40, 224]
+	      ZOrder		      15
+	      Port		      "4"
 	    }
 	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant1"
-	      SID		      "6733"
-	      Position		      [480, 290, 600, 320]
-	      ZOrder		      73
-	      BackgroundColor	      "red"
-	      ShowName		      off
-	      FontName		      "Arial"
-	      FontSize		      11
-	      Value		      "Parameter.CPC.Ti"
+	      BlockType		      Inport
+	      Name		      "Enable"
+	      SID		      "7441::25"
+	      Position		      [20, 246, 40, 264]
+	      ZOrder		      16
+	      Port		      "5"
 	    }
 	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant2"
-	      SID		      "6734"
-	      Position		      [470, 470, 605, 500]
-	      ZOrder		      74
-	      BackgroundColor	      "red"
-	      ShowName		      off
-	      FontName		      "Arial"
-	      FontSize		      11
-	      Value		      "Parameter.CPC.theta_min"
+	      BlockType		      Inport
+	      Name		      "Omega_g_rated"
+	      SID		      "7441::26"
+	      Position		      [20, 281, 40, 299]
+	      ZOrder		      17
+	      Port		      "6"
 	    }
 	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant3"
-	      SID		      "6735"
-	      Position		      [470, 410, 605, 440]
-	      ZOrder		      75
-	      BackgroundColor	      "red"
-	      ShowName		      off
-	      FontName		      "Arial"
-	      FontSize		      11
-	      Value		      "Parameter.CPC.theta_max"
+	      BlockType		      Inport
+	      Name		      "theta_K"
+	      SID		      "7441::27"
+	      Position		      [20, 316, 40, 334]
+	      ZOrder		      18
+	      Port		      "7"
 	    }
 	    Block {
-	      BlockType		      Constant
-	      Name		      "Constant4"
-	      SID		      "6736"
-	      Position		      [70, 165, 235, 185]
-	      ZOrder		      206
-	      BackgroundColor	      "red"
-	      ShowName		      off
-	      FontName		      "Arial"
-	      FontSize		      11
-	      Value		      "Parameter.CPC.Omega_g_rated"
+	      BlockType		      Inport
+	      Name		      "kp"
+	      SID		      "7441::28"
+	      Position		      [20, 351, 40, 369]
+	      ZOrder		      19
+	      Port		      "8"
 	    }
 	    Block {
-	      BlockType		      Fcn
-	      Name		      "Gain"
-	      SID		      "6737"
-	      Position		      [145, 312, 320, 338]
-	      ZOrder		      -8
-	      BackgroundColor	      "red"
-	      FontName		      "Arial"
-	      FontSize		      11
-	      Expr		      "1/(1+u/Parameter.CPC.theta_K)"
+	      BlockType		      Inport
+	      Name		      "Ti"
+	      SID		      "7441::29"
+	      Position		      [20, 386, 40, 404]
+	      ZOrder		      20
+	      Port		      "9"
 	    }
 	    Block {
-	      BlockType		      SubSystem
-	      Name		      "PI Anti-Windup with rate feedforward"
-	      SID		      "6738"
-	      Ports		      [7, 1]
-	      Position		      [635, 86, 815, 524]
-	      ZOrder		      324
-	      BackgroundColor	      "green"
-	      FontName		      "Arial"
-	      FontSize		      12
-	      RequestExecContextInheritance off
-	      System {
-		Name			"PI Anti-Windup with rate feedforward"
-		Location		[-5, 0, 1585, 873]
-		Open			on
-		PortBlocksUseCompactNotation off
-		SetExecutionDomain	off
-		ExecutionDomainType	"Deduce"
-		ModelBrowserVisibility	off
-		ModelBrowserWidth	200
-		ScreenColor		"white"
-		PaperOrientation	"landscape"
-		PaperPositionMode	"auto"
-		PaperType		"A4"
-		PaperUnits		"centimeters"
-		TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
-		TiledPageScale		1
-		ShowPageBoundaries	off
-		ZoomFactor		"100"
-		SimulinkSubDomain	"Simulink"
-		Block {
-		  BlockType		  Inport
-		  Name			  "x_0"
-		  SID			  "6742"
-		  Position		  [390, 123, 420, 137]
-		  ZOrder		  50
-		  BackgroundColor	  "darkGreen"
-		  FontName		  "Arial"
-		  FontSize		  11
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "e"
-		  SID			  "6743"
-		  Position		  [140, 88, 170, 102]
-		  ZOrder		  49
-		  BackgroundColor	  "darkGreen"
-		  FontName		  "Arial"
-		  FontSize		  11
-		  Port			  "2"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "kp"
-		  SID			  "6744"
-		  Position		  [140, 43, 170, 57]
-		  ZOrder		  46
-		  BackgroundColor	  "darkGreen"
-		  FontName		  "Arial"
-		  FontSize		  11
-		  Port			  "3"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "Ti"
-		  SID			  "6745"
-		  Position		  [310, 83, 340, 97]
-		  ZOrder		  48
-		  BackgroundColor	  "darkGreen"
-		  FontName		  "Arial"
-		  FontSize		  11
-		  Port			  "4"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "u_dot_FF"
-		  SID			  "6746"
-		  Position		  [405, 28, 435, 42]
-		  ZOrder		  59
-		  BackgroundColor	  "darkGreen"
-		  FontName		  "Arial"
-		  FontSize		  11
-		  Port			  "5"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "u_max"
-		  SID			  "6747"
-		  Position		  [625, 73, 655, 87]
-		  ZOrder		  65
-		  BackgroundColor	  "darkGreen"
-		  NameLocation		  "top"
-		  FontName		  "Arial"
-		  FontSize		  11
-		  Port			  "6"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "u_min"
-		  SID			  "6748"
-		  Position		  [625, 133, 655, 147]
-		  ZOrder		  66
-		  BackgroundColor	  "darkGreen"
-		  FontName		  "Arial"
-		  FontSize		  11
-		  Port			  "7"
-		}
-		Block {
-		  BlockType		  Integrator
-		  Name			  "Integrator"
-		  SID			  "6749"
-		  Ports			  [2, 1]
-		  Position		  [475, 62, 525, 153]
-		  ZOrder		  61
-		  ShowName		  off
-		  InitialConditionSource  "external"
-		}
-		Block {
-		  BlockType		  Product
-		  Name			  "Multiply1"
-		  SID			  "6750"
-		  Ports			  [2, 1]
-		  Position		  [210, 57, 240, 88]
-		  ZOrder		  43
-		  ShowName		  off
-		  Inputs		  "**"
-		}
-		Block {
-		  BlockType		  Product
-		  Name			  "Multiply3"
-		  SID			  "6751"
-		  Ports			  [2, 1]
-		  Position		  [365, 67, 395, 98]
-		  ZOrder		  44
-		  ShowName		  off
-		  Inputs		  "*/"
-		}
-		Block {
-		  BlockType		  Mux
-		  Name			  "Mux"
-		  SID			  "7199"
-		  Ports			  [3, 1]
-		  Position		  [885, 12, 895, 208]
-		  ZOrder		  122
-		  ShowName		  off
-		  Inputs		  "3"
-		  DisplayOption		  "bar"
-		}
-		Block {
-		  BlockType		  Reference
-		  Name			  "Saturation\nDynamic1"
-		  SID			  "6752"
-		  Ports			  [3, 1]
-		  Position		  [695, 65, 775, 155]
-		  ZOrder		  68
-		  ShowName		  off
-		  LibraryVersion	  "1.465"
-		  SourceBlock		  "simulink/Discontinuities/Saturation\nDynamic"
-		  SourceType		  "Saturation Dynamic"
-		  SourceProductBaseCode	  "SL"
-		  RTWMemSecFuncInitTerm	  "Inherit from model"
-		  RTWMemSecFuncExecute	  "Inherit from model"
-		  RTWMemSecDataConstants  "Inherit from model"
-		  RTWMemSecDataInternal	  "Inherit from model"
-		  RTWMemSecDataParameters "Inherit from model"
-		  ContentPreviewEnabled	  off
-		  OutMin		  "[]"
-		  OutMax		  "[]"
-		  OutDataTypeStr	  "Inherit: Same as second input"
-		  OutputDataTypeScalingMode "Same as second input"
-		  OutDataType		  "fixdt(1, 16)"
-		  OutScaling		  "2^-10"
-		  LockScale		  off
-		  RndMeth		  "Floor"
-		  DoSatur		  off
-		}
-		Block {
-		  BlockType		  Sum
-		  Name			  "Sum"
-		  SID			  "6753"
-		  Ports			  [2, 1]
-		  Position		  [560, 100, 580, 120]
-		  ZOrder		  24
-		  ShowName		  off
-		  Inputs		  "++|"
-		}
-		Block {
-		  BlockType		  Sum
-		  Name			  "Sum1"
-		  SID			  "6754"
-		  Ports			  [2, 1]
-		  Position		  [580, 195, 600, 215]
-		  ZOrder		  26
-		  BlockMirror		  on
-		  NameLocation		  "top"
-		  ShowName		  off
-		  Inputs		  "-+|"
-		}
-		Block {
-		  BlockType		  Sum
-		  Name			  "Sum2"
-		  SID			  "6755"
-		  Ports			  [2, 1]
-		  Position		  [285, 65, 305, 85]
-		  ZOrder		  42
-		  ShowName		  off
-		  Inputs		  "|++"
-		}
-		Block {
-		  BlockType		  Sum
-		  Name			  "Sum3"
-		  SID			  "6756"
-		  Ports			  [2, 1]
-		  Position		  [435, 75, 455, 95]
-		  ZOrder		  58
-		  ShowName		  off
-		  Inputs		  "++|"
-		}
-		Block {
-		  BlockType		  Outport
-		  Name			  "u"
-		  SID			  "6757"
-		  Position		  [930, 103, 960, 117]
-		  ZOrder		  53
-		  BackgroundColor	  "yellow"
-		  FontName		  "Arial"
-		  FontSize		  11
-		}
-		Line {
-		  ZOrder		  1
-		  SrcBlock		  "Saturation\nDynamic1"
-		  SrcPort		  1
-		  Points		  [25, 0]
-		  Branch {
-		    ZOrder		    50
-		    Points		    [0, 95]
-		    DstBlock		    "Sum1"
-		    DstPort		    2
-		  }
-		  Branch {
-		    ZOrder		    49
-		    Points		    [38, 0]
-		    Branch {
-		    ZOrder		    53
-		    Points		    [0, 65]
-		    DstBlock		    "Mux"
-		    DstPort		    3
-		    }
-		    Branch {
-		    ZOrder		    52
-		    Points		    [0, -65]
-		    DstBlock		    "Mux"
-		    DstPort		    1
-		    }
-		    Branch {
-		    ZOrder		    51
-		    DstBlock		    "Mux"
-		    DstPort		    2
-		    }
-		  }
-		}
-		Line {
-		  ZOrder		  4
-		  SrcBlock		  "Integrator"
-		  SrcPort		  1
-		  DstBlock		  "Sum"
-		  DstPort		  2
-		}
-		Line {
-		  ZOrder		  5
-		  SrcBlock		  "kp"
-		  SrcPort		  1
-		  Points		  [15, 0; 0, 15]
-		  DstBlock		  "Multiply1"
-		  DstPort		  1
-		}
-		Line {
-		  ZOrder		  6
-		  SrcBlock		  "e"
-		  SrcPort		  1
-		  Points		  [20, 0]
-		  DstBlock		  "Multiply1"
-		  DstPort		  2
-		}
-		Line {
-		  ZOrder		  7
-		  SrcBlock		  "Ti"
-		  SrcPort		  1
-		  DstBlock		  "Multiply3"
-		  DstPort		  2
-		}
-		Line {
-		  ZOrder		  9
-		  SrcBlock		  "Multiply1"
-		  SrcPort		  1
-		  Points		  [17, 0]
-		  Branch {
-		    ZOrder		    10
-		    Points		    [0, -62; 308, 0]
-		    DstBlock		    "Sum"
-		    DstPort		    1
-		  }
-		  Branch {
-		    ZOrder		    11
-		    DstBlock		    "Sum2"
-		    DstPort		    1
-		  }
-		}
-		Line {
-		  ZOrder		  12
-		  SrcBlock		  "Sum2"
-		  SrcPort		  1
-		  DstBlock		  "Multiply3"
-		  DstPort		  1
-		}
-		Line {
-		  ZOrder		  13
-		  SrcBlock		  "x_0"
-		  SrcPort		  1
-		  DstBlock		  "Integrator"
-		  DstPort		  2
-		}
-		Line {
-		  ZOrder		  14
-		  SrcBlock		  "Multiply3"
-		  SrcPort		  1
-		  DstBlock		  "Sum3"
-		  DstPort		  2
-		}
-		Line {
-		  ZOrder		  15
-		  SrcBlock		  "Sum3"
-		  SrcPort		  1
-		  DstBlock		  "Integrator"
-		  DstPort		  1
-		}
-		Line {
-		  ZOrder		  16
-		  SrcBlock		  "u_dot_FF"
-		  SrcPort		  1
-		  Points		  [5, 0]
-		  DstBlock		  "Sum3"
-		  DstPort		  1
-		}
-		Line {
-		  ZOrder		  17
-		  SrcBlock		  "u_min"
-		  SrcPort		  1
-		  DstBlock		  "Saturation\nDynamic1"
-		  DstPort		  3
-		}
-		Line {
-		  ZOrder		  18
-		  SrcBlock		  "Sum"
-		  SrcPort		  1
-		  Points		  [5, 0]
-		  Branch {
-		    ZOrder		    19
-		    DstBlock		    "Saturation\nDynamic1"
-		    DstPort		    2
-		  }
-		  Branch {
-		    ZOrder		    20
-		    DstBlock		    "Sum1"
-		    DstPort		    1
-		  }
-		}
-		Line {
-		  ZOrder		  21
-		  SrcBlock		  "u_max"
-		  SrcPort		  1
-		  DstBlock		  "Saturation\nDynamic1"
-		  DstPort		  1
-		}
-		Line {
-		  ZOrder		  26
-		  SrcBlock		  "Sum1"
-		  SrcPort		  1
-		  Points		  [-280, 0]
-		  DstBlock		  "Sum2"
-		  DstPort		  2
-		}
-		Line {
-		  ZOrder		  57
-		  SrcBlock		  "Mux"
-		  SrcPort		  1
-		  DstBlock		  "u"
-		  DstPort		  1
-		}
+	      BlockType		      Inport
+	      Name		      "theta_max"
+	      SID		      "7441::30"
+	      Position		      [20, 426, 40, 444]
+	      ZOrder		      21
+	      Port		      "10"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "theta_min"
+	      SID		      "7441::31"
+	      Position		      [20, 461, 40, 479]
+	      ZOrder		      22
+	      Port		      "11"
+	    }
+	    Block {
+	      BlockType		      Demux
+	      Name		      " Demux "
+	      SID		      "7441::20"
+	      Ports		      [1, 1]
+	      Position		      [270, 230, 320, 270]
+	      ZOrder		      11
+	      Outputs		      "1"
+	    }
+	    Block {
+	      BlockType		      S-Function
+	      Name		      " SFunction "
+	      SID		      "7441::19"
+	      Tag		      "Stateflow S-Function 2"
+	      Ports		      [11, 2]
+	      Position		      [180, 110, 230, 350]
+	      ZOrder		      10
+	      FunctionName	      "sf_sfun"
+	      PortCounts	      "[11 2]"
+	      SFunctionDeploymentMode off
+	      EnableBusSupport	      on
+	      SFcnIsStateOwnerBlock   off
+	      Port {
+		PortNumber		2
+		Name			"thetaout"
 	      }
 	    }
 	    Block {
-	      BlockType		      Product
-	      Name		      "Product"
-	      SID		      "6739"
-	      Ports		      [2, 1]
-	      Position		      [570, 167, 600, 198]
-	      ZOrder		      -11
-	      ShowName		      off
-	      RndMeth		      "Zero"
-	    }
-	    Block {
-	      BlockType		      Sum
-	      Name		      "Sum"
-	      SID		      "6740"
-	      Ports		      [2, 1]
-	      Position		      [310, 165, 330, 185]
-	      ZOrder		      -14
-	      ShowName		      off
-	      Inputs		      "|-+"
+	      BlockType		      Terminator
+	      Name		      " Terminator "
+	      SID		      "7441::21"
+	      Position		      [460, 241, 480, 259]
+	      ZOrder		      12
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "theta_c [rad]"
-	      SID		      "6741"
-	      Position		      [885, 298, 915, 312]
-	      ZOrder		      -16
-	      BackgroundColor	      "yellow"
-	      FontName		      "Arial"
-	      FontSize		      11
+	      Name		      "thetaout"
+	      SID		      "7441::5"
+	      Position		      [460, 101, 480, 119]
+	      ZOrder		      -5
 	    }
 	    Line {
 	      ZOrder		      1
-	      SrcBlock		      "Constant4"
+	      SrcBlock		      "omega"
 	      SrcPort		      1
-	      DstBlock		      "Sum"
+	      Points		      [68, 0; 0, 20]
+	      DstBlock		      " SFunction "
 	      DstPort		      1
 	    }
 	    Line {
 	      ZOrder		      2
-	      SrcBlock		      "theta [rad]"
+	      SrcBlock		      "theta"
 	      SrcPort		      1
-	      Points		      [5, 0]
-	      Branch {
-		ZOrder			3
-		DstBlock		"Gain"
-		DstPort			1
-	      }
-	      Branch {
-		ZOrder			4
-		Points			[0, -200]
-		DstBlock		"PI Anti-Windup with rate feedforward"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      ZOrder		      5
-	      SrcBlock		      "Omega_g [rad/s]"
-	      SrcPort		      1
-	      Points		      [135, 0]
-	      DstBlock		      "Sum"
+	      Points		      [60, 0; 0, 5]
+	      DstBlock		      " SFunction "
 	      DstPort		      2
 	    }
 	    Line {
-	      ZOrder		      6
-	      SrcBlock		      "Gain"
+	      ZOrder		      3
+	      SrcBlock		      "theta_dot_FF"
 	      SrcPort		      1
-	      Points		      [75, 0; 0, -135]
-	      DstBlock		      "Product"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      7
-	      SrcBlock		      "Sum"
-	      SrcPort		      1
-	      DstBlock		      "Product"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      8
-	      SrcBlock		      "Product"
-	      SrcPort		      1
-	      DstBlock		      "PI Anti-Windup with rate feedforward"
-	      DstPort		      2
-	    }
-	    Line {
-	      ZOrder		      9
-	      SrcBlock		      "theta_dot_FF [rad/s]"
-	      SrcPort		      1
-	      DstBlock		      "PI Anti-Windup with rate feedforward"
-	      DstPort		      5
-	    }
-	    Line {
-	      ZOrder		      10
-	      SrcBlock		      "PI Anti-Windup with rate feedforward"
-	      SrcPort		      1
-	      DstBlock		      "theta_c [rad]"
-	      DstPort		      1
-	    }
-	    Line {
-	      ZOrder		      11
-	      SrcBlock		      "Constant"
-	      SrcPort		      1
-	      DstBlock		      "PI Anti-Windup with rate feedforward"
+	      Points		      [65, 0; 0, -10]
+	      DstBlock		      " SFunction "
 	      DstPort		      3
 	    }
 	    Line {
-	      ZOrder		      12
-	      SrcBlock		      "Constant1"
+	      ZOrder		      4
+	      SrcBlock		      "T63"
 	      SrcPort		      1
-	      DstBlock		      "PI Anti-Windup with rate feedforward"
+	      Points		      [74, 0; 0, -25]
+	      DstBlock		      " SFunction "
 	      DstPort		      4
 	    }
 	    Line {
-	      ZOrder		      13
-	      SrcBlock		      "Constant2"
+	      ZOrder		      5
+	      SrcBlock		      "Enable"
 	      SrcPort		      1
-	      DstBlock		      "PI Anti-Windup with rate feedforward"
+	      Points		      [35, 0; 0, -45]
+	      DstBlock		      " SFunction "
+	      DstPort		      5
+	    }
+	    Line {
+	      ZOrder		      6
+	      SrcBlock		      "Omega_g_rated"
+	      SrcPort		      1
+	      Points		      [85, 0; 0, -60]
+	      DstBlock		      " SFunction "
+	      DstPort		      6
+	    }
+	    Line {
+	      ZOrder		      7
+	      SrcBlock		      "theta_K"
+	      SrcPort		      1
+	      Points		      [60, 0; 0, -75]
+	      DstBlock		      " SFunction "
 	      DstPort		      7
 	    }
 	    Line {
-	      ZOrder		      14
-	      SrcBlock		      "Constant3"
+	      ZOrder		      8
+	      SrcBlock		      "kp"
 	      SrcPort		      1
-	      DstBlock		      "PI Anti-Windup with rate feedforward"
-	      DstPort		      6
+	      Points		      [41, 0; 0, -90]
+	      DstBlock		      " SFunction "
+	      DstPort		      8
+	    }
+	    Line {
+	      ZOrder		      9
+	      SrcBlock		      "Ti"
+	      SrcPort		      1
+	      Points		      [110, 0; 0, -105]
+	      DstBlock		      " SFunction "
+	      DstPort		      9
+	    }
+	    Line {
+	      ZOrder		      10
+	      SrcBlock		      "theta_max"
+	      SrcPort		      1
+	      Points		      [31, 0; 0, -125]
+	      DstBlock		      " SFunction "
+	      DstPort		      10
+	    }
+	    Line {
+	      ZOrder		      11
+	      SrcBlock		      "theta_min"
+	      SrcPort		      1
+	      Points		      [20, 0; 0, -140]
+	      DstBlock		      " SFunction "
+	      DstPort		      11
+	    }
+	    Line {
+	      Name		      "thetaout"
+	      ZOrder		      12
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      2
+	      Points		      [5, 0; 0, -180]
+	      DstBlock		      "thetaout"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      13
+	      SrcBlock		      " Demux "
+	      SrcPort		      1
+	      DstBlock		      " Terminator "
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      14
+	      SrcBlock		      " SFunction "
+	      SrcPort		      1
+	      Points		      [15, 0; 0, 80]
+	      DstBlock		      " Demux "
+	      DstPort		      1
 	    }
 	  }
 	}
 	Block {
+	  BlockType		  Mux
+	  Name			  "Mux"
+	  SID			  "7413"
+	  Ports			  [3, 1]
+	  Position		  [630, 17, 635, 153]
+	  ZOrder		  402
+	  ShowName		  off
+	  Inputs		  "3"
+	  DisplayOption		  "bar"
+	}
+	Block {
 	  BlockType		  Outport
 	  Name			  "theta_c "
-	  SID			  "6702"
-	  Position		  [790, 138, 820, 152]
+	  SID			  "7331"
+	  Position		  [715, 78, 745, 92]
 	  ZOrder		  -35
 	  BackgroundColor	  "yellow"
 	  FontName		  "Arial"
 	  FontSize		  12
 	}
 	Line {
-	  Name			  "<theta>"
-	  ZOrder		  4
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector1"
-	  SrcPort		  1
-	  Points		  [123, 0; 0, -10]
-	  DstBlock		  "NREL 5MW Baseline Pitch Controller"
-	  DstPort		  2
-	}
-	Line {
-	  Name			  "<Omega_g>"
-	  ZOrder		  153
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  1
-	  Points		  [30, 0; 0, -15]
-	  DstBlock		  "FilterGenSpeed.Omega_g"
-	  DstPort		  1
-	}
-	Line {
 	  Name			  "y"
-	  ZOrder		  10
+	  ZOrder		  103
 	  Labels		  [0, 0]
 	  SrcBlock		  "y"
 	  SrcPort		  1
-	  Points		  [16, 0]
+	  Points		  [35, 0]
 	  Branch {
-	    ZOrder		    11
-	    Points		    [0, -15]
-	    DstBlock		    "Bus\nSelector"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    12
-	    Points		    [0, 40]
+	    ZOrder		    106
+	    Points		    [0, 25]
 	    DstBlock		    "Bus\nSelector1"
 	    DstPort		    1
 	  }
+	  Branch {
+	    ZOrder		    104
+	    Points		    [0, -30]
+	    DstBlock		    "Bus\nSelector"
+	    DstPort		    1
+	  }
 	}
 	Line {
-	  ZOrder		  16
-	  SrcBlock		  "Constant1"
-	  SrcPort		  1
-	  DstBlock		  "NREL 5MW Baseline Pitch Controller"
-	  DstPort		  3
-	}
-	Line {
-	  Name			  "theta_c"
-	  ZOrder		  160
-	  Labels		  [0, 0]
-	  SrcBlock		  "NREL 5MW Baseline Pitch Controller"
+	  ZOrder		  62
+	  SrcBlock		  "Mux"
 	  SrcPort		  1
 	  DstBlock		  "theta_c "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  161
-	  SrcBlock		  "FilterGenSpeed.Omega_g"
+	  Name			  "theta_c"
+	  ZOrder		  102
+	  Labels		  [1, 0]
+	  SrcBlock		  "MATLAB Function"
 	  SrcPort		  1
-	  Points		  [25, 0; 0, 15]
-	  DstBlock		  "NREL 5MW Baseline Pitch Controller"
+	  Points		  [91, 0]
+	  Branch {
+	    ZOrder		    90
+	    Points		    [0, -45]
+	    DstBlock		    "Mux"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    66
+	    Points		    [0, 45]
+	    DstBlock		    "Mux"
+	    DstPort		    3
+	  }
+	  Branch {
+	    ZOrder		    64
+	    DstBlock		    "Mux"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  ZOrder		  91
+	  SrcBlock		  "Constant4"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  10
+	}
+	Line {
+	  ZOrder		  92
+	  SrcBlock		  "Constant2"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  9
+	}
+	Line {
+	  ZOrder		  93
+	  SrcBlock		  "Constant3"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  11
+	}
+	Line {
+	  ZOrder		  94
+	  SrcBlock		  "Constant8"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  7
+	}
+	Line {
+	  ZOrder		  95
+	  SrcBlock		  "Constant5"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  6
+	}
+	Line {
+	  ZOrder		  96
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  3
+	}
+	Line {
+	  ZOrder		  97
+	  SrcBlock		  "Constant7"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  5
+	}
+	Line {
+	  ZOrder		  98
+	  SrcBlock		  "Constant"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  8
+	}
+	Line {
+	  ZOrder		  99
+	  SrcBlock		  "Constant6"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "<theta>"
+	  ZOrder		  100
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector1"
+	  SrcPort		  1
+	  DstBlock		  "MATLAB Function"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<Omega_g>"
+	  ZOrder		  101
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  Points		  [93, 0; 0, 25]
+	  DstBlock		  "MATLAB Function"
 	  DstPort		  1
 	}
       }
+    }
+    Block {
+      BlockType		      BusCreator
+      Name		      "Bus\nCreator1"
+      SID		      "7110"
+      Ports		      [2, 1]
+      Position		      [415, 276, 420, 489]
+      ZOrder		      340
+      ShowName		      off
+      Inputs		      "2"
+      DisplayOption	      "bar"
+      InheritFromInputs	      on
     }
     Block {
       BlockType		      SubSystem
@@ -3418,7 +2861,7 @@ Model {
       }
       System {
 	Name			"NREL Baseline Generator Torque Control"
-	Location		[2160, 250, 3022, 1091]
+	Location		[1931, 175, 3505, 802]
 	Open			off
 	PortBlocksUseCompactNotation off
 	SetExecutionDomain	off
@@ -3489,7 +2932,7 @@ Model {
 	  RequestExecContextInheritance	off
 	  System {
 	    Name		    "FilterGenSpeed.Omega_g"
-	    Location		    [2447, 483, 3181, 921]
+	    Location		    [1931, 175, 3505, 802]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
@@ -3545,7 +2988,7 @@ Model {
 	      RequestExecContextInheritance off
 	      System {
 		Name			"LowPassOrder1"
-		Location		[2447, 483, 3181, 921]
+		Location		[739, 227, 1495, 669]
 		Open			off
 		PortBlocksUseCompactNotation off
 		SetExecutionDomain	off
@@ -3796,7 +3239,7 @@ Model {
 	  }
 	  System {
 	    Name		    "NREL 5MW BaselineTorque Controller"
-	    Location		    [2160, 250, 3022, 1091]
+	    Location		    [242, 0, 1531, 820]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
@@ -3862,7 +3305,7 @@ Model {
 		TiledPageScale		1
 		ShowPageBoundaries	off
 		ZoomFactor		"100"
-		SIDHighWatermark	"4433"
+		SIDHighWatermark	"4436"
 		SIDPrevWatermark	"4402"
 		SimulinkSubDomain	"Simulink"
 		Block {
@@ -3979,24 +3422,24 @@ Model {
 		Block {
 		  BlockType		  Demux
 		  Name			  " Demux "
-		  SID			  "7092::4432"
+		  SID			  "7092::4435"
 		  Ports			  [1, 1]
 		  Position		  [270, 230, 320, 270]
-		  ZOrder		  65
+		  ZOrder		  68
 		  Outputs		  "1"
 		}
 		Block {
 		  BlockType		  S-Function
 		  Name			  " SFunction "
-		  SID			  "7092::4431"
+		  SID			  "7092::4434"
 		  Tag			  "Stateflow S-Function 1"
 		  Ports			  [14, 2]
 		  Position		  [180, 90, 230, 390]
-		  ZOrder		  64
+		  ZOrder		  67
 		  FunctionName		  "sf_sfun"
 		  PortCounts		  "[14 2]"
 		  SFunctionDeploymentMode off
-		  EnableBusSupport	  off
+		  EnableBusSupport	  on
 		  SFcnIsStateOwnerBlock	  off
 		  Port {
 		    PortNumber		    2
@@ -4006,9 +3449,9 @@ Model {
 		Block {
 		  BlockType		  Terminator
 		  Name			  " Terminator "
-		  SID			  "7092::4433"
+		  SID			  "7092::4436"
 		  Position		  [460, 241, 480, 259]
-		  ZOrder		  66
+		  ZOrder		  69
 		}
 		Block {
 		  BlockType		  Outport
@@ -4018,98 +3461,98 @@ Model {
 		  ZOrder		  -5
 		}
 		Line {
-		  ZOrder		  18
+		  ZOrder		  35
 		  SrcBlock		  "Omega_g"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  1
 		}
 		Line {
-		  ZOrder		  19
+		  ZOrder		  36
 		  SrcBlock		  "SwitchR3"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  2
 		}
 		Line {
-		  ZOrder		  20
+		  ZOrder		  37
 		  SrcBlock		  "Omega_g_1To1_5"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  3
 		}
 		Line {
-		  ZOrder		  21
+		  ZOrder		  38
 		  SrcBlock		  "Omega_g_1_5To2"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  4
 		}
 		Line {
-		  ZOrder		  22
+		  ZOrder		  39
 		  SrcBlock		  "Omega_g_2To2_5"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  5
 		}
 		Line {
-		  ZOrder		  23
+		  ZOrder		  40
 		  SrcBlock		  "Omega_g_2_5To3"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  6
 		}
 		Line {
-		  ZOrder		  24
+		  ZOrder		  41
 		  SrcBlock		  "a_1_5"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  7
 		}
 		Line {
-		  ZOrder		  25
+		  ZOrder		  42
 		  SrcBlock		  "b_1_5"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  8
 		}
 		Line {
-		  ZOrder		  26
+		  ZOrder		  43
 		  SrcBlock		  "k"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  9
 		}
 		Line {
-		  ZOrder		  27
+		  ZOrder		  44
 		  SrcBlock		  "a_2_5"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  10
 		}
 		Line {
-		  ZOrder		  28
+		  ZOrder		  45
 		  SrcBlock		  "b_2_5"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  11
 		}
 		Line {
-		  ZOrder		  29
+		  ZOrder		  46
 		  SrcBlock		  "M_g_rated"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  12
 		}
 		Line {
-		  ZOrder		  30
+		  ZOrder		  47
 		  SrcBlock		  "P_a_rated"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
 		  DstPort		  13
 		}
 		Line {
-		  ZOrder		  31
+		  ZOrder		  48
 		  SrcBlock		  "Mode"
 		  SrcPort		  1
 		  DstBlock		  " SFunction "
@@ -4117,7 +3560,7 @@ Model {
 		}
 		Line {
 		  Name			  "M_g"
-		  ZOrder		  32
+		  ZOrder		  49
 		  Labels		  [0, 0]
 		  SrcBlock		  " SFunction "
 		  SrcPort		  2
@@ -4125,14 +3568,14 @@ Model {
 		  DstPort		  1
 		}
 		Line {
-		  ZOrder		  33
+		  ZOrder		  50
 		  SrcBlock		  " Demux "
 		  SrcPort		  1
 		  DstBlock		  " Terminator "
 		  DstPort		  1
 		}
 		Line {
-		  ZOrder		  34
+		  ZOrder		  51
 		  SrcBlock		  " SFunction "
 		  SrcPort		  1
 		  DstBlock		  " Demux "
@@ -4531,10 +3974,10 @@ Model {
     }
     Block {
       BlockType		      SubSystem
-      Name		      "OpenFAST Turbine Model"
+      Name		      "OpenFAST Turbine Model1"
       SID		      "7200"
       Ports		      [1, 2]
-      Position		      [415, 327, 535, 443]
+      Position		      [445, 327, 565, 443]
       ZOrder		      341
       BackgroundColor	      "cyan"
       AncestorBlock	      "Library/Models/FAST"
@@ -4549,8 +3992,8 @@ Model {
 	Name			"y"
       }
       System {
-	Name			"OpenFAST Turbine Model"
-	Location		[-5, 0, 1585, 873]
+	Name			"OpenFAST Turbine Model1"
+	Location		[1529, 30, 2625, 890]
 	Open			on
 	PortBlocksUseCompactNotation off
 	SetExecutionDomain	off
@@ -4565,7 +4008,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"50"
+	ZoomFactor		"100"
 	SIDHighWatermark	"7909"
 	SIDPrevWatermark	"7896"
 	SimulinkSubDomain	"Simulink"
@@ -4598,7 +4041,7 @@ Model {
 	  Name			  "Bus\nSelector1"
 	  SID			  "7200:6832"
 	  Ports			  [1, 1]
-	  Position		  [50, 96, 55, 134]
+	  Position		  [55, 96, 60, 134]
 	  ZOrder		  253
 	  ShowName		  off
 	  OutputSignals		  "M_g_c"
@@ -4677,7 +4120,7 @@ Model {
 	  }
 	  System {
 	    Name		    "Generator Torque (limits) \nand Power"
-	    Location		    [2078, 31, 2788, 551]
+	    Location		    [1926, 9, 2636, 568]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
@@ -4719,6 +4162,7 @@ Model {
 	      SID		      "7200:7895:5784"
 	      Position		      [25, 118, 215, 142]
 	      ZOrder		      -3
+	      ForegroundColor	      "white"
 	      BackgroundColor	      "red"
 	      ShowName		      off
 	      Value		      "Parameter.Generator.eta_el"
@@ -4879,7 +4323,7 @@ Model {
 	  Name			  "Mux2"
 	  SID			  "7200:6861"
 	  Ports			  [2, 1]
-	  Position		  [330, 89, 335, 196]
+	  Position		  [320, 89, 325, 196]
 	  ZOrder		  -13
 	  ShowName		  off
 	  Inputs		  "2"
@@ -4981,7 +4425,7 @@ Model {
 	  RequestExecContextInheritance	off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    38
+	    $ObjectID		    37
 	    $ClassName		    "Simulink.Mask"
 	    Display		    "disp('deg2rad')"
 	  }
@@ -5062,7 +4506,7 @@ Model {
 	  RequestExecContextInheritance	off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    39
+	    $ObjectID		    38
 	    $ClassName		    "Simulink.Mask"
 	    Display		    "disp('rpm2rad/s')"
 	  }
@@ -5143,7 +4587,7 @@ Model {
 	  RequestExecContextInheritance	off
 	  Object {
 	    $PropName		    "MaskObject"
-	    $ObjectID		    40
+	    $ObjectID		    39
 	    $ClassName		    "Simulink.Mask"
 	    Display		    "disp('rpm2rad/s')"
 	  }
@@ -5238,7 +4682,7 @@ Model {
 	  Name			  "bld1 Pitch Actuator"
 	  SID			  "7200:7896"
 	  Ports			  [1, 2]
-	  Position		  [300, 337, 410, 428]
+	  Position		  [315, 360, 410, 420]
 	  ZOrder		  317
 	  BackgroundColor	  "cyan"
 	  AncestorBlock		  "Library/Models/Pitch Actuator"
@@ -5258,7 +4702,7 @@ Model {
 	  }
 	  System {
 	    Name		    "bld1 Pitch Actuator"
-	    Location		    [2078, 31, 3032, 722]
+	    Location		    [201, 0, 1602, 790]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
@@ -5274,7 +4718,7 @@ Model {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "125"
-	    SIDHighWatermark	    "7882"
+	    SIDHighWatermark	    "7879"
 	    SIDPrevWatermark	    "7818"
 	    SimulinkSubDomain	    "Simulink"
 	    Block {
@@ -5291,6 +4735,7 @@ Model {
 	      SID		      "7200:7896:6457"
 	      Position		      [10, 314, 115, 336]
 	      ZOrder		      818
+	      ForegroundColor	      "white"
 	      BackgroundColor	      "red"
 	      ShowName		      off
 	      Value		      "Parameter.IC.theta"
@@ -5301,6 +4746,7 @@ Model {
 	      SID		      "7200:7896:6458"
 	      Position		      [50, 14, 255, 36]
 	      ZOrder		      -2
+	      ForegroundColor	      "white"
 	      BackgroundColor	      "red"
 	      ShowName		      off
 	      Value		      "Parameter.PitchActuator.Mode"
@@ -5378,7 +4824,7 @@ Model {
 	      RequestExecContextInheritance off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		41
+		$ObjectID		40
 		$ClassName		"Simulink.Mask"
 		Display			"disp(['omega = ',num2str(omega),'\\n'...\n    ,'xi = ',num2str(xi)])\nport_label('output',1,'y')\nport_la"
 		"bel('output',2,'x1')\nport_label('input',2,'y0')\nport_label('input',1,'u')"
@@ -5386,42 +4832,42 @@ Model {
 		  Type			  "Simulink.MaskParameter"
 		  Dimension		  6
 		  Object {
-		    $ObjectID		    42
+		    $ObjectID		    41
 		    Type		    "edit"
 		    Name		    "omega"
 		    Prompt		    "undamped natural frequency [rad/s]"
 		    Value		    "Parameter.PitchActuator.omega"
 		  }
 		  Object {
-		    $ObjectID		    43
+		    $ObjectID		    42
 		    Type		    "edit"
 		    Name		    "xi"
 		    Prompt		    "damping factor [-]"
 		    Value		    "Parameter.PitchActuator.xi"
 		  }
 		  Object {
-		    $ObjectID		    44
+		    $ObjectID		    43
 		    Type		    "edit"
 		    Name		    "x1_max"
 		    Prompt		    "Upper bound x1"
 		    Value		    "Parameter.PitchActuator.theta_dot_max"
 		  }
 		  Object {
-		    $ObjectID		    45
+		    $ObjectID		    44
 		    Type		    "edit"
 		    Name		    "x1_min"
 		    Prompt		    "Lower bound x1"
 		    Value		    "-Parameter.PitchActuator.theta_dot_max"
 		  }
 		  Object {
-		    $ObjectID		    46
+		    $ObjectID		    45
 		    Type		    "edit"
 		    Name		    "x2_max"
 		    Prompt		    "Upper bound x2"
 		    Value		    "Parameter.PitchActuator.theta_max"
 		  }
 		  Object {
-		    $ObjectID		    47
+		    $ObjectID		    46
 		    Type		    "edit"
 		    Name		    "x2_min"
 		    Prompt		    "Lower bound x2"
@@ -5432,7 +4878,7 @@ Model {
 	      }
 	      System {
 		Name			"PT2"
-		Location		[2078, 31, 2783, 467]
+		Location		[0, 0, 1612, 886]
 		Open			off
 		PortBlocksUseCompactNotation off
 		SetExecutionDomain	off
@@ -5869,7 +5315,7 @@ Model {
 	  Name			  "bld2 Pitch Actuator"
 	  SID			  "7200:7903"
 	  Ports			  [1, 2]
-	  Position		  [300, 467, 415, 558]
+	  Position		  [315, 462, 410, 513]
 	  ZOrder		  321
 	  BackgroundColor	  "cyan"
 	  AncestorBlock		  "Library/Models/Pitch Actuator"
@@ -5889,7 +5335,7 @@ Model {
 	  }
 	  System {
 	    Name		    "bld2 Pitch Actuator"
-	    Location		    [487, 54, 1503, 802]
+	    Location		    [201, 0, 1602, 790]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
@@ -5922,6 +5368,7 @@ Model {
 	      SID		      "7200:7903:6457"
 	      Position		      [10, 314, 115, 336]
 	      ZOrder		      818
+	      ForegroundColor	      "white"
 	      BackgroundColor	      "red"
 	      ShowName		      off
 	      Value		      "Parameter.IC.theta"
@@ -5932,6 +5379,7 @@ Model {
 	      SID		      "7200:7903:6458"
 	      Position		      [50, 14, 255, 36]
 	      ZOrder		      -2
+	      ForegroundColor	      "white"
 	      BackgroundColor	      "red"
 	      ShowName		      off
 	      Value		      "Parameter.PitchActuator.Mode"
@@ -6009,7 +5457,7 @@ Model {
 	      RequestExecContextInheritance off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		48
+		$ObjectID		47
 		$ClassName		"Simulink.Mask"
 		Display			"disp(['omega = ',num2str(omega),'\\n'...\n    ,'xi = ',num2str(xi)])\nport_label('output',1,'y')\nport_la"
 		"bel('output',2,'x1')\nport_label('input',2,'y0')\nport_label('input',1,'u')"
@@ -6017,42 +5465,42 @@ Model {
 		  Type			  "Simulink.MaskParameter"
 		  Dimension		  6
 		  Object {
-		    $ObjectID		    49
+		    $ObjectID		    48
 		    Type		    "edit"
 		    Name		    "omega"
 		    Prompt		    "undamped natural frequency [rad/s]"
 		    Value		    "Parameter.PitchActuator.omega"
 		  }
 		  Object {
-		    $ObjectID		    50
+		    $ObjectID		    49
 		    Type		    "edit"
 		    Name		    "xi"
 		    Prompt		    "damping factor [-]"
 		    Value		    "Parameter.PitchActuator.xi"
 		  }
 		  Object {
-		    $ObjectID		    51
+		    $ObjectID		    50
 		    Type		    "edit"
 		    Name		    "x1_max"
 		    Prompt		    "Upper bound x1"
 		    Value		    "Parameter.PitchActuator.theta_dot_max"
 		  }
 		  Object {
-		    $ObjectID		    52
+		    $ObjectID		    51
 		    Type		    "edit"
 		    Name		    "x1_min"
 		    Prompt		    "Lower bound x1"
 		    Value		    "-Parameter.PitchActuator.theta_dot_max"
 		  }
 		  Object {
-		    $ObjectID		    53
+		    $ObjectID		    52
 		    Type		    "edit"
 		    Name		    "x2_max"
 		    Prompt		    "Upper bound x2"
 		    Value		    "Parameter.PitchActuator.theta_max"
 		  }
 		  Object {
-		    $ObjectID		    54
+		    $ObjectID		    53
 		    Type		    "edit"
 		    Name		    "x2_min"
 		    Prompt		    "Lower bound x2"
@@ -6500,7 +5948,7 @@ Model {
 	  Name			  "bld3 Pitch Actuator"
 	  SID			  "7200:7904"
 	  Ports			  [1, 2]
-	  Position		  [305, 592, 410, 683]
+	  Position		  [315, 560, 410, 615]
 	  ZOrder		  322
 	  BackgroundColor	  "cyan"
 	  AncestorBlock		  "Library/Models/Pitch Actuator"
@@ -6520,7 +5968,7 @@ Model {
 	  }
 	  System {
 	    Name		    "bld3 Pitch Actuator"
-	    Location		    [487, 54, 1503, 802]
+	    Location		    [201, 0, 1602, 790]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
@@ -6553,6 +6001,7 @@ Model {
 	      SID		      "7200:7904:6457"
 	      Position		      [10, 314, 115, 336]
 	      ZOrder		      818
+	      ForegroundColor	      "white"
 	      BackgroundColor	      "red"
 	      ShowName		      off
 	      Value		      "Parameter.IC.theta"
@@ -6563,6 +6012,7 @@ Model {
 	      SID		      "7200:7904:6458"
 	      Position		      [50, 14, 255, 36]
 	      ZOrder		      -2
+	      ForegroundColor	      "white"
 	      BackgroundColor	      "red"
 	      ShowName		      off
 	      Value		      "Parameter.PitchActuator.Mode"
@@ -6640,7 +6090,7 @@ Model {
 	      RequestExecContextInheritance off
 	      Object {
 		$PropName		"MaskObject"
-		$ObjectID		55
+		$ObjectID		54
 		$ClassName		"Simulink.Mask"
 		Display			"disp(['omega = ',num2str(omega),'\\n'...\n    ,'xi = ',num2str(xi)])\nport_label('output',1,'y')\nport_la"
 		"bel('output',2,'x1')\nport_label('input',2,'y0')\nport_label('input',1,'u')"
@@ -6648,42 +6098,42 @@ Model {
 		  Type			  "Simulink.MaskParameter"
 		  Dimension		  6
 		  Object {
-		    $ObjectID		    56
+		    $ObjectID		    55
 		    Type		    "edit"
 		    Name		    "omega"
 		    Prompt		    "undamped natural frequency [rad/s]"
 		    Value		    "Parameter.PitchActuator.omega"
 		  }
 		  Object {
-		    $ObjectID		    57
+		    $ObjectID		    56
 		    Type		    "edit"
 		    Name		    "xi"
 		    Prompt		    "damping factor [-]"
 		    Value		    "Parameter.PitchActuator.xi"
 		  }
 		  Object {
-		    $ObjectID		    58
+		    $ObjectID		    57
 		    Type		    "edit"
 		    Name		    "x1_max"
 		    Prompt		    "Upper bound x1"
 		    Value		    "Parameter.PitchActuator.theta_dot_max"
 		  }
 		  Object {
-		    $ObjectID		    59
+		    $ObjectID		    58
 		    Type		    "edit"
 		    Name		    "x1_min"
 		    Prompt		    "Lower bound x1"
 		    Value		    "-Parameter.PitchActuator.theta_dot_max"
 		  }
 		  Object {
-		    $ObjectID		    60
+		    $ObjectID		    59
 		    Type		    "edit"
 		    Name		    "x2_max"
 		    Prompt		    "Upper bound x2"
 		    Value		    "Parameter.PitchActuator.theta_max"
 		  }
 		  Object {
-		    $ObjectID		    61
+		    $ObjectID		    60
 		    Type		    "edit"
 		    Name		    "x2_min"
 		    Prompt		    "Lower bound x2"
@@ -7307,9 +6757,9 @@ Model {
 	  ZOrder		  12
 	  SrcBlock		  "u"
 	  SrcPort		  1
-	  Points		  [2, 0]
+	  Points		  [7, 0]
 	  Branch {
-	    ZOrder		    80
+	    ZOrder		    13
 	    Points		    [0, 195]
 	    DstBlock		    "Bus\nSelector3"
 	    DstPort		    1
@@ -7526,7 +6976,6 @@ Model {
 	  Labels		  [-1, 0]
 	  SrcBlock		  "bld1 Pitch Actuator"
 	  SrcPort		  1
-	  Points		  [50, 0; 0, 15]
 	  DstBlock		  "Mux4"
 	  DstPort		  1
 	}
@@ -7538,7 +6987,7 @@ Model {
 	  Labels		  [-1, 0]
 	  SrcBlock		  "bld2 Pitch Actuator"
 	  SrcPort		  1
-	  Points		  [18, 0; 0, -70]
+	  Points		  [23, 0; 0, -55]
 	  DstBlock		  "Mux4"
 	  DstPort		  2
 	}
@@ -7562,7 +7011,7 @@ Model {
 	  Labels		  [-1, 0]
 	  SrcBlock		  "bld2 Pitch Actuator"
 	  SrcPort		  2
-	  Points		  [19, 0; 0, 85]
+	  Points		  [24, 0; 0, 120]
 	  DstBlock		  "Mux5"
 	  DstPort		  2
 	}
@@ -7574,7 +7023,7 @@ Model {
 	  Labels		  [-1, 0]
 	  SrcBlock		  "bld3 Pitch Actuator"
 	  SrcPort		  2
-	  Points		  [13, 0; 0, 5]
+	  Points		  [13, 0; 0, 65]
 	  DstBlock		  "Mux5"
 	  DstPort		  3
 	}
@@ -7586,7 +7035,7 @@ Model {
 	  Labels		  [-1, 0]
 	  SrcBlock		  "bld3 Pitch Actuator"
 	  SrcPort		  1
-	  Points		  [10, 0; 0, -40; 27, 0; 0, -110]
+	  Points		  [37, 0; 0, -110]
 	  DstBlock		  "Mux4"
 	  DstPort		  3
 	}
@@ -7602,30 +7051,27 @@ Model {
 	Line {
 	  Name			  "theta_c1"
 	  ZOrder		  75
-	  Labels		  [2, 1]
+	  Labels		  [1, 1]
 	  SrcBlock		  "Demux1"
 	  SrcPort		  1
-	  Points		  [70, 0; 0, -5]
 	  DstBlock		  "bld1 Pitch Actuator"
 	  DstPort		  1
 	}
 	Line {
 	  Name			  "theta_c2"
 	  ZOrder		  76
-	  Labels		  [2, 1]
+	  Labels		  [1, 1]
 	  SrcBlock		  "Demux1"
 	  SrcPort		  2
-	  Points		  [51, 0; 0, 25]
 	  DstBlock		  "bld2 Pitch Actuator"
 	  DstPort		  1
 	}
 	Line {
 	  Name			  "theta_c3"
 	  ZOrder		  77
-	  Labels		  [2, 1]
+	  Labels		  [1, 1]
 	  SrcBlock		  "Demux1"
 	  SrcPort		  3
-	  Points		  [51, 0; 0, 50]
 	  DstBlock		  "bld3 Pitch Actuator"
 	  DstPort		  1
 	}
@@ -7653,18 +7099,18 @@ Model {
       Name		      "y"
       ZOrder		      303
       Labels		      [0, 1]
-      SrcBlock		      "OpenFAST Turbine Model"
+      SrcBlock		      "OpenFAST Turbine Model1"
       SrcPort		      2
-      Points		      [40, 0; 0, 115; -456, 0; 0, -95]
+      Points		      [9, 0; 0, 133; -472, 0; 0, -113]
       Branch {
-	ZOrder			323
+	ZOrder			331
 	Points			[0, -150]
 	DstBlock		"NREL Baseline Generator Torque Control"
 	DstPort			1
       }
       Branch {
-	ZOrder			295
-	DstBlock		"NREL Baseline Blade Pitch Control"
+	ZOrder			325
+	DstBlock		"Baseline Blade Pitch Control"
 	DstPort			1
       }
     }
@@ -7672,7 +7118,7 @@ Model {
       Name		      "OutData"
       ZOrder		      304
       Labels		      [1, 1]
-      SrcBlock		      "OpenFAST Turbine Model"
+      SrcBlock		      "OpenFAST Turbine Model1"
       SrcPort		      1
       DstBlock		      "Terminator1"
       DstPort		      1
@@ -7689,14 +7135,14 @@ Model {
       ZOrder		      302
       SrcBlock		      "Bus\nCreator1"
       SrcPort		      1
-      DstBlock		      "OpenFAST Turbine Model"
+      DstBlock		      "OpenFAST Turbine Model1"
       DstPort		      1
     }
     Line {
       Name		      "theta_c"
-      ZOrder		      322
+      ZOrder		      346
       Labels		      [0, 0]
-      SrcBlock		      "NREL Baseline Blade Pitch Control"
+      SrcBlock		      "Baseline Blade Pitch Control"
       SrcPort		      1
       DstBlock		      "Bus\nCreator1"
       DstPort		      2
@@ -7720,9 +7166,9 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "NREL5MW_Baseline"
+    name		    "NREL5MW_Fcnblock"
     sfVersion		    80000032
-    firstTarget		    22
+    firstTarget		    39
   }
   chart {
     id			    2
@@ -8190,17 +7636,403 @@ Stateflow {
     name		    "NREL Baseline Generator Torque Control/NREL 5MW BaselineTorque Controller/Baseline Torque Controller"
     chart		    2
   }
-  target {
+  chart {
     id			    22
+    machine		    1
+    name		    "Baseline Blade Pitch Control/MATLAB Function"
+    windowPosition	    [422 539.941 189 413]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 3600 1200 1.180555555555556]
+    treeNode		    [0 23 0 0]
+    viewObj		    22
+    visible		    1
+    subviewS {
+    }
+    ssIdHighWaterMark	    15
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    chartFileNumber	    2
+    disableImplicitCasting  1
+    eml {
+      name		      "Baseline_fcnblock"
+    }
+    firstData		    24
+    firstTransition	    37
+    firstJunction	    36
+  }
+  state {
+    id			    23
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    22
+    treeNode		    [22 0 0 0]
+    superState		    SUBCHART
+    subviewer		    22
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function thetaout = Baseline_fcnblock(omega,theta,theta_dot_FF,T63,Enable,Omega_g_rated,theta_K,k"
+      "p,Ti,theta_max,theta_min)\n\n%% FilterGenSpeet Block (uses state X1)\n%Define persistant Variable\n\n\nthetaout "
+      "= 10*(pi/180);\nX0 = 1; \nX0_2 = 1;\n\npersistent X1\nif isempty(X1)\n    X1 = 0;\n    X0 = omega;\nend\n%output"
+      "\nomega_filter = X0 * X1;\n\n%change in state\nX1_dot = 1/T63*(omega - X0 * X1); %cheese it since we cannot defi"
+      "ne X1 in terms of an input\nX1 = omega_filter + X1_dot*.0125;\n                  \n%Determine of genfilter is on"
+      "\nif Enable > .5\nelse\n   omega_filter = omega; \nend\n\n%% CPC controler Block (Uses State X2)\npersistent X2\n"
+      "if isempty(X2)\n    X2 = 1;\n    X0_2 = theta;\nend\n\n%error signal\nError = (omega_filter - Omega_g_rated)/(1 "
+      "+ theta/theta_K);\n\n%output\ntheta = X0_2 * X2 + Error * kp;\nif theta > theta_max\n    thetaout = theta_max;\n"
+      "elseif theta < theta_min\n    thetaout = theta_min;\nelse\n    thetaout = theta;  \nend\n\n%next step in SS\nX2_"
+      "dot = 1/Ti*(thetaout - X0_2 * X2) + theta_dot_FF; \nX2 = theta - Error*kp + X2_dot*.0125;\n                  %ca"
+      "ncel out initial condition after first pass through function \n\n \nend"
+      editorLayout	      "100 M4x1[10 5 700 500]"
+    }
+  }
+  data {
+    id			    24
+    ssIdNumber		    4
+    name		    "omega"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 0 25]
+  }
+  data {
+    id			    25
+    ssIdNumber		    5
+    name		    "thetaout"
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 24 26]
+  }
+  data {
+    id			    26
+    ssIdNumber		    6
+    name		    "theta"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 25 27]
+  }
+  data {
+    id			    27
+    ssIdNumber		    7
+    name		    "theta_dot_FF"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 26 28]
+  }
+  data {
+    id			    28
+    ssIdNumber		    8
+    name		    "T63"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 27 29]
+  }
+  data {
+    id			    29
+    ssIdNumber		    9
+    name		    "Enable"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 28 30]
+  }
+  data {
+    id			    30
+    ssIdNumber		    10
+    name		    "Omega_g_rated"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 29 31]
+  }
+  data {
+    id			    31
+    ssIdNumber		    11
+    name		    "theta_K"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 30 32]
+  }
+  data {
+    id			    32
+    ssIdNumber		    12
+    name		    "kp"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 31 33]
+  }
+  data {
+    id			    33
+    ssIdNumber		    13
+    name		    "Ti"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 32 34]
+  }
+  data {
+    id			    34
+    ssIdNumber		    14
+    name		    "theta_max"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 33 35]
+  }
+  data {
+    id			    35
+    ssIdNumber		    15
+    name		    "theta_min"
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+    linkNode		    [22 34 0]
+  }
+  junction {
+    id			    36
+    position		    [23.5747 49.5747 7]
+    chart		    22
+    subviewer		    22
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+    linkNode		    [22 0 0]
+  }
+  transition {
+    id			    37
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [28.125 13.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      36
+      intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    22
+    dataLimits		    [21.175 25.975 14.625 42.575]
+    subviewer		    22
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    2
+    linkNode		    [22 0 0]
+  }
+  instance {
+    id			    38
+    machine		    1
+    name		    "Baseline Blade Pitch Control/MATLAB Function"
+    chart		    22
+  }
+  target {
+    id			    39
     machine		    1
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
-    linkNode		    [1 0 23]
+    linkNode		    [1 0 40]
   }
   target {
-    id			    23
+    id			    40
     machine		    1
     name		    "rtw"
-    linkNode		    [1 22 0]
+    linkNode		    [1 39 0]
   }
 }
