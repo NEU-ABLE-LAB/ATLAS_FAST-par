@@ -1,65 +1,52 @@
-function thetaout = Baseline_fcnblock(omega,theta,theta_dot_FF,T63,Enable,Omega_g_rated,theta_K,kp,Ti,theta_max,theta_min)
+function [Thetaout, Xdot] = Baseline_fcnblock(CParameter, OutData, X)
 
-%% FilterGenSpeet Block (uses state X1)
-%Define persistant Variable
-persistent X1
-if isempty(X1)
-    X1 = 1;
-    X0 = X1*omega;
-end
+Thetaout = [1; 1; 1];
+Xdot = [0; 0];
 
-X1_dot = 1/T63*(omega - X0 * X1); %cheese it since we cannot define X1 in terms of an input
- 
-omega_filter = X0 * X1;
+omega = OutData(10)*2*pi/60;             %generator speed
+theta = OutData(5)*2*pi/360;             %Use blate pitch, CPC so all blades the same 
 
-X1 = X1 + X1_dot;
-X0 = 1;             %cancel out initial condition                   
+%% generator filter block
+Enable = CParameter.Enable;
+T63 = CParameter.T63;
 
-%Calculate X1_dot
+%y = g(X,u)
+omega_filter = X(1);
+
+%change in state = f(X,u)
+Xdot(1) = 1/T63*(omega - X(1));
+
+%Determine of genfilter is on
 if Enable > .5
 else
    omega_filter = omega; 
 end
 
-%% CPC controler Block (Uses State X2)
-persistent X2
-if isempty(X2)
-    X2 = 1;
-    X0_2 = X2*theta;
-end
+%% CPC controler Block
+theta_dot_FF = CParameter.theta_dot_FF;
+Omega_g_rated = CParameter.Omega_g_rated;
+theta_K = CParameter.theta_K;
+kp = CParameter.kp;
+Ti = CParameter.Ti;
+theta_max = CParameter.theta_max;
+theta_min = CParameter.theta_min;
 
 %error signal
 Error = (omega_filter - Omega_g_rated)/(1 + theta/theta_K);
 
-X2_dot = 1/Ti*(fminmax(X0_2 * X2 + Error * kp,theta_max,theta_min) - X0_2 * X2) + theta_dot_FF; 
-
-%output
-thetaout = fminmax(X0_2 * X2 + Error * kp,theta_max,theta_min);
-thetaout = [thetaout ; thetaout ; thetaout];   %all pitches the same
-
-%next step in SS
-X2 = X21 + X2_dot;
-X0_2 = 1;                  %cancel out initial condition after first pass through function 
-
-
-
-
-
-
-
-
-
-
+%y = g(X,u)
+theta = X(2) + Error * kp;
+if theta > theta_max
+    thetaout = theta_max;
+elseif theta < theta_min
+    thetaout = theta_min;
+else
+    thetaout = theta;  
 end
 
-function y = fminmax(u,theta_max,theta_min)
-y = u;
-if u > theta_max
-    y = theta_max;
-end
-if u < theta_min
-    y = theta_min;
-end    
+%change in state = f(X,u)
+Xdot(2) = 1/Ti*(thetaout - X(2)) + theta_dot_FF; 
 
-
+%Blade pitch output 
+Thetaout = [thetaout; thetaout; thetaout];
 end

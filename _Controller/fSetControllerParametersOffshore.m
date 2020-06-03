@@ -40,12 +40,14 @@ function [Parameter] = fSetControllerParametersOffshore(Parameter,...
 KP          = Controler(1,1);               % [s] detuned gains
 KI          = Controler(1,2);              % [-]
                   
-Parameter.CPC.kp                  = KP;                                % [s]
-Parameter.CPC.Ti                  = KP/KI;                             % [s] 
-Parameter.CPC.theta_K             = deg2rad(6.302336);                 % [rad]
-Parameter.CPC.Omega_g_rated       = Parameter.Turbine.Omega_rated/Parameter.Turbine.i;  % [rad/s]
-Parameter.CPC.theta_max           = Parameter.PitchActuator.theta_max; % [rad]
-Parameter.CPC.theta_min           = Parameter.PitchActuator.theta_min; % [rad]
+Parameter.CParameter.kp                  = KP;                                % [s]
+Parameter.CParameter.Ti                  = KP/KI;                             % [s] 
+Parameter.CParameter.theta_K             = deg2rad(6.302336);                 % [rad]
+Parameter.CParameter.Omega_g_rated       = Parameter.Turbine.Omega_rated/Parameter.Turbine.i;  % [rad/s]
+Parameter.CParameter.theta_max           = Parameter.PitchActuator.theta_max; % [rad]
+Parameter.CParameter.theta_min           = Parameter.PitchActuator.theta_min; % [rad]
+Parameter.CParameter.Enable              = Parameter.Filter.FilterGenSpeed.Omega_g.Enable;
+Parameter.CParameter.T63                 = Parameter.Filter.FilterGenSpeed.T63;
 
 
 %% user controler parameters

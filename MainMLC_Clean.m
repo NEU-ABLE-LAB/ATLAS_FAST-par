@@ -24,7 +24,7 @@ RootOutputFolder       = [pwd '/_Outputs/']                  ; % Folder where th
 ctrlFolder             = [pwd '/_Controller/']               ; % Location of Simulink files
 verbose                = 1                                   ; % level of verbose output (0, 1, 2)
  
-sysMdl                 = 'NREL5MW_Fcnblock'                  ; %  _fcnblock   Reference to model for system, AKA simulink model with Fast_SFunction() block in it
+sysMdl                 = 'NREL5MW_Fcnblock_V2'                  ; %  _fcnblock   Reference to model for system, AKA simulink model with Fast_SFunction() block in it
 
 %% Multiple controler models
 ctrlMdls               = {[0.006275604 0.0008965149]}        ; % if multiple controller laws are to be tested this should be a cell array of all the controler laws/parameter functions (in a .m file compatible woth the controler blocks in system model) 
@@ -80,13 +80,14 @@ ppm = ParforProgMon(...
 
 %% Evaluate all the controlerss, and cases
 
-parfor idx = 1 : (nCases * nControlers)
-%for idx = 1 : (nCases * nControlers)
+%parfor idx = 1 : (nCases * nControlers)
+for idx = 1 : (nCases * nControlers)
     [caseN, controlerN] = ind2sub([nCases, nControlers], idx); 
     
     % Comptue cost of individual 
-    [~, simOut{idx}] = Par_eval(ctrlMdls{controlerN}, Parameters, [], caseN);
-    
+%    [~, simOut{idx}] = Par_eval(ctrlMdls{controlerN}, Parameters, [], caseN);
+    [~, simOut{idx}] = Par_evaldebug(ctrlMdls{controlerN}, Parameters, [], caseN);
+        
     % increment PPM tracker and ignore the warning
     ppm.increment(); %#ok<PFBNS>
 end

@@ -32,10 +32,9 @@ fstFName  = [FASTInputFolder runName '.fst'];
     fprintf('-----------------------------------------------------------------------------\n');
     fprintf('>>> Simulating: %s \n',fstFName);
     fprintf('-----------------------------------------------------------------------------\n');
-Parameter = fSetSimulinkParameters(fstFName, hSetControllerParameter, Controler); 
-
 %% Set parameters to model
-    
+Parameter = fSetSimulinkParameters(fstFName, hSetControllerParameter, Controler);     
+
 if isa(in, 'Simulink.SimulationInput')
     
     % Input is a Simulink simulation input object
@@ -46,6 +45,9 @@ if isa(in, 'Simulink.SimulationInput')
     in = in.setVariable('OutputFolder', OutputFolder);
     in = in.setVariable('FASTInputFolder', FASTInputFolder);
     in = in.setVariable('Parameter', Parameter);
+    in = in.setVariable('CParameter', Parameter.CParameter);
+
+    
     
 elseif isa(in, 'Simulink.ModelWorkspace')
     
@@ -56,7 +58,10 @@ elseif isa(in, 'Simulink.ModelWorkspace')
     in.assignin('RootOutputFolder', RootOutputFolder);
     in.assignin('OutputFolder', OutputFolder);
     in.assignin('FASTInputFolder', FASTInputFolder);
-    in.assignin('Parameter', Parameter);
+    in.assignin('Parameter', Parameter) ;
+    in.assignin('CParameter', Parameter.CParameter);
+    
+    Parameter.CParameter
     
 else
     error('Unknown input type');
