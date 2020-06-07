@@ -1,4 +1,4 @@
-function Parameter = fSetSimulinkParameters(FASTfile, hSetControllerParameter,Parameters)
+function Parameter = fSetSimulinkParameters(FASTfile, hSetControllerParameter, Parameters, tmpSysMdl)
 % Sets the structure "Parameter" that contains the infomation used by the simulink model
 %
 % Amongst those parameters are:
@@ -110,7 +110,7 @@ Parameter.Filter.FilterGenSpeed.T63                     = 1/(0.25*2*pi);    % [s
 % --------------------------------------------------------------------------------}
 %% --- Controller parameters set using user defined function 
 % --------------------------------------------------------------------------------{
-Parameter  = hSetControllerParameter(Parameter,Parameters); 
+Parameter  = hSetControllerParameter(Parameter,Parameters, tmpSysMdl); 
 
 end
 

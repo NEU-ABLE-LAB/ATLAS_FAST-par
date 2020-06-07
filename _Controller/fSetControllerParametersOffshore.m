@@ -1,5 +1,5 @@
 function [Parameter] = fSetControllerParametersOffshore(Parameter,...
-    Controler)
+    Controler, tmpSysMdl)
 % Sets the controller parameter.
 % This function takes a structure and supplements it with additional fields for the controller parameters.
 % 
@@ -37,8 +37,8 @@ function [Parameter] = fSetControllerParametersOffshore(Parameter,...
 %% Controller parameters for the Collective Pitch Controller (CPC)
 % NOTE: these parameters are only used by NREL5MW_Baseline.mdl.
  % Delete them if another model is used
-KP          = Controler(1,1);               % [s] detuned gains
-KI          = Controler(1,2);              % [-]
+KP          = 0.006275604;               % [s] detuned gains
+KI          = 0.0008965149;               % [-]
                   
 Parameter.CParameter.kp                  = KP;                                % [s]
 Parameter.CParameter.Ti                  = KP/KI;                             % [s] 
@@ -48,12 +48,18 @@ Parameter.CParameter.theta_max           = Parameter.PitchActuator.theta_max; % 
 Parameter.CParameter.theta_min           = Parameter.PitchActuator.theta_min; % [rad]
 Parameter.CParameter.Enable              = Parameter.Filter.FilterGenSpeed.Omega_g.Enable;
 Parameter.CParameter.T63                 = Parameter.Filter.FilterGenSpeed.T63;
-
+Parameter.CParameter.theta_dot_FF        = 0;                                 % Hard coded as zero into origional simulink model
 
 %% user controler parameters
-% Parameter.GainP = Controler(1,1);
-% Parameter.GainI = Controler(1,2);
-% Parameter.GainD = Controler(1,3);
-% Parameter.GainN = Controler(1,4);
+%% Incert controler login into matlab function block
+
+% Parse indvidual's expressions 
+fcnText = fileread(Controler);
+
+% Get `Fcn` block handle
+hblock = find(slroot, '-isa', 'Stateflow.EMChart', 'Path', sprintf('%s/IPC/Control_Law', tmpSysMdl) );
+
+% Insert the expressions into the model 
+hblock.Script = fcnText;
 
 end

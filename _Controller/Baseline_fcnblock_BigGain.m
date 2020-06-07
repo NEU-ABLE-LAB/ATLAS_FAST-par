@@ -4,11 +4,13 @@ Thetaout = [1; 1; 1];
 Xdot = [0; 0];
 
 omega = OutData(10)*2*pi/60;             %generator speed
-theta = OutData(5)*2*pi/360;             %Use blate pitch, CPC so all blades the same 
+theta = OutData(5)*2*pi/360;             %Use blade 1 pitch, CPC so all blades the same 
 
 %% generator filter block
 Enable = CParameter.Enable;
 T63 = CParameter.T63;
+
+
 
 %y = g(X,u)
 omega_filter = X(1);
@@ -26,7 +28,7 @@ end
 theta_dot_FF = CParameter.theta_dot_FF;
 Omega_g_rated = CParameter.Omega_g_rated;
 theta_K = CParameter.theta_K;
-kp = CParameter.kp;
+kp = CParameter.kp * 10;   %  big gain
 Ti = CParameter.Ti;
 theta_max = CParameter.theta_max;
 theta_min = CParameter.theta_min;

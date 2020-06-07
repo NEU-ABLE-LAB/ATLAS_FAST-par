@@ -9,7 +9,7 @@
 %
 function [J, simOut] = Par_eval(Controler, parameters, hFig, caseN)
 simOut = {};
-try
+%try
     %% Extract MLC problem variables specified when calling `MLC_cfg()`
 
     % load cases
@@ -68,7 +68,7 @@ try
             hSetControllerParameter, ...
             RootOutputFolder, ...
             FASTInputFolder, ...
-            Challenge, Controler);
+            Challenge, Controler, tmpSysMdl);
 
     % Try running simulation and computing cost
     try
@@ -84,25 +84,25 @@ try
         % Compute cost from output
         J = simOut.CF;
 
-     catch e
-
-        warning(e.message)
-        disp('  MLC_EVAL: Simulation returned error');
-        J = 1000;
-
-        % Switch all of the workers back to their original folder.
-        close_system(tmpSysMdl, 0);
-        cd([parameters.RootOutputFolder '../'])
-        try
-            rmdir(tmpDir,'s');
-        catch e
-            warning(e.message)
-        end
-        
-        clear mex;
-        return
-        
-   end
+%      catch e
+% 
+%         warning(e.message)
+%         disp('  MLC_EVAL: Simulation returned error');
+%         J = 1000;
+% 
+%         % Switch all of the workers back to their original folder.
+%         close_system(tmpSysMdl, 0);
+%         cd([parameters.RootOutputFolder '../'])
+%         try
+%             rmdir(tmpDir,'s');
+%         catch e
+%             warning(e.message)
+%         end
+%         
+%         clear mex;
+%         return
+%         
+%    end
     
     %% Switch all of the workers back to their original folder.
     
@@ -123,13 +123,13 @@ try
             {'',sysMdl});
     end
     
-catch e
-    
-    cd([parameters.RootOutputFolder '../'])
-    warning(e.message)    
-    J = 1000;
-   
-end
+% catch e
+%     
+%     cd([parameters.RootOutputFolder '../'])
+%     warning(e.message)    
+%     J = 1000;
+%    
+% end
 
 % Close all Simulink system windows unconditionally
 bdclose('all')
