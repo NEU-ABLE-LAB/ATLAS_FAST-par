@@ -1,5 +1,5 @@
 function [Parameter] = fSetControllerParametersEx1(Parameter,...
-    Controler, tmpSysMdl)
+    Controler, tmpSysMdl, parameters)
 % Sets the controller parameter.
 % This function takes a structure and supplements it with additional fields for the controller parameters.
 % 
@@ -35,6 +35,9 @@ function [Parameter] = fSetControllerParametersEx1(Parameter,...
 
 
 %% Controller parameters for the Collective Pitch Controller (CPC)
+
+Parameter.CParameter = parameters.outListIdx;
+
 
 KP          = 0.006275604;               % [s] detuned gains
 KI          = 0.0008965149;              % [-]

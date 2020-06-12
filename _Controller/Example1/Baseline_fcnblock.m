@@ -3,8 +3,8 @@ function [Thetaout, X0, Xdot] = Baseline_fcnblock(OutData, X, CParameter)
 Thetaout = [1; 1; 1];
 Xdot = [0; 0];
 
-omega = OutData(10)*2*pi/60;             %generator speed
-theta = OutData(5)*2*pi/360;             %Use blate pitch, CPC so all blades the same 
+omega = OutData(CParameter.GenSpeed)*2*pi/60;             %generator speed
+theta = OutData(CParameter.BldPitch1)*2*pi/360;           %Use blade 1 pitch, CPC so all blades the same 
 
 X0 = [omega; theta];
 

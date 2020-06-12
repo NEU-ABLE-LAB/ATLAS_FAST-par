@@ -25,7 +25,7 @@ BaselineFolder         = [pwd '/_BaselineResults/']          ; % Folder where "r
 RootOutputFolder       = [pwd '/_Outputs/']                  ; % Folder where the current simulation outputs will be placed
 ctrlFolder             = [pwd '/_Controller/Example1/']       ; % Location of Simulink files
 verbose                = 1                                   ; % level of verbose output (0, 1, 2)
- sysMdl                = 'NREL5MW_Fcnblock_V2_2018'          ; %  Reference to model for system, AKA simulink model with Fast_SFunction() block in it
+sysMdl                 = 'NREL5MW_Fcnblock_V2_2018'          ; %  Reference to model for system, AKA simulink model with Fast_SFunction() block in it
 
 % Multiple controler models
 %_____________________________________________________________________________________________________________________________________
@@ -54,7 +54,7 @@ end
 
 metricsBase = fEvaluateMetrics(statsBase, pMetricsBC);
 
-%% Build sreucture of these parameters to pass to the parfor loop    
+% Build sreucture of these parameters to pass to the parfor loop    
 Parameters = PVar_cfg(runCases ,sysMdl, ctrlMdls, hSetControllerParameter, ctrlFolder,...
     RootOutputFolder, FASTInputFolder, Challenge, verbose, statsBase, metricsBase);
 
@@ -70,6 +70,7 @@ simOut = J;
 pp = gcp(); 
 ppm = ParforProgMon(sprintf('Fast Turbine Eval - %i controlers w/ %i cases %s: ', ...
     nControlers, nCases, datestr(now,'HH:MM')), nCases*nControlers, 1,1200,160);
+
 % Evaluate all the controlerss, and cases
 parfor idx = 1 : (nCases * nControlers)
     [caseN, controlerN] = ind2sub([nCases, nControlers], idx);    

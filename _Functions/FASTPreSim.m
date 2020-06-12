@@ -10,7 +10,7 @@
 %
 % ref: fRunFAST.m
 function in = FASTPreSim(in, runCase, hSetControllerParameter, ...
-    RootOutputFolder, FASTInputFolder, Challenge, Controler, tmpSysMdl)
+    RootOutputFolder, FASTInputFolder, Challenge, Controler, tmpSysMdl, parameters)
 
 %% Prepend simulation name with timestamp
 tStamp = [datestr(now,'YYYYmmDD-HHMMSS') '_' dec2hex(randi(2^16),4)]; % Add a random 4 char in case two parallel processes start at the same time
@@ -33,7 +33,7 @@ fstFName  = [FASTInputFolder runName '.fst'];
     fprintf('>>> Simulating: %s \n',fstFName);
     fprintf('-----------------------------------------------------------------------------\n');
 %% Set parameters to model
-Parameter = fSetSimulinkParameters(fstFName, hSetControllerParameter, Controler, tmpSysMdl);     
+Parameter = fSetSimulinkParameters(fstFName, hSetControllerParameter, Controler, tmpSysMdl, parameters);     
 
 if isa(in, 'Simulink.SimulationInput')
     
