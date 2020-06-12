@@ -1,5 +1,5 @@
 function [Thetaout, Xdot] = Baseline_fcnblock(OutData, X, CParameter)
-
+%prealocate
 Thetaout = [1; 1; 1];
 Xdot = [0; 0];
 

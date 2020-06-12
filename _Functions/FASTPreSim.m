@@ -61,8 +61,6 @@ elseif isa(in, 'Simulink.ModelWorkspace')
     in.assignin('Parameter', Parameter) ;
     in.assignin('CParameter', Parameter.CParameter);
     
-    Parameter.CParameter
-    
 else
     error('Unknown input type');
     

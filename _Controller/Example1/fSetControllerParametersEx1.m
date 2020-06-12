@@ -1,4 +1,4 @@
-function [Parameter] = fSetControllerParametersOffshore(Parameter,...
+function [Parameter] = fSetControllerParametersEx1(Parameter,...
     Controler, tmpSysMdl)
 % Sets the controller parameter.
 % This function takes a structure and supplements it with additional fields for the controller parameters.
@@ -35,10 +35,9 @@ function [Parameter] = fSetControllerParametersOffshore(Parameter,...
 
 
 %% Controller parameters for the Collective Pitch Controller (CPC)
-% NOTE: these parameters are only used by NREL5MW_Baseline.mdl.
- % Delete them if another model is used
+
 KP          = 0.006275604;               % [s] detuned gains
-KI          = 0.0008965149;               % [-]
+KI          = 0.0008965149;              % [-]
                   
 Parameter.CParameter.kp                  = KP;                                % [s]
 Parameter.CParameter.Ti                  = KP/KI;                             % [s] 
@@ -50,8 +49,7 @@ Parameter.CParameter.Enable              = Parameter.Filter.FilterGenSpeed.Omega
 Parameter.CParameter.T63                 = Parameter.Filter.FilterGenSpeed.T63;
 Parameter.CParameter.theta_dot_FF        = 0;                                 % Hard coded as zero into origional simulink model
 
-%% user controler parameters
-%% Incert controler login into matlab function block
+%% Insert controler login into matlab function block
 
 % Parse indvidual's expressions 
 fcnText = fileread(Controler);
