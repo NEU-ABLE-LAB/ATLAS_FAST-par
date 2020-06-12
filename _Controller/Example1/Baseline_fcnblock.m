@@ -1,10 +1,12 @@
-function [Thetaout, Xdot] = Baseline_fcnblock(OutData, X, CParameter)
+function [Thetaout, X0, Xdot] = Baseline_fcnblock(OutData, X, CParameter)
 %prealocate
 Thetaout = [1; 1; 1];
 Xdot = [0; 0];
 
 omega = OutData(10)*2*pi/60;             %generator speed
 theta = OutData(5)*2*pi/360;             %Use blate pitch, CPC so all blades the same 
+
+X0 = [omega; theta];
 
 %% generator filter block
 Enable = CParameter.Enable;

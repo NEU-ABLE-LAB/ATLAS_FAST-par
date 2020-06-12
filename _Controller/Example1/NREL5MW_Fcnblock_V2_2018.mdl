@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.935"
+    ComputedModelVersion    "1.937"
     NumModelReferences	    0
     NumTestPointedSignals   4
     TestPointedSignal {
@@ -73,7 +73,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [2873.0, 0.0, 974.0, 1087.0]
+      Location		      [1912.0, -8.0, 1936.0, 1096.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -97,9 +97,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkSubsys"
 	LoadSaveID		"6692"
-	Extents			[920.0, 906.0]
-	ZoomFactor		[1.7500000000000002]
-	Offset			[256.26413490047395, -122.20232268934757]
+	Extents			[1882.0, 915.0]
+	ZoomFactor		[1.75]
+	Offset			[72.986890633142821, -148.65491797704453]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -119,7 +119,7 @@ Model {
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
       "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABjAP///wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAO+AAADwwAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
+      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAeAAAADzAAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAB5/////wAAAAAAAAAA/////wEAAADa/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAFT/////wAAAAAAAAAA/"
       "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAL9/////wAAAAAAAAAA/"
@@ -133,9 +133,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "James"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jun 12 06:04:34 2020"
-  RTWModifiedTimeStamp	  513800849
-  ModelVersionFormat	  "1.%<AutoIncrement:935>"
+  LastModifiedDate	  "Fri Jun 12 14:52:26 2020"
+  RTWModifiedTimeStamp	  513874304
+  ModelVersionFormat	  "1.%<AutoIncrement:937>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "all"
@@ -2155,7 +2155,7 @@ Model {
       }
       System {
 	Name			"IPC"
-	Location		[2873, 0, 3847, 1087]
+	Location		[1912, -8, 3848, 1088]
 	Open			on
 	PortBlocksUseCompactNotation off
 	SetExecutionDomain	off
@@ -2175,7 +2175,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "y"
 	  SID			  "6694"
-	  Position		  [205, 108, 235, 122]
+	  Position		  [195, 73, 225, 87]
 	  ZOrder		  -1
 	  BackgroundColor	  "darkGreen"
 	  IconDisplay		  "Port number"
@@ -2187,40 +2187,10 @@ Model {
 	}
 	Block {
 	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector"
-	  SID			  "6696"
-	  Ports			  [1, 1]
-	  Position		  [285, 166, 290, 204]
-	  ZOrder		  6
-	  ShowName		  off
-	  OutputSignals		  "Omega_g"
-	  OutputAsBus		  off
-	  Port {
-	    PortNumber		    1
-	    Name		    "<Omega_g>"
-	  }
-	}
-	Block {
-	  BlockType		  BusSelector
-	  Name			  "Bus\nSelector1"
-	  SID			  "6697"
-	  Ports			  [1, 1]
-	  Position		  [285, 221, 290, 259]
-	  ZOrder		  7
-	  ShowName		  off
-	  OutputSignals		  "theta"
-	  OutputAsBus		  off
-	  Port {
-	    PortNumber		    1
-	    Name		    "<theta>"
-	  }
-	}
-	Block {
-	  BlockType		  BusSelector
 	  Name			  "Bus\nSelector2"
 	  SID			  "7339"
 	  Ports			  [1, 1]
-	  Position		  [285, 56, 290, 94]
+	  Position		  [285, 61, 290, 99]
 	  ZOrder		  366
 	  ShowName		  off
 	  OutputSignals		  "OutData"
@@ -2313,7 +2283,7 @@ Model {
 	      }
 	      Port {
 		PortNumber		3
-		Name			"data"
+		Name			"X0"
 	      }
 	      Port {
 		PortNumber		4
@@ -2337,7 +2307,7 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "data"
+	      Name		      "X0"
 	      SID		      "7337::26"
 	      Position		      [460, 136, 480, 154]
 	      ZOrder		      16
@@ -2377,12 +2347,12 @@ Model {
 	      DstPort		      1
 	    }
 	    Line {
-	      Name		      "data"
+	      Name		      "X0"
 	      ZOrder		      62
 	      Labels		      [0, 0]
 	      SrcBlock		      " SFunction "
 	      SrcPort		      3
-	      DstBlock		      "data"
+	      DstBlock		      "X0"
 	      DstPort		      1
 	    }
 	    Line {
@@ -2421,21 +2391,10 @@ Model {
 	  InitialConditionSource  "external"
 	}
 	Block {
-	  BlockType		  Mux
-	  Name			  "Mux"
-	  SID			  "7340"
-	  Ports			  [2, 1]
-	  Position		  [360, 158, 365, 267]
-	  ZOrder		  367
-	  ShowName		  off
-	  Inputs		  "2"
-	  DisplayOption		  "bar"
-	}
-	Block {
 	  BlockType		  Outport
 	  Name			  "theta_c "
 	  SID			  "6702"
-	  Position		  [790, 68, 820, 82]
+	  Position		  [790, 63, 820, 77]
 	  ZOrder		  -35
 	  BackgroundColor	  "yellow"
 	  FontName		  "Arial"
@@ -2443,59 +2402,20 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  Name			  "<theta>"
-	  ZOrder		  177
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector1"
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  2
-	}
-	Line {
-	  Name			  "<Omega_g>"
-	  ZOrder		  176
-	  Labels		  [0, 0]
-	  SrcBlock		  "Bus\nSelector"
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  1
-	}
-	Line {
 	  Name			  "y"
 	  ZOrder		  10
 	  Labels		  [0, 0]
 	  SrcBlock		  "y"
 	  SrcPort		  1
-	  Points		  [16, 0]
-	  Branch {
-	    ZOrder		    175
-	    Points		    [0, -40]
-	    DstBlock		    "Bus\nSelector2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    ZOrder		    174
-	    Points		    [0, 70]
-	    Branch {
-	      ZOrder		      162
-	      Points		      [0, 55]
-	      DstBlock		      "Bus\nSelector1"
-	      DstPort		      1
-	    }
-	    Branch {
-	      ZOrder		      11
-	      DstBlock		      "Bus\nSelector"
-	      DstPort		      1
-	    }
-	  }
+	  DstBlock		  "Bus\nSelector2"
+	  DstPort		  1
 	}
 	Line {
 	  Name			  "theta_c"
 	  ZOrder		  166
-	  Labels		  [2, 1]
+	  Labels		  [1, 1]
 	  SrcBlock		  "Control_Law"
 	  SrcPort		  1
-	  Points		  [60, 0; 0, 5]
 	  DstBlock		  "theta_c "
 	  DstPort		  1
 	}
@@ -2503,7 +2423,7 @@ Model {
 	  ZOrder		  167
 	  SrcBlock		  "Control_Law"
 	  SrcPort		  3
-	  Points		  [9, 0; 0, 50]
+	  Points		  [19, 0; 0, 50]
 	  DstBlock		  "Integrator"
 	  DstPort		  1
 	}
@@ -2521,15 +2441,8 @@ Model {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Bus\nSelector2"
 	  SrcPort		  1
-	  Points		  [95, 0; 0, 5]
 	  DstBlock		  "Control_Law"
 	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  193
-	  SrcBlock		  "Mux"
-	  SrcPort		  1
-	  Points		  [234, 0; 0, 45; -44, 0]
 	}
 	Line {
 	  ZOrder		  194
@@ -7384,8 +7297,8 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function [Thetaout, data, Xdot] = ControlLaw(OutData, X, CParameter)\n\nThetaout = [1; 1; 1];\nXd"
-      "ot = [0; 0];\n\nend"
+      script		      "function [Thetaout, X0, Xdot] = ControlLaw(OutData, X, CParameter)\n\nThetaout = [1; 1; 1];\nX0 ="
+      " [0; 0];\nXdot = [0; 0];\n\nend"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
@@ -7415,7 +7328,7 @@ Stateflow {
   data {
     id			    25
     ssIdNumber		    10
-    name		    "data"
+    name		    "X0"
     scope		    OUTPUT_DATA
     machine		    1
     props {

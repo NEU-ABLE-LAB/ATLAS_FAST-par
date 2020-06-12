@@ -30,10 +30,10 @@ verbose                = 1                                   ; % level of verbos
 % Multiple controler models
 %_____________________________________________________________________________________________________________________________________
 % if multiple controller laws are to be tested this should be a cell array of all the controler laws (in a .m file compatible with the controler blocks in system model) 
-ctrlMdls               = {['Baseline_fcnblock.m']};%, ['Baseline_fcnblock_BigGain.m']};
+ctrlMdls               = {['Baseline_fcnblock.m'], ['Baseline_fcnblock_BigGain.m']};
 
 % for plotting purpouses, what name do you want it to be called in the graph
-ctrl_names             = {'baseline fcnblock dummy'};%, 'BL fcn, big Gain'}; 
+ctrl_names             = {'baseline fcnblock dummy', 'BL fcn, big Gain', }; 
 
 % handle to the function which sets the Controller parameter (should be in the folder '_Controller')
 hSetControllerParameter = @fSetControllerParametersEx1; 
