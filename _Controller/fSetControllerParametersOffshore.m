@@ -36,8 +36,8 @@ function [Parameter] = fSetControllerParametersOffshore(Parameter,Controller, tm
 %% Controller parameters for the Collective Pitch Controller (CPC)
 % NOTE: these parameters are only used by NREL5MW_Baseline.mdl.
  % Delete them if another model is used
-KP          =               % [s] detuned gains
-KI          =               % [-]
+KP          =   0.006275604;             % [s] detuned gains
+KI          =   0.0008965149;             % [-]
                   
 Parameter.CPC.kp                  = KP;                                % [s]
 Parameter.CPC.Ti                  = KP/KI;                             % [s] 
