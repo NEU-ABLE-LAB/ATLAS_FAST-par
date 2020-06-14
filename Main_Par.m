@@ -21,24 +21,24 @@ FASTInputFolder         = [pwd '/_Inputs/LoadCases/']         ; % directory of t
 case_file               = [pwd '/_Inputs/_inputs/Cases.csv']  ; % File defining the cases that are run
 BaselineFolder          = [pwd '/_BaselineResults/']          ; % Folder where "reference simulations are located"
 RootOutputFolder        = [pwd '/_Outputs/']                  ; % Folder where the current simulation outputs will be placed
-ctrlFolder              = [pwd '/_Controller/Example1/']      ; % Location of Simulink files (sysMdl, 
+ctrlFolder              = [pwd '/_Controller/']      ; % Location of Simulink files (sysMdl, 
 verbose                 = 1                                   ; % level of verbose output (0, 1, 2) Currently Unused
 
 %_____________________________________________________________________________________________________________________________________
 % Multiple controller models (should be in the folder '_Controller')
 
 % Reference to model for system, AKA Simulink model with FAST_SFunc() block in it
-sysMdl                 = 'NREL5MW_Fcnblock_V2_2018'; 
+sysMdl                 = 'NREL5MW_Baseline'; 
 
 % if multiple controller laws/parameters are to be tested ctrlMdls should be a cell array of all the
 % laws/parameters and should be compatible with the commands in the fSetControllerParameters.m file 
-ctrlMdls                = {['Baseline_fcnblock.m'], ['Baseline_fcnblock_BigGain.m'], ['Baseline_fcnblock_SmallGain.m']};
+ctrlMdls                = {['None']}; %controle model established in system model
 
 % handle to the function which sets the Controller parameter 
-hSetControllerParameter = @fSetControllerParametersEx1; 
+hSetControllerParameter = @fSetControllerParametersOffshore; 
 
 % for plotting purposes only, what name do you want it to be called in the graphics
-ctrl_names              = {'baseline fcnblock dummy', 'BL fcn, Big Gain', 'BL fcn, Big Gain'};
+ctrl_names              = {'baseline controler'};
 
 %% Preprocessing 
 
