@@ -1,5 +1,4 @@
-function [Parameter] = fSetControllerParametersEx1(Parameter,...
-    Controller, tmpSysMdl, parameters)
+function [Parameter] = fSetControllerParametersEx1(Parameter, Controller, tmpSysMdl, parameters)
 %% Controller parameters for the Collective Pitch Controller (CPC)
 
 %for matlab functionblock model, must be a structure called Parameter.CParameter

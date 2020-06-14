@@ -1,5 +1,4 @@
-function [Parameter] = fSetControllerParametersEx2(Parameter,...
-    Controler, tmpSysMdl)
+function [Parameter] = fSetControllerParametersEx2(Parameter,Controller, tmpSysMdl, parameters)
 % Sets the controller parameter.
 % This function takes a structure and supplements it with additional fields for the controller parameters.
 % 
@@ -37,8 +36,8 @@ function [Parameter] = fSetControllerParametersEx2(Parameter,...
 %% Controller parameters for the Collective Pitch Controller (CPC)
 % NOTE: these parameters are only used by NREL5MW_Baseline.mdl.
  % Delete them if another model is used
-KP          = Controler(1);               % [s] detuned gains
-KI          = Controler(2);               % [-]
+KP          = Controller(1);               % [s] detuned gains
+KI          = Controller(2);               % [-]
                   
 Parameter.CPC.kp                  = KP;                                % [s]
 Parameter.CPC.Ti                  = KP/KI;                             % [s] 
