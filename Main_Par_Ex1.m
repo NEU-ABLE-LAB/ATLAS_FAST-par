@@ -1,9 +1,8 @@
-%% Main_Paralell Computes total cost function for  all specified load caces and controll laws in paralell.
-%requires paralell processing matlab toolbox. otherwise will compute in series
+%% Main_Par Computes total cost function for  all specified load cases and control laws in parallel.
+%requires parallel processing MATLAB toolbox. otherwise will compute in series
 
 %% Example 1
-%Example 1 computes the cost function for 2 controlers under 12 load cases
-
+%Example 1 computes the cost function for 3 controllers under 12 load cases useing the Fcnblock model.
 
 %% Initialization
 restoredefaultpath;
@@ -26,20 +25,20 @@ ctrlFolder              = [pwd '/_Controller/Example1/']      ; % Location of Si
 verbose                 = 1                                   ; % level of verbose output (0, 1, 2) Currently Unused
 
 %_____________________________________________________________________________________________________________________________________
-% Multiple controler models (should be in the folder '_Controller')
+% Multiple controller models (should be in the folder '_Controller')
 
-% Reference to model for system, AKA simulink model with FAST_SFunc() block in it
+% Reference to model for system, AKA Simulink model with FAST_SFunc() block in it
 sysMdl                 = 'NREL5MW_Fcnblock_V2_2018'; 
 
 % if multiple controller laws/parameters are to be tested ctrlMdls should be a cell array of all the
 % laws/parameters and should be compatible with the commands in the fSetControllerParameters.m file 
-ctrlMdls                = {['Baseline_fcnblock.m'], ['Baseline_fcnblock_BigGain.m']};
+ctrlMdls                = {['Baseline_fcnblock.m'], ['Baseline_fcnblock_BigGain.m'], ['Baseline_fcnblock_SmallGain.m']};
 
 % handle to the function which sets the Controller parameter 
 hSetControllerParameter = @fSetControllerParametersEx1; 
 
-% for plotting purpouses only, what name do you want it to be called in the graphics
-ctrl_names              = {'baseline fcnblock dummy', 'BL fcn, Big Gain', };
+% for plotting purposes only, what name do you want it to be called in the graphics
+ctrl_names              = {'baseline fcnblock dummy', 'BL fcn, Big Gain', 'BL fcn, Big Gain'};
 
 %% Preprocessing 
 
@@ -57,13 +56,13 @@ end
 
 metricsBase = fEvaluateMetrics(statsBase, pMetricsBC);
 
-% Build sreucture of these parameters to pass to the parfor loop    
+% Build structure of these parameters to pass to the parfor loop    
 Parameters = PVar_cfg(runCases ,sysMdl, ctrlMdls, hSetControllerParameter, ctrlFolder,...
     RootOutputFolder, FASTInputFolder, Challenge, verbose, statsBase, metricsBase);
 
 %% evaluation 
 
-% establish loop variables & Prealocate output array
+% establish loop variables & Preallocate output array
 nCases = numel(Parameters.runCases);
 nControlers = numel(ctrlMdls);                       
 J = cell(nCases, nControlers);
@@ -74,7 +73,7 @@ pp = gcp();
 ppm = ParforProgMon(sprintf('Fast Turbine Eval - %i controlers w/ %i cases %s: ', ...
     nControlers, nCases, datestr(now,'HH:MM')), nCases*nControlers, 1,1200,160);
 
-% Evaluate all the controlerss, and cases
+% Evaluate all the controllers, and cases
 parfor idx = 1 : (nCases * nControlers)
     [caseN, controlerN] = ind2sub([nCases, nControlers], idx);    
 
@@ -84,9 +83,9 @@ parfor idx = 1 : (nCases * nControlers)
     ppm.increment(); %#ok<PFBNS>
 end
 
-%% Compute aggregate cost function of each controler form the simulation output array
+%% Compute aggregate cost function of each controller form the simulation output array
 
-%prealocate 
+%preallocate 
 CF = struct('CF',-1, 'CF_Comp',-1,'CF_Vars',-1, 'CF_Freq',-1);
 CF(nControlers) = CF;
 

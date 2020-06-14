@@ -34,7 +34,7 @@ newOut.OutputFolder    = OutputFolder    ;
 newOut.Challenge       = Challenge       ;
 newOut.statsBase       = statsBase       ;
 
-PENALTY = 1000; % ref: fCostFunction.m   Pennalty for a failed simulation
+PENALTY = 1000; % ref: fCostFunction.m, Penalty for a failed simulation
 
 %% Clean up files
 

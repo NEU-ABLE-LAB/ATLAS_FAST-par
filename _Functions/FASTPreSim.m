@@ -1,21 +1,21 @@
 %% FASTPreSim Simulink presimulation file
-% ref: fRunFAST.m from non-paralell ATLAS challenge
+% ref: fRunFAST.m from non-parallel ATLAS challenge
 %    INPUTS
 %       in                         % The Model Workspace
 %       runCase                    % The Input load case 
-%       hSetControllerParameter    % Handel to the user function that establishes the controler parameters
+%       hSetControllerParameter    % Handel to the user function that establishes the controller parameters
 %       RootOutputFolder           % Where the output files are to be placed 
 %       FASTInputFolder            % Where the input files are
 %       Challenge                  % 'Onshore' or 'Offshore'
-%       Controler                  % Passed to SetControlerParameters()
-%       tmpSysMdl                  % Passed to SetControlerParameters()
-%       parameters                 % Passed to SetControlerParameters()
+%       Controller                 % Passed to SetControllerParameters()
+%       tmpSysMdl                  % Passed to SetControllerParameters()
+%       parameters                 % Passed to SetControllerParameters()
 %
-% This function coppies all the required input files for the simulink
+% This function copies all the required input files for the Simulink
 % workspace and sets all model parameters, including the user parameters
-% defined in  the set model parameters file.
+% defined in the set model parameters file.
 %
-function in = FASTPreSim(in, runCase, hSetControllerParameter, RootOutputFolder, FASTInputFolder, Challenge, Controler, tmpSysMdl, parameters)
+function in = FASTPreSim(in, runCase, hSetControllerParameter, RootOutputFolder, FASTInputFolder, Challenge, Controller, tmpSysMdl, parameters)
 %% Prepend simulation name with timestamp & (hopefully) unique 4 character tag
 tStamp = [datestr(now,'YYYYmmDD-HHMMSS') '_' dec2hex(randi(2^16),4)]; % Add a random 4 char in case two parallel processes start at the same time (occurs at the initial simulations)
 runName = [tStamp '_' runCase];
@@ -38,7 +38,7 @@ fstFName  = [FASTInputFolder runName '.fst'];
     fprintf('-----------------------------------------------------------------------------\n');
 
 %% set model and user controler parameters 
-Parameter = fSetSimulinkParameters(fstFName, hSetControllerParameter, Controler, tmpSysMdl, parameters);     
+Parameter = fSetSimulinkParameters(fstFName, hSetControllerParameter, Controller, tmpSysMdl, parameters);     
     
 %% Send parameters to model
 if isa(in, 'Simulink.SimulationInput')

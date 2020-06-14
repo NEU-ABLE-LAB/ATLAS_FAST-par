@@ -1,22 +1,23 @@
-%% Par_eval Evaluates one controler under one run case and produces the simout and cost function of the system
+%% Par_eval Evaluates one controller under one run case and produces the simout and cost function of the system
 %
 %   INPUTS
-%       Controler: The controler as specified by the user in Main_Par.m
+%       Controller: The controller as specified by the user in Main_Par.m
 %       runCase: The name of the load case file for the FAST Turbine model
-%       parameters: Structure of uder defined and constant parameters, See PVar_cfg()
+%       parameters: Structure of user defined and constant parameters, See PVar_cfg()
 %
 %   OUTPUTS
-%       J: The cost function of "Controler" under load case "runcase"
+%       J: The cost function of "Controller" under load case "runcase"
 %       simOut: Structure of all simulation input parameters, output signals, and cost function components
 %
-%Par_eval builds a temporart directory for the simulink model with the
-%specified parameters. This allows each paralell worker to work in its own
-%unique directory to prevent the FastSFunc() simulink block from
-%overwrighting simulation output from other paralell simulations.
+%Par_eval builds a temporary directory for the Simulink model with the
+%specified parameters. This allows each parallel worker to work in its own
+%unique directory to prevent the FastSFunc() Simulink block from
+%overwriting simulation output from other parallel simulations.
 
-function [J, simOut] = Par_eval(Controler, runCase, parameters)
+
+function [J, simOut] = Par_eval(Controller, runCase, parameters)
 try
-%% Extract usefull parameters
+%% Extract useful parameters
 
 % Simulink system model
 sysMdl = parameters.sysMdl;
@@ -43,7 +44,7 @@ tmpSysMdl = tmpSysMdl{end};
 try
     copyfile([parameters.ctrlFolder sysMdl '.mdl'], ['./' tmpSysMdl '.mdl']);
 catch e
-    warning('Could not find system model file to copy, check Main_par line 32 where the system model is defined.')
+    warning('Could not find system model file to copy, check Main_par where the system model is defined and make sure the system model is in the correct folder')
     rethrow(e);
 end
 
@@ -56,13 +57,13 @@ load_system(tmpSysMdl)
 hws = get_param(tmpSysMdl,'modelWorkspace');
 FASTPreSim(hws,...                         % The Model Workspace
            runCase,...                     % The Input load case 
-           hSetControllerParameter, ...    % Handel to the user function that establishes the controler parameters
+           hSetControllerParameter, ...    % Handel to the user function that establishes the controller parameters
            RootOutputFolder, ...           % Where the output files are to be placed 
            FASTInputFolder, ...            % Where the input files are
            Challenge, ...                  % 'Onshore' or 'Offshore'
-           Controler, ...                  % Passed to SetControlerParameters()
-           tmpSysMdl, ...                  % Passed to SetControlerParameters()
-           parameters);                    % Passed to SetControlerParameters()
+           Controller, ...                 % Passed to SetControllerParameters()
+           tmpSysMdl, ...                  % Passed to SetControllerParameters()
+           parameters);                    % Passed to SetControllerParameters()
 
 % Try running simulation and computing cost
 try
@@ -114,10 +115,11 @@ bdclose('all')
 Simulink.sdi.cleanupWorkerResources
 % https://www.mathworks.com/matlabcentral/answers/385898-parsim-function-consumes-lot-of-memory-how-to-clear-temporary-matlab-files
 sdi.Repository.clearRepositoryFile
-% clear all mex files from memory (important to prevent useing too much memory, must be within this function to avoid trainsparency errors)
+% clear all mex files from memory (important to prevent using too much memory, must be within this function to avoid transparency errors)
 clear mex
-
-%NOTE: it appears there are still some small memory leaks in the script, If running a large number of simulations a large amount of memory should be allocated to prevent overlaoding memory the
+ 
+%NOTE: it appears there are still some small memory leaks in the script, If running a large number of simulations a large amount of memory should be allocated to prevent overloading memory the
 %   The script cost a little less than 1 gig of ram per worker.   
+.   
 
 end

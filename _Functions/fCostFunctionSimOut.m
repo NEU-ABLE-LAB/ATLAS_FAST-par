@@ -13,7 +13,7 @@ if any(cellfun(@isempty, simOut))
     RunsStats = [];
 else
     try
-        %% Load case and metrics init
+        %% Load case and metrics initialize
         % Parameters for the metrics computation
         if isa(simOut,'Simulink.SimulationOutput')
             

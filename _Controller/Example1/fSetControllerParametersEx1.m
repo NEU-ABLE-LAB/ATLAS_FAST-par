@@ -1,5 +1,5 @@
 function [Parameter] = fSetControllerParametersEx1(Parameter,...
-    Controler, tmpSysMdl, parameters)
+    Controller, tmpSysMdl, parameters)
 %% Controller parameters for the Collective Pitch Controller (CPC)
 
 %for matlab functionblock model, must be a structure called Parameter.CParameter
@@ -31,7 +31,7 @@ Parameter.CParameter.theta_dot_FF        = 0;                                 % 
 %finction block of the simulink model.
 
 % Parse indvidual's expressions 
-fcnText = fileread(Controler);
+fcnText = fileread(Controller);
 
 % Get `Fcn` block handle
 hblock = find(slroot, '-isa', 'Stateflow.EMChart', 'Path', sprintf('%s/IPC/Control_Law', tmpSysMdl) );

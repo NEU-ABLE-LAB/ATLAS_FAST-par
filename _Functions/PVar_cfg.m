@@ -6,7 +6,7 @@ function Parameters = PVar_cfg(runCases ,sysMdl, ctrlMdl, hSetControllerParamete
     ctrlFolder, RootOutputFolder, FASTInputFolder, ...
     Challenge, verbose, statsBase, metricsBase)
 
-%% Custom Parmeters
+%% Custom Parameters
 
 % SENSORS
 %   Comment out unused sensors
