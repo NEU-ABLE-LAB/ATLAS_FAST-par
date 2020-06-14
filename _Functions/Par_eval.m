@@ -22,7 +22,7 @@ try
 % Simulink system model
 sysMdl = parameters.sysMdl;
 % Handle to function that sets controller parameters
-hSetControllerParameter = prameters.hsetctrlparam;
+hSetControllerParameter = parameters.hsetctrlparam;
 % Directories
 RootOutputFolder = parameters.RootOutputFolder;
 FASTInputFolder = parameters.FASTInputFolder;
@@ -119,7 +119,5 @@ sdi.Repository.clearRepositoryFile
 clear mex
  
 %NOTE: it appears there are still some small memory leaks in the script, If running a large number of simulations a large amount of memory should be allocated to prevent overloading memory the
-%   The script cost a little less than 1 gig of ram per worker.   
-.   
-
+%   The script cost a little less than 875 MB of ram per worker.   
 end
