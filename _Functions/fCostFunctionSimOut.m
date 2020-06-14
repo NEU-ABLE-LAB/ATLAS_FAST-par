@@ -40,7 +40,7 @@ else
         end
         
         % --- Evaluate metrics and cost function
-        [ Metrics    ] = fEvaluateMetrics(RunsStats, pMetrics);
+        [Metrics] = fEvaluateMetrics(RunsStats, pMetrics);
         
         [CF, CF_Comp, CF_Vars, CF_Freq] = ...
             fCostFunction(Metrics.Values, metricsBase.Values, pMetrics);
@@ -53,18 +53,13 @@ else
         
         
     catch
-        % Assume bad individual if something is wrong
-        CF(cN,genNBack).CF = MLC_params.badvalue;
-        
-        CF(cN,genNBack).CF_Comp = MLC_params.badvalue * ...
-            ones(1,length(pMetrics.uComponents));
-        
-        CF(cN,genNBack).CF_Vars = MLC_params.badvalue * ...
-            ones(1,length(pMetrics.VarsWeights));
-        
-        CF(cN,genNBack).CF_Freq = struct( ...
-            'MRi',nan(12,10), 'MAbs',nan(12,10));
+        % Assume failed simulation if something is wrong
+        CF = 1000;
+        CF_Comp = 1000 * ones(1,length(pMetrics.uComponents));
+        CF_Vars = 1000 * ones(1,length(pMetrics.VarsWeights));
+        CF_Freq = struct('MRi',nan(12,10), 'MAbs',nan(12,10));
+        pMetrics = [];
+        Metrics = [];
+        RunsStats = [];
     end
-    
-    
 end

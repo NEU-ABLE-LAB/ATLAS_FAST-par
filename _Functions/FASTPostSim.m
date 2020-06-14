@@ -34,7 +34,7 @@ newOut.OutputFolder    = OutputFolder    ;
 newOut.Challenge       = Challenge       ;
 newOut.statsBase       = statsBase       ;
 
-PENALTY = 1000; % ref: fCostFunction.m
+PENALTY = 1000; % ref: fCostFunction.m   Pennalty for a failed simulation
 
 %% Clean up files
 
@@ -114,5 +114,4 @@ newOut.CF_Freq = CF_Freq;
 newOut.pMetrics = pMetrics;
 
 clear mex
-
 end

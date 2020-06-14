@@ -1,19 +1,23 @@
 %% FASTPreSim Simulink presimulation file
+% ref: fRunFAST.m from non-paralell ATLAS challenge
+%    INPUTS
+%       in                         % The Model Workspace
+%       runCase                    % The Input load case 
+%       hSetControllerParameter    % Handel to the user function that establishes the controler parameters
+%       RootOutputFolder           % Where the output files are to be placed 
+%       FASTInputFolder            % Where the input files are
+%       Challenge                  % 'Onshore' or 'Offshore'
+%       Controler                  % Passed to SetControlerParameters()
+%       tmpSysMdl                  % Passed to SetControlerParameters()
+%       parameters                 % Passed to SetControlerParameters()
 %
-% INPUTS
-%   - in: Simulink model created by Simulink.SimulationInput()
-%   - runCase: String describing the DLC scenario
-%   - hSetControllerParameter: function handle to set controller parameters
-%   - RootOutputFolder: Location to create run output folder
-%   - FASTInputFolder: Location of FAST input files
-%   - statsBase: Stats for all the base cases
+% This function coppies all the required input files for the simulink
+% workspace and sets all model parameters, including the user parameters
+% defined in  the set model parameters file.
 %
-% ref: fRunFAST.m
-function in = FASTPreSim(in, runCase, hSetControllerParameter, ...
-    RootOutputFolder, FASTInputFolder, Challenge, Controler, tmpSysMdl, parameters)
-
-%% Prepend simulation name with timestamp
-tStamp = [datestr(now,'YYYYmmDD-HHMMSS') '_' dec2hex(randi(2^16),4)]; % Add a random 4 char in case two parallel processes start at the same time
+function in = FASTPreSim(in, runCase, hSetControllerParameter, RootOutputFolder, FASTInputFolder, Challenge, Controler, tmpSysMdl, parameters)
+%% Prepend simulation name with timestamp & (hopefully) unique 4 character tag
+tStamp = [datestr(now,'YYYYmmDD-HHMMSS') '_' dec2hex(randi(2^16),4)]; % Add a random 4 char in case two parallel processes start at the same time (occurs at the initial simulations)
 runName = [tStamp '_' runCase];
 OutputFolder = [RootOutputFolder runName '/'];
 mkdir(OutputFolder);
@@ -32,9 +36,11 @@ fstFName  = [FASTInputFolder runName '.fst'];
     fprintf('-----------------------------------------------------------------------------\n');
     fprintf('>>> Simulating: %s \n',fstFName);
     fprintf('-----------------------------------------------------------------------------\n');
-%% Set parameters to model
-Parameter = fSetSimulinkParameters(fstFName, hSetControllerParameter, Controler, tmpSysMdl, parameters);     
 
+%% set model and user controler parameters 
+Parameter = fSetSimulinkParameters(fstFName, hSetControllerParameter, Controler, tmpSysMdl, parameters);     
+    
+%% Send parameters to model
 if isa(in, 'Simulink.SimulationInput')
     
     % Input is a Simulink simulation input object
@@ -46,9 +52,7 @@ if isa(in, 'Simulink.SimulationInput')
     in = in.setVariable('FASTInputFolder', FASTInputFolder);
     in = in.setVariable('Parameter', Parameter);
     in = in.setVariable('CParameter', Parameter.CParameter);
-
-    
-    
+ 
 elseif isa(in, 'Simulink.ModelWorkspace')
     
     % Input is a model workspace handle
@@ -62,9 +66,6 @@ elseif isa(in, 'Simulink.ModelWorkspace')
     in.assignin('CParameter', Parameter.CParameter);
     
 else
-    error('Unknown input type');
-    
+    error('Unknown Model type, check the simulink system model file');
 end
-
-
 end

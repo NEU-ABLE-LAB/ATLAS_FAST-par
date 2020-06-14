@@ -15,28 +15,31 @@ addpath(genpath([pwd,'/ParforProgMon'])); % Paralell progress monitor (https://g
 addpath(genpath([pwd]))
 
 %% User Input Parameter list
-
-% parameters for this analysis & machine
 %____________________________________________________________________________________________________________________________________
-Challenge              = 'Offshore'                          ; % 'Offshore' or 'Onshore', important for cost function
-FASTInputFolder        = [pwd '/_Inputs/LoadCases/']         ; % directory of the FAST input files are (e.g. .fst files)
-case_file              = [pwd '/_Inputs/_inputs/Cases.csv']  ; % File defining the cases that are run
-BaselineFolder         = [pwd '/_BaselineResults/']          ; % Folder where "reference simulations are located"
-RootOutputFolder       = [pwd '/_Outputs/']                  ; % Folder where the current simulation outputs will be placed
-ctrlFolder             = [pwd '/_Controller/Example1/']       ; % Location of Simulink files
-verbose                = 1                                   ; % level of verbose output (0, 1, 2)
-sysMdl                 = 'NREL5MW_Fcnblock_V2_2018'          ; %  Reference to model for system, AKA simulink model with Fast_SFunction() block in it
+% parameters for this analysis & machine
+Challenge               = 'Offshore'                          ; % 'Offshore' or 'Onshore', important for cost function
+FASTInputFolder         = [pwd '/_Inputs/LoadCases/']         ; % directory of the FAST input files are (e.g. .fst files)
+case_file               = [pwd '/_Inputs/_inputs/Cases.csv']  ; % File defining the cases that are run
+BaselineFolder          = [pwd '/_BaselineResults/']          ; % Folder where "reference simulations are located"
+RootOutputFolder        = [pwd '/_Outputs/']                  ; % Folder where the current simulation outputs will be placed
+ctrlFolder              = [pwd '/_Controller/Example1/']      ; % Location of Simulink files (sysMdl, 
+verbose                 = 1                                   ; % level of verbose output (0, 1, 2) Currently Unused
 
-% Multiple controler models
 %_____________________________________________________________________________________________________________________________________
-% if multiple controller laws are to be tested this should be a cell array of all the controler laws (in a .m file compatible with the controler blocks in system model) 
-ctrlMdls               = {['Baseline_fcnblock.m'], ['Baseline_fcnblock_BigGain.m']};
+% Multiple controler models (should be in the folder '_Controller')
 
-% for plotting purpouses, what name do you want it to be called in the graph
-ctrl_names             = {'baseline fcnblock dummy', 'BL fcn, big Gain', }; 
+% Reference to model for system, AKA simulink model with FAST_SFunc() block in it
+sysMdl                 = 'NREL5MW_Fcnblock_V2_2018'; 
 
-% handle to the function which sets the Controller parameter (should be in the folder '_Controller')
+% if multiple controller laws/parameters are to be tested ctrlMdls should be a cell array of all the
+% laws/parameters and should be compatible with the commands in the fSetControllerParameters.m file 
+ctrlMdls                = {['Baseline_fcnblock.m'], ['Baseline_fcnblock_BigGain.m']};
+
+% handle to the function which sets the Controller parameter 
 hSetControllerParameter = @fSetControllerParametersEx1; 
+
+% for plotting purpouses only, what name do you want it to be called in the graphics
+ctrl_names              = {'baseline fcnblock dummy', 'BL fcn, Big Gain', };
 
 %% Preprocessing 
 
@@ -81,13 +84,13 @@ parfor idx = 1 : (nCases * nControlers)
     ppm.increment(); %#ok<PFBNS>
 end
 
-
-
 %% Compute aggregate cost function of each controler form the simulation output array
- 
+
+%prealocate 
 CF = struct('CF',-1, 'CF_Comp',-1,'CF_Vars',-1, 'CF_Freq',-1);
 CF(nControlers) = CF;
 
+%Baseline Stats 
 [blCF, blCF_Comp, blCF_Vars, blCF_Freq] = fCostFunction(metricsBase.Values, metricsBase.Values, pMetricsBC);
 
 for cN = 1:nControlers
@@ -98,6 +101,7 @@ for cN = 1:nControlers
     % Plot cost function graph 
     folders = {'','Baseline Results';'',cell2mat(ctrl_names(cN))};
     
+    % build plotting function inputs
     pCF = [blCF CF(cN).CF];
     pCF_Comp = [blCF_Comp; CF(cN).CF_Comp];
     pCF_Vars = [blCF_Vars; CF(cN).CF_Vars];
