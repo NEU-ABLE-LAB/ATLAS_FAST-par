@@ -13,7 +13,7 @@ addpath(genpath([pwd,'/_Controller']));   % Simulink model, where user scripts a
 addpath(genpath([pwd,'/ParforProgMon'])); % Paralell progress monitor (https://github.com/fsaxen/ParforProgMon)
 addpath(genpath([pwd]))
 
-%% User Input Parameter list
+%% User Input Parameters
 %____________________________________________________________________________________________________________________________________
 % parameters for this analysis & machine
 Challenge               = 'Offshore'                          ; % 'Offshore' or 'Onshore', important for cost function
