@@ -24,6 +24,12 @@ RootOutputFolder        = [pwd '/_Outputs/']                  ; % Folder where t
 ctrlFolder              = [pwd '/_Controller/Example1/']      ; % Location of Simulink files (sysMdl, 
 verbose                 = 1                                   ; % level of verbose output (0, 1, 2) Currently Unused
 
+%which figures should be plotted at the end of simulation,  'plot'   will plot the figure specified in the line 
+plotTag = struct('Rel_FreqComp',             'plot', ...        % Relative contribution by frequency and component                             
+                 'Rel_Comp',                 'plot', ...        % Relative contribution per component
+                 'Abs_FreqComp',             'no  ', ...        % Absolute contribution by frequency and component
+                 'Abs_Comp',                 'plot');           % Absolute contribution per component
+
 %_____________________________________________________________________________________________________________________________________
 % Multiple controller models (should be in the folder '_Controller')
 
@@ -96,7 +102,6 @@ for cN = 1:nControlers
     % Compute agregate cost function
     [CF(cN).CF, CF(cN).CF_Comp, CF(cN).CF_Vars, CF(cN).CF_Freq, ~, ~, ~]...
     = fCostFunctionSimOut(simOut(:,cN), Challenge, metricsBase, pMetricsBC);
-   
 
     % Plot cost function graph 
     folders = {'','Baseline Results';'',cell2mat(ctrl_names(cN))};
@@ -107,5 +112,5 @@ for cN = 1:nControlers
     pCF_Vars = [blCF_Vars; CF(cN).CF_Vars];
     pCF_Freq = {blCF_Freq, CF(cN).CF_Freq};
     
-    fCostFunctionPlotTag(pCF, pCF_Comp, pCF_Vars, pCF_Freq, pMetricsBC, folders)
+    fCostFunctionPlotTag(pCF, pCF_Comp, pCF_Vars, pCF_Freq, pMetricsBC, folders, plotTag)
 end
