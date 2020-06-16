@@ -97,6 +97,7 @@ for cN = 1:nControlers
     [CF(cN).CF, CF(cN).CF_Comp, CF(cN).CF_Vars, CF(cN).CF_Freq, ~, ~, ~]...
     = fCostFunctionSimOut(simOut(:,cN), Challenge, metricsBase, pMetricsBC);
    
+
     % Plot cost function graph 
     folders = {'','Baseline Results';'',cell2mat(ctrl_names(cN))};
     
@@ -106,5 +107,5 @@ for cN = 1:nControlers
     pCF_Vars = [blCF_Vars; CF(cN).CF_Vars];
     pCF_Freq = {blCF_Freq, CF(cN).CF_Freq};
     
-    fCostFunctionPlot(pCF, pCF_Comp, pCF_Vars, pCF_Freq, pMetricsBC, folders)
+    fCostFunctionPlotTag(pCF, pCF_Comp, pCF_Vars, pCF_Freq, pMetricsBC, folders)
 end
