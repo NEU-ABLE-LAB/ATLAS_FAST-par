@@ -27,9 +27,10 @@ verbose                 = 1                                   ; % level of verbo
 %which figures should be plotted at the end of simulation,  'plot'   will plot the figure specified in the line 
 plotTag = struct('Rel_FreqComp',             'plot', ...        % Relative contribution by frequency and component                             
                  'Rel_Comp',                 'plot', ...        % Relative contribution per component
-                 'Abs_FreqComp',             'no  ', ...        % Absolute contribution by frequency and component
-                 'Abs_Comp',                 'plot');           % Absolute contribution per component
-
+                 'Abs_FreqComp',             'plot', ...        % Absolute contribution by frequency and component
+                 'Abs_Comp',                 'plot', ...        % Absolute contribution per component
+                 'Combine',                  'yes' , ...        % 'yes' will combine all controlers into one plot, 
+                 'top',                      3     );
 %_____________________________________________________________________________________________________________________________________
 % Multiple controller models (should be in the folder '_Controller')
 
@@ -102,15 +103,8 @@ for cN = 1:nControlers
     % Compute agregate cost function
     [CF(cN).CF, CF(cN).CF_Comp, CF(cN).CF_Vars, CF(cN).CF_Freq, ~, ~, ~]...
     = fCostFunctionSimOut(simOut(:,cN), Challenge, metricsBase, pMetricsBC);
-
-    % Plot cost function graph 
-    folders = {'','Baseline Results';'',cell2mat(ctrl_names(cN))};
-    
-    % build plotting function inputs
-    pCF = [blCF CF(cN).CF];
-    pCF_Comp = [blCF_Comp; CF(cN).CF_Comp];
-    pCF_Vars = [blCF_Vars; CF(cN).CF_Vars];
-    pCF_Freq = {blCF_Freq, CF(cN).CF_Freq};
-    
-    fCostFunctionPlotTag(pCF, pCF_Comp, pCF_Vars, pCF_Freq, pMetricsBC, folders, plotTag)
 end
+
+%plot the figures the user asked for 
+fBuildPlots(CF, pMetricsBC, plotTag, ctrl_names)
+

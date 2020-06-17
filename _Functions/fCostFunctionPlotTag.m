@@ -93,16 +93,16 @@ end
 
 %% Absolute contribution per component
 if plotTag.Abs_Comp == 'plot'
-figure
-if nFolders>1
-    bar(CF_Comp(:,2:end),'stacked');
-    hold all
-    set(gca,'xticklabel',folders(:,2))
-    legend({pMetrics.uComponents{2:end}},'Location','EastOutside')
-else
-    bar(CF_Comp(:,2:end)); % TODO
-end
-title('Absolute contribution per component')
+    figure
+    if nFolders>1
+        bar(CF_Comp(:,2:end),'stacked');
+        hold all
+        set(gca,'xticklabel',folders(:,2))
+        legend({pMetrics.uComponents{2:end}},'Location','EastOutside')
+    else
+        bar(CF_Comp(:,2:end)); % TODO
+    end
+    title('Absolute contribution per component')
 end
 
 
