@@ -29,8 +29,9 @@ plotTag = struct('Rel_FreqComp',             'plot', ...        % Relative contr
                  'Rel_Comp',                 'plot', ...        % Relative contribution per component
                  'Abs_FreqComp',             'plot', ...        % Absolute contribution by frequency and component
                  'Abs_Comp',                 'plot', ...        % Absolute contribution per component
-                 'Combine',                  'yes' , ...        % 'yes' will combine all controlers into one plot, 
-                 'top',                      3     );
+                 'Combine',                  'yes' );           % 'yes' will combine all controlers into one plot, 
+                                                                % else will plot all requested charts against the base line in individual plots
+        
 %_____________________________________________________________________________________________________________________________________
 % Multiple controller models (should be in the folder '_Controller')
 
@@ -98,6 +99,7 @@ CF(nControlers) = CF;
 
 %Baseline Stats 
 [blCF, blCF_Comp, blCF_Vars, blCF_Freq] = fCostFunction(metricsBase.Values, metricsBase.Values, pMetricsBC);
+BL = struct('blCF',blCF,'blCF_Comp',blCF_Comp,'blCF_Vars',blCF_Vars,'blCF_Freq',blCF_Freq);
 
 for cN = 1:nControlers
     % Compute agregate cost function
@@ -106,5 +108,5 @@ for cN = 1:nControlers
 end
 
 %plot the figures the user asked for 
-fBuildPlots(CF, pMetricsBC, plotTag, ctrl_names)
+fBuildPlots(CF, BL, pMetricsBC, plotTag, ctrl_names)
 
