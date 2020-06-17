@@ -1,19 +1,6 @@
 %% Main_Par Computes total cost function for  all specified load cases and control laws in parallel.
 % requires parallel processing MATLAB toolbox. otherwise will compute in series
 
-%% Example 2
-% Example 2 attempts to tune the Proportional and Integral Gains on the baseline PI controller 
-% to run this example input the command below into the command window:
-
-%      TunedGains = fminsearch(@(U)fMain_Par_Ex2(U),[0.006275604; 0.0008965149])
-
-%NOTE 1: Initial conditiona are set to the initial tuned gains of the
-%baseline controler, changing these may cause this example to TAKE A VERY 
-%LONG TIME TO FINISH AND WILL CONSUME A LOT OF MEMORY
-
-%NOTE 2: the clear all comand a the begining is modified to prevent the
-%fminsearch variables from being cleared from workspace
-
 %% Initialization
 restoredefaultpath;
 clear all; clc; dbstop if error
