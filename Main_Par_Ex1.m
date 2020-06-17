@@ -3,6 +3,10 @@
 
 %% Example 1
 %Example 1 computes the cost function for 3 controllers under 12 load cases useing the Fcnblock model.
+% the three controlers are:
+%       the baseline controler
+%       the baseline controler with larger gains 
+%       the baseline controler with smaller gains
 
 %% Initialization
 restoredefaultpath;

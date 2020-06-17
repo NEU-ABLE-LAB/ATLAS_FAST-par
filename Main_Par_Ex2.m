@@ -1,12 +1,23 @@
 %% Main_Par Computes total cost function for  all specified load cases and control laws in parallel.
-%requires parallel processing MATLAB toolbox. otherwise will compute in series
+% requires parallel processing MATLAB toolbox. otherwise will compute in series
 
-%% Example 1
-%Example 1 computes the cost function for 3 controllers under 12 load cases useing the Fcnblock model.
+%% Example 2
+% Example 2 attempts to tune the Proportional and Integral Gains on the baseline PI controller 
+% to run this example input the command below into the command window:
+
+%      TunedGains = fminsearch(@(U)fMain_Par_Ex2(U),[0.006275604; 0.0008965149])
+
+%NOTE 1: Initial conditiona are set to the initial tuned gains of the
+%baseline controler, changing these may cause this example to TAKE A VERY 
+%LONG TIME TO FINISH AND WILL CONSUME A LOT OF MEMORY
+
+%NOTE 2: the clear all comand a the begining is modified to prevent the
+%fminsearch variables from being cleared from workspace
 
 %% Initialization
 restoredefaultpath;
-clear all; clc; dbstop if error
+clearvars -except U
+clc; dbstop if error
 
 addpath(genpath([pwd,'/_Functions']));    % Matlab functions for cost function and running cases - RaddEAD ONLY
 addpath(genpath([pwd,'/_Controller']));   % Simulink model, where user scripts and models are placed
@@ -24,21 +35,29 @@ RootOutputFolder        = [pwd '/_Outputs/']                  ; % Folder where t
 ctrlFolder              = [pwd '/_Controller/Example2/']      ; % Location of Simulink files (sysMdl, 
 verbose                 = 1                                   ; % level of verbose output (0, 1, 2) Currently Unused
 
+%which figures should be plotted at the end of simulation,  'plot'   will plot the figure specified in the line 
+plotTag = struct('Rel_FreqComp',             'no  ', ...        % Relative contribution by frequency and component                             
+                 'Rel_Comp',                 'no  ', ...        % Relative contribution per component
+                 'Abs_FreqComp',             'no  ', ...        % Absolute contribution by frequency and component
+                 'Abs_Comp',                 'plot', ...        % Absolute contribution per component
+                 'Combine',                  'no'  );           % 'yes' will combine all controlers into one plot, 
+                                                                % else will plot all requested charts against the base line in individual plots
+        
 %_____________________________________________________________________________________________________________________________________
 % Multiple controller models (should be in the folder '_Controller')
 
 % Reference to model for system, AKA Simulink model with FAST_SFunc() block in it
-sysMdl                 = 'NREL5MW_Baseline'; 
+sysMdl                  = 'NREL5MW_Baseline'; 
 
 % if multiple controller laws/parameters are to be tested ctrlMdls should be a cell array of all the
 % laws/parameters and should be compatible with the commands in the fSetControllerParameters.m file 
-ctrlMdls                = {[0.006275604; 0.0008965149]};    % PI Gains 
+ctrlMdls                = {[U(1); U(2)]};    % PI Gains from the FMINSEARCH function
 
 % handle to the function which sets the Controller parameter 
 hSetControllerParameter = @fSetControllerParametersEx2; 
 
 % for plotting purposes only, what name do you want it to be called in the graphics
-ctrl_names              = {'baseline fcnblock dummy'};
+ctrl_names              = {'Tuned Baseline Controler'};
 
 %% Preprocessing 
 
@@ -91,20 +110,14 @@ CF(nControlers) = CF;
 
 %Baseline Stats 
 [blCF, blCF_Comp, blCF_Vars, blCF_Freq] = fCostFunction(metricsBase.Values, metricsBase.Values, pMetricsBC);
+BL = struct('blCF',blCF,'blCF_Comp',blCF_Comp,'blCF_Vars',blCF_Vars,'blCF_Freq',blCF_Freq);
 
 for cN = 1:nControlers
     % Compute agregate cost function
     [CF(cN).CF, CF(cN).CF_Comp, CF(cN).CF_Vars, CF(cN).CF_Freq, ~, ~, ~]...
     = fCostFunctionSimOut(simOut(:,cN), Challenge, metricsBase, pMetricsBC);
-   
-    % Plot cost function graph 
-    folders = {'','Baseline Results';'',cell2mat(ctrl_names(cN))};
-    
-    % build plotting function inputs
-    pCF = [blCF CF(cN).CF];
-    pCF_Comp = [blCF_Comp; CF(cN).CF_Comp];
-    pCF_Vars = [blCF_Vars; CF(cN).CF_Vars];
-    pCF_Freq = {blCF_Freq, CF(cN).CF_Freq};
-    
-    fCostFunctionPlot(pCF, pCF_Comp, pCF_Vars, pCF_Freq, pMetricsBC, folders)
 end
+
+%plot the figures the user asked for 
+fBuildPlots(CF, BL, pMetricsBC, plotTag, ctrl_names)
+
