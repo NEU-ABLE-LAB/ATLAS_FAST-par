@@ -34,8 +34,9 @@ _Outputs/
 # OSX / *nix default autosave extension
 *.m~
 
-# Compiled MEX binaries (all platforms)
+# Compiled MEX binaries (all platforms) (do not ignore the OpenFAST turbine model file though)
 *.mex*
+!FAST_SFunc.mexw64
 
 # Packaged app and toolbox files
 *.mlappinstall
