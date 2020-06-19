@@ -10,13 +10,13 @@ See [ATLAS-modeling-control-simulation-final.pdf](docs/ATLAS-modeling-control-si
 # Usage
 
 To begin the simulation, metrics calculation, and controller scoring process, open Matlab and point it to the folder containing this `readme` file. This folder contains the following Matlab script. In each of these scripts, only modify code in the `%% User Input Parameters` code section.
+This package contains the main runing function and 2 example setups as discribed below:
 
-	* `Main_Par.m` runs the entire suite of load cases run by `Main.m`, but in parallel simulations.
+`Main_Par.m` runs the entire suite of load cases run by `Main.m` in the origional ATLAS competition pacage, but in parallel simulations.
 
-	* `Main_Par_EX1.m` is an example preset up to run 3 controllers under all 12 load cases in parallel using the MATLAB custom function block (FcnBlock) Simulink model 
+`Main_Par_EX1.m` is an example preset up to run 3 controllers under all 12 load cases in parallel using the MATLAB custom function block (FcnBlock) Simulink model 
 	
-    * `Main_Par_EX2.m` is an example preset up to run 1 controllers under all 12 load cases in parallel using the MATLAB baseline pitch controller Simulink model. This model can be run in a package script for various optimization functions (such as `fminsearch()`) in order to optimize the gains of the PI controller.  
-
+`Main_Par_EX2.m` is an example preset up to run 1 controllers under all 12 load cases in parallel using the MATLAB baseline pitch controller Simulink model. To run this example, input the command into the command window: TunedGains = fminsearch(@(U)fMain_Par_Ex2(U),[0.006275604; 0.0008965149])
 	
 # Overview of Parallelization Method
 Parallelization is accomplished by establishing a worker pool using the MATLAB parallel processing toolbox. Each worker is set up in a temporary directory with a temporary version of the Simulink model with one of the controllers and one of the load cases as parameters for the Simulink model. Temporary models and directories must be used to prevent the temporary output of the `FAST_SFunc()` block from conflicting with other parallel simulations in the same directory.  Once the model is run, the output and cost function are computed for each load case and controller and sent to the workspace. the temporary files and Simulink are then closed and unloaded from the worker and Memory in order to prevent the parallel simulations from taking up large amounts of memory. See `Par_sim()` in the functions folder for more details. 
@@ -31,6 +31,7 @@ Parallelization is accomplished by establishing a worker pool using the MATLAB p
 	* `_Inputs/` contains all of the necessary OpenFAST and OpenFAST module input files needed for a particular challenge. These input files are separated out in terms of load case name and the particular module they represent (see Table 1 in [ATLAS-modeling-control-simulation-final.pdf](docs/ATLAS-modeling-control-simulation-final.pdf) ). The contents folder should, generally, not be modified.
 	
 	* `_Outputs/` collects the output files for the simulated load cases. This depends on the particular challenge selected for simulation as will be described below. The output files are named `x.SFunc.outb`, where the load case name is substituted for the symbol `x` in the file name. When OpenFAST is run parallelized, each output instance is saved in a corresponding folder. The outputs files can be visualized using the tool pyDatview or using the matlab function `_Functions\fReadFASTBinary.m`. The folder `_Outputs` is automatically updated with the participant output files.
+
 	
 ## Large file not included in Git Repo
 
