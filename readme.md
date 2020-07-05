@@ -6,6 +6,9 @@ This code is based off of the OpenFAST code provided to participants of the [ARP
 
 See [ATLAS-modeling-control-simulation-final.pdf](docs/ATLAS-modeling-control-simulation-final.pdf) for full details.
 
+# Steup
+
+Before running the simulation, additional folders must be moved to the directory. The original ATLAS competition package input files and baseline results files are not stored on the GIT repository due to their size. The original ATLAS competition package can be downloaded at https://www.herox.com/atlas-offshore-challenge/resource/300. The folders ‘_Inputs’ and ‘_BaselineResults’ should be copied from the ATLAS directory and pasted into the ATLAS_FAST-par directory. The remaining ATLAS folders should not be in the ATLAS_FAST-par directory. 
 
 # Usage
 
@@ -20,8 +23,8 @@ This package contains the main function and 2 example setups as discribed below:
 `Main_Par_EX2.m` is an example preset up to run 1 controller under all 12 load cases in parallel using the MATLAB baseline pitch controller Simulink model. To run this example, input the command into the command window: `TunedGains = fminsearch(@(U)fMain_Par_Ex2(U),[0.006275604; 0.0008965149])`
 	
 # Overview of Parallelization Method
-Parallelization is accomplished by establishing a worker pool using the MATLAB parallel processing toolbox. Each worker is set up in a temporary directory with a temporary version of the Simulink model with one of the controllers and one of the load cases as parameters for the Simulink model. Temporary models and directories must be used to prevent the temporary output of the `FAST_SFunc()` block from conflicting with other parallel simulations in the same directory.  Once the model is run, the output and cost function are computed for each load case and controller and sent to the workspace. the temporary files and Simulink are then closed and unloaded from the worker and Memory in order to prevent the parallel simulations from taking up large amounts of memory. See `Par_sim()` in the functions folder for more details. 
 
+Parallelization is accomplished by establishing a worker pool using the MATLAB parallel processing toolbox. Each worker is set up in a temporary directory with a temporary version of the Simulink model with one of the controllers and one of the load cases as parameters for the Simulink model. Temporary models and directories must be used to prevent the temporary output of the `FAST_SFunc()` block from conflicting with other parallel simulations in the same directory.  Once the model is run, the output and cost function are computed for each load case and controller and sent to the workspace. the temporary files and Simulink are then closed and unloaded from the worker and Memory in order to prevent the parallel simulations from taking up large amounts of memory. See `Par_sim()` in the functions folder for more details. 
 
 # Git Repository Structure
 
