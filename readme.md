@@ -8,7 +8,7 @@ See [ATLAS-modeling-control-simulation-final.pdf](docs/ATLAS-modeling-control-si
 
 # Steup
 
-Before running the simulation, additional folders must be moved to the directory. The original ATLAS competition package input files and baseline results files are not stored on the GIT repository due to their size. The original ATLAS competition package can be downloaded at https://www.herox.com/atlas-offshore-challenge/resource/300. The folders ‘_Inputs’ and ‘_BaselineResults’ should be copied from the ATLAS directory and pasted into the ATLAS_FAST-par directory. The remaining ATLAS folders should not be in the ATLAS_FAST-par directory. 
+**Before running the simulation, additional folders must be moved to the directory**. The original ATLAS competition package input files and baseline results files are not stored on the GIT repository due to their size. The original ATLAS competition package can be downloaded [here](https://www.herox.com/atlas-offshore-challenge/resource/300). The folders `_Inputs` and `_BaselineResults` should be copied from the ATLAS directory and pasted into the ATLAS_FAST-par directory. The remaining ATLAS folders should not be in the ATLAS_FAST-par directory. 
 
 # Usage
 

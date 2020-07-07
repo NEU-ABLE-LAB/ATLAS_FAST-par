@@ -29,7 +29,7 @@ end
 theta_dot_FF = CParameter.theta_dot_FF;
 Omega_g_rated = CParameter.Omega_g_rated;
 theta_K = CParameter.theta_K;
-kp = CParameter.kp / 10;   %  Small gain
+kp = CParameter.kp / 5;   %  Small gain
 Ti = CParameter.Ti;
 theta_max = CParameter.theta_max;
 theta_min = CParameter.theta_min;

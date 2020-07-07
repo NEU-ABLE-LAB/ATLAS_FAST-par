@@ -2,11 +2,19 @@
 %requires parallel processing MATLAB toolbox. otherwise will compute in series
 
 %% Example 1
-%Example 1 computes the cost function for 3 controllers under 12 load cases useing the Fcnblock model.
+% Example 1 computes the cost function for 3 controllers under 12 load cases useing the Fcnblock model.
 % the three controlers are:
 %       the baseline controler
-%       the baseline controler with larger gains 
-%       the baseline controler with smaller gains
+%       the baseline controler with larger gains (Kp = Kp_baseline * 5)
+%       the baseline controler with smaller gains (Kp = Kp_baseline / 5)
+%
+% Results should be
+%       the baseline controler will result in a cost function of 1.0002
+%       the large gain controler will result in a cost function of 3.0605
+%       the small gain controler will result in a cost function of 1000, as load case 11 results in the roter speed cronstraint being exceeded
+%
+%
+
 
 %% Initialization
 restoredefaultpath;
@@ -50,7 +58,7 @@ ctrlMdls                = {['Baseline_fcnblock.m'], ['Baseline_fcnblock_BigGain.
 hSetControllerParameter = @fSetControllerParametersEx1; 
 
 % for plotting purposes only, what name do you want it to be called in the graphics
-ctrl_names              = {'baseline fcnblock dummy', 'BL fcn, Big Gain', 'BL fcn, Big Gain'};
+ctrl_names              = {'baseline fcnblock model', 'BL fcnblock, Big Gain', 'BL fcnblock, Big Gain'};
 
 %% Preprocessing 
 
