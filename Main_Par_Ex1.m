@@ -63,11 +63,12 @@ ctrl_names              = {'baseline fcnblock model', 'BL fcnblock, Big Gain', '
 %% Preprocessing 
 
 % Baseline statistics
-CasesBase = fReadCases(case_file); 
+CasesBase = fReadCases(case_file,[]); 
 runCases = CasesBase.Names;
 pMetricsBC = fMetricVars(CasesBase, Challenge);                                  
-PreProFile= [BaselineFolder 'PrePro_' Challenge '.mat'];                         
+%PreProFile= [BaselineFolder 'PrePro_' Challenge '.mat'];                         
 
+PreProFile= []
 if ~exist(PreProFile,'file')
     statsBase = fComputeOutStats(BaselineFolder, pMetricsBC, CasesBase);
 else

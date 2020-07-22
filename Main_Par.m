@@ -48,7 +48,7 @@ ctrl_names              = {'Baseline Controler'};
 %% Preprocessing 
 
 % Baseline statistics
-CasesBase = fReadCases(case_file); 
+CasesBase = fReadCases(case_file,[]); 
 runCases = CasesBase.Names;
 pMetricsBC = fMetricVars(CasesBase, Challenge);                                  
 PreProFile= [BaselineFolder 'PrePro_' Challenge '.mat'];                         

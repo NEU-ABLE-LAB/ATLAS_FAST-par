@@ -31,7 +31,7 @@ addpath(genpath([pwd]))
 Challenge               = 'Offshore'                          ; % 'Offshore' or 'Onshore', important for cost function
 FASTInputFolder         = [pwd '/_Inputs/LoadCases/']         ; % directory of the FAST input files are (e.g. .fst files)
 case_file               = [pwd '/_Inputs/_inputs/CasesJust1.csv']  ; % File defining the cases that are run
-BaselineFolder          = [pwd '/_BaselineResultsJust1/']          ; % Folder where "reference simulations are located"
+BaselineFolder          = [pwd '/_BaselineResults1/']          ; % Folder where "reference simulations are located"
 PreProFile              = []                                  ; % preprocessed output file to speed up preprocessing, leave empty to compute baseline stats from case file 
 RootOutputFolder        = [pwd '/_Outputs/']                  ; % Folder where the current simulation outputs will be placed
 ctrlFolder              = [pwd '/_Controller/Example1/']      ; % Location of Simulink files (sysMdl, 
@@ -64,7 +64,7 @@ ctrl_names              = {'baseline fcnblock model', 'BL fcnblock, Big Gain', '
 %% Preprocessing 
 
 % Baseline statistics
-CasesBase = fReadCases(case_file); 
+CasesBase = fReadCases(case_file,[]); 
 runCases = CasesBase.Names;
 pMetricsBC = fMetricVars(CasesBase, Challenge);                                                          
 

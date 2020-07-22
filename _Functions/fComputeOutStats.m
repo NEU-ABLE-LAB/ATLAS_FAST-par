@@ -99,11 +99,11 @@ for iFile = 1:nCases
     % --- Computing stats for all channels
     if iFile==1 % allocation
         nChan = length(R.ChanName);
-        R.Max  = zeros(nFiles, nChan);
-        R.Std  = zeros(nFiles, nChan);
-        R.Mean = zeros(nFiles, nChan);
-        R.Trvl = zeros(nFiles, nChan);
-        R.Spec = cell (nFiles, nChan);
+        R.Max  = zeros(nCases, nChan);
+        R.Std  = zeros(nCases, nChan);
+        R.Mean = zeros(nCases, nChan);
+        R.Trvl = zeros(nCases, nChan);
+        R.Spec = cell (nCases, nChan);
     end
     if nChan~=length(R.ChanName); error('Inconsitent number of channels between files! %d/%d, file: %s in folder %s',nChan,length(R.ChanName),filename,folder); end
 

@@ -1,4 +1,4 @@
-function Cases=fReadCases(filename,VRated)
+function Cases=fReadCases(filename,subset,VRated)
 
 % --- Optional arguments
 if ~exist('VRated','var'); VRated=11.4; end;
@@ -26,6 +26,11 @@ fclose(fid);
 
 Cases.Tab=cell2mat(M(:,1:nNumCols));
 
+% --- select only requested cases from subset, if it exists 
+if ~isempty(subset)
+    Cases.Tab = Cases.Tab(subset,:);
+end
+
 Cases.DLC    = Cases.Tab(:, getCol('DLC'));
 Cases.WS     = Cases.Tab(:, getCol('WSAbove')) + VRated;
 Cases.Yaw    = Cases.Tab(:, getCol('YawErr'));
@@ -39,8 +44,13 @@ Cases.tSim   = Cases.Tab(:, getCol('Tsim'));
 % --- Reading filenames (assumed to be last column)
 Cases.Names = M(:,end);
 Cases.Names = Cases.Names{1};
+% --- select only requested cases from subset, if it exists
+if ~isempty(subset)
+    Cases.Names = Cases.Names(subset,:);
+end
+
 for i=1:length(Cases.Names)
-    Cases.Names{i}=strrep(Cases.Names{i},'''','');
+        Cases.Names{i}=strrep(Cases.Names{i},'''','');
 end
 % fid   = fopen(filename);
 % Cases.Names = textscan(fid, [repmat('%*f\t',1,size(Cases.Tab,2)-1) '%s'],'HeaderLines',1);
