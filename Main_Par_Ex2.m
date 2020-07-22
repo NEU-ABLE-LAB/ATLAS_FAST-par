@@ -1,5 +1,5 @@
 %% Main_Par Computes total cost function for  all specified load cases and control laws in parallel.
-% requires parallel processing MATLAB toolbox. otherwise will compute in series
+% requires parallel processing MATLAB toolbox. Otherwise will compute in series
 
 %% Example 2
 % Example 2 attempts to tune the Proportional and Integral Gains on the baseline PI controller 
@@ -27,31 +27,44 @@ addpath(genpath([pwd]))
 %% User Input Parameters
 %____________________________________________________________________________________________________________________________________
 % parameters for this analysis & machine
-Challenge               = 'Offshore'                          ; % 'Offshore' or 'Onshore', important for cost function
-FASTInputFolder         = [pwd '/_Inputs/LoadCases/']         ; % directory of the FAST input files are (e.g. .fst files)
-case_file               = [pwd '/_Inputs/_inputs/Cases.csv']  ; % File defining the cases that are run
-BaselineFolder          = [pwd '/_BaselineResults/']          ; % Folder where "reference simulations are located"
-RootOutputFolder        = [pwd '/_Outputs/']                  ; % Folder where the current simulation outputs will be placed
-ctrlFolder              = [pwd '/_Controller/Example2/']      ; % Location of Simulink files (sysMdl, 
-verbose                 = 1                                   ; % level of verbose output (0, 1, 2) Currently Unused
+Challenge               = 'Offshore'                                        ; % 'Offshore' or 'Onshore', important for cost function
 
-%which figures should be plotted at the end of simulation,  'plot'   will plot the figure specified in the line 
-plotTag = struct('Rel_FreqComp',             'no  ', ...        % Relative contribution by frequency and component                             
-                 'Rel_Comp',                 'no  ', ...        % Relative contribution per component
-                 'Abs_FreqComp',             'no  ', ...        % Absolute contribution by frequency and component
-                 'Abs_Comp',                 'plot', ...        % Absolute contribution per component
-                 'Combine',                  'no'  );           % 'yes' will combine all controlers into one plot, 
-                                                                % else will plot all requested charts against the base line in individual plots
-        
+% -- Load cases and OpenFAST inputs 
+FASTInputFolder         = [pwd '/_Inputs/LoadCases/']                       ; % directory of the FAST input files are (e.g. .fst files)
+case_file               = [pwd '/_Inputs/_inputs/Cases.csv']                ; % File defining the cases that are run
+case_subset             = []                                                ; % run a subset of cases specified in the case_file, 
+                                                                              % Eg: [3 5 7] will run the third, fifth, and 7th load cases specified in case_file
+                                                                              % Leave empty [] to run all cases specified in case_file 
+
+% -- Output Folders                                                                 
+BaselineFolder          = [pwd '/_BaselineResults/']                        ; % Folder where reference simulations Of baseline controler are located
+PreProFile              = [BaselineFolder 'PrePro_' Challenge '_AllCases.mat']; % preprocessed baseline file to speed up preprocessing, leave empty to compute baseline stats from case file 
+RootOutputFolder        = [pwd '/_Outputs/']                                ; % Folder where the current simulation outputs will be placed
+ 
+% -- Plotting
+%which figures should be plotted at the end of simulation,  
+%'plot'   will plot the figure specified in the line 
+plotTag = struct('Rel_FreqComp',             'no  ', ...                    % Relative contribution by frequency and component                             
+                 'Rel_Comp',                 'no  ', ...                    % Relative contribution per component
+                 'Abs_FreqComp',             'no  ', ...                    % Absolute contribution by frequency and component
+                 'Abs_Comp',                 'plot', ...                    % Absolute contribution per component
+                 'Combine',                  'no'  );                       % 'yes' will combine all controlers into one plot, 
+                                                                            % else will plot all requested charts against the base line in individual plots
+
+% -- Other User Options                                                                
+verbose                 = 1                                                 ; % level of verbose output (0, 1, 2) Currently Unused
+                                                                                                                                
 %_____________________________________________________________________________________________________________________________________
-% Multiple controller models (should be in the folder '_Controller')
+% Multiple controller models (should be in the folder ctrlFolder specified below)
+
+ctrlFolder              = [pwd '/_Controller/Example2'];        
 
 % Reference to model for system, AKA Simulink model with FAST_SFunc() block in it
 sysMdl                  = 'NREL5MW_Baseline'; 
 
 % if multiple controller laws/parameters are to be tested ctrlMdls should be a cell array of all the
 % laws/parameters and should be compatible with the commands in the fSetControllerParameters.m file 
-ctrlMdls                = {[U(1); U(2)]};    % PI Gains from the FMINSEARCH function
+ctrlMdls                = {[U(1); U(2)]};    % PI Gains from the FMINSEARCH function    
 
 % handle to the function which sets the Controller parameter 
 hSetControllerParameter = @fSetControllerParametersEx2; 
@@ -62,12 +75,11 @@ ctrl_names              = {'Tuned Baseline Controler'};
 %% Preprocessing 
 
 % Baseline statistics
-CasesBase = fReadCases(case_file); 
+CasesBase = fReadCases(case_file,case_subset); 
 runCases = CasesBase.Names;
 pMetricsBC = fMetricVars(CasesBase, Challenge);                                  
-PreProFile= [BaselineFolder 'PrePro_' Challenge '.mat'];                         
 
-if ~exist(PreProFile,'file')
+if ~exist(PreProFile,'file') 
     statsBase = fComputeOutStats(BaselineFolder, pMetricsBC, CasesBase);
 else
     statsBase = load(PreProFile);
