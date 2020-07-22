@@ -57,7 +57,7 @@ verbose                 = 1                                                 ; % 
 %_____________________________________________________________________________________________________________________________________
 % Multiple controller models (should be in the folder ctrlFolder specified below)
 
-ctrlFolder              = [pwd '/_Controller/Example2'];        
+ctrlFolder              = [pwd '/_Controller/Example2/'];        
 
 % Reference to model for system, AKA Simulink model with FAST_SFunc() block in it
 sysMdl                  = 'NREL5MW_Baseline'; 

@@ -9,8 +9,8 @@
 %       the baseline controler with smaller gains (Kp = Kp_baseline / 5)
 %
 % Results should be
-%       the baseline controler will result in a cost function of 1.0002
-%       the large gain controler will result in a cost function of 3.0605
+%       the baseline controler will result in a cost function of 0.9999
+%       the large gain controler will result in a cost function of 3.3763
 %       the small gain controler will result in a cost function of 1000, as load case 11 results in the roter speed cronstraint being exceeded
 %
 %
@@ -57,7 +57,7 @@ verbose                 = 1                                                 ; % 
 %_____________________________________________________________________________________________________________________________________
 % Multiple controller models (should be in the folder ctrlFolder specified below)
 
-ctrlFolder              = [pwd '/_Controller/Example1'];        
+ctrlFolder              = [pwd '/_Controller/Example1/'];        
 
 % Reference to model for system, AKA Simulink model with FAST_SFunc() block in it
 sysMdl                 = 'NREL5MW_Fcnblock_V2_2018'; 
