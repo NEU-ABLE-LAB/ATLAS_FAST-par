@@ -41,7 +41,7 @@ switch plotTag.Combine
         %plot each controler individualy
         for cN = 1 :nouts
             %overwrite folders, its easier than trying to pul
-            folders = {'','Baseline Results';'',cell2mat(ctrl_names(cN))};   %overwrite folders, its easier
+            folders2 = {'','Baseline Results';'',folders{1+cN,2}};   %overwrite folders, its easier
             
             % build plotting function inputs
             SpCF = [pCF(1) pCF(cN)];
@@ -50,7 +50,7 @@ switch plotTag.Combine
             SpCF_Freq = {pCF_Freq{1}, pCF_Freq{cN}};
             
             %atlas plot function
-            fCostFunctionPlotTag(SpCF, SpCF_Comp, SpCF_Vars, SpCF_Freq, pMetricsBC, folders, plotTag)
+            fCostFunctionPlotTag(SpCF, SpCF_Comp, SpCF_Vars, SpCF_Freq, pMetricsBC, folders2, plotTag)
         end
 end
 end
