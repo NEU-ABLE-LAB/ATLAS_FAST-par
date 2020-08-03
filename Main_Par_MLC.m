@@ -7,7 +7,7 @@ restoredefaultpath;
 addpath(genpath([pwd,'/_Functions']));    % Matlab functions for cost function and running cases - RaddEAD ONLY
 addpath(genpath([pwd,'/_Controller']));   % Simulink model, where user scripts and models are placed
 addpath(genpath([pwd,'/ParforProgMon'])); % Paralell progress monitor (https://github.com/fsaxen/ParforProgMon)
-addpath(genpath(['C:\Users\James\Documents\GitHub\ATLAS_Offshore\OpenMLC-Matlab-2'])) % Needed for MLC object MLCParameters
+addpath(genpath(['D:\Documents\GitHub\ATLAS_Offshore\OpenMLC-Matlab-2'])) % Needed for MLC object MLCParameters
 
 %% User Input Parameters
 %____________________________________________________________________________________________________________________________________
@@ -17,10 +17,16 @@ Challenge               = 'Offshore'                                        ; % 
 % -- Load cases and OpenFAST inputs 
 FASTInputFolder         = [pwd '/_Inputs/LoadCases/']                       ; % directory of the FAST input files are (e.g. .fst files)
 case_file               = [pwd '/_Inputs/_inputs/Cases.csv']                ; % File defining the cases that are run
-case_subset             = caseN                                             ; % run a subset of cases specified in the case_file, 
+case_subset             = MLC_Runcase                                       ; % run a subset of cases specified in the case_file, 
                                                                               % Eg: [3 5 7] will run the third, fifth, and 7th load cases specified in case_file
-                                                                              % Leave empty [] to run all cases specified in case_file 
-
+                                                                              % Leave empty [] to run all cases specified in case_file
+                                                                              % incert 'random' to run 1 random load case for easch controler specified 
+if case_subset == 'random'          %needs to be a number
+    case_subset = [];
+end                                                                              
+                                                                              
+                                                                              
+                                                                              
 % -- Output Folders                                                                 
 BaselineFolder          = [pwd '/_BaselineResults/']                        ; % Folder where reference simulations Of baseline controler are located
 PreProFile              = []                                                ; % preprocessed baseline file to speed up preprocessing, leave empty to compute baseline stats from case file 
@@ -91,9 +97,17 @@ ppm = ParforProgMon(sprintf('Fast Turbine Eval - %i controlers w/ %i cases %s: '
     nControlers, nCases, datestr(now,'HH:MM')), nCases*nControlers, 1,1200,160);
 
 % Evaluate all the controllers, and cases
+if MLC_Runcase == 'random' 
+    nCases = 1;
+end
+
 parfor idx = 1 : (nCases * nControlers)
     [caseN, controlerN] = ind2sub([nCases, nControlers], idx);    
-
+    
+    if MLC_Runcase == 'random'
+        caseN = randi(12)
+    end
+    
     [J{idx}, simOut{idx}] = Par_eval(ctrlMdls{controlerN},Parameters.runCases{caseN}, Parameters);
 
     %increment PPM tracker and ignore the warning
