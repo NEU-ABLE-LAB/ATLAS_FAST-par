@@ -7,7 +7,7 @@ restoredefaultpath;
 addpath(genpath([pwd,'/_Functions']));    % Matlab functions for cost function and running cases - RaddEAD ONLY
 addpath(genpath([pwd,'/_Controller']));   % Simulink model, where user scripts and models are placed
 addpath(genpath([pwd,'/ParforProgMon'])); % Paralell progress monitor (https://github.com/fsaxen/ParforProgMon)
-addpath(genpath(['D:\Documents\GitHub\ATLAS_Offshore\OpenMLC-Matlab-2'])) % Needed for MLC object MLCParameters
+addpath(genpath(['C:\Users\James\Documents\GitHub\ATLAS_Offshore\OpenMLC-Matlab-2'])) % Needed for MLC object MLCParameters
 
 %% User Input Parameters
 %____________________________________________________________________________________________________________________________________
@@ -20,13 +20,10 @@ case_file               = [pwd '/_Inputs/_inputs/Cases.csv']                ; % 
 case_subset             = MLC_Runcase                                       ; % run a subset of cases specified in the case_file, 
                                                                               % Eg: [3 5 7] will run the third, fifth, and 7th load cases specified in case_file
                                                                               % Leave empty [] to run all cases specified in case_file
-                                                                              % incert 'random' to run 1 random load case for easch controler specified 
 if case_subset == 'random'          %needs to be a number
     case_subset = [];
-end                                                                              
-                                                                              
-                                                                              
-                                                                              
+end
+
 % -- Output Folders                                                                 
 BaselineFolder          = [pwd '/_BaselineResults/']                        ; % Folder where reference simulations Of baseline controler are located
 PreProFile              = []                                                ; % preprocessed baseline file to speed up preprocessing, leave empty to compute baseline stats from case file 
@@ -87,6 +84,10 @@ Parameters.MLC_parameters = MLC_params;
 
 % establish loop variables & Preallocate output array
 nCases = numel(Parameters.runCases);
+if MLC_Runcase == 'random' 
+    nCases = 1;
+end
+
 nControlers = numel(ctrlMdls);                       
 J = cell(nCases, nControlers);
 simOut = J;
@@ -95,11 +96,6 @@ simOut = J;
 pp = gcp(); 
 ppm = ParforProgMon(sprintf('Fast Turbine Eval - %i controlers w/ %i cases %s: ', ...
     nControlers, nCases, datestr(now,'HH:MM')), nCases*nControlers, 1,1200,160);
-
-% Evaluate all the controllers, and cases
-if MLC_Runcase == 'random' 
-    nCases = 1;
-end
 
 parfor idx = 1 : (nCases * nControlers)
     [caseN, controlerN] = ind2sub([nCases, nControlers], idx);    
@@ -120,6 +116,12 @@ end
 CF = struct('CF',-1, 'CF_Comp',-1,'CF_Vars',-1, 'CF_Freq',-1);
 CF(nControlers) = CF;
 
+if MLC_Runcase == 'random'
+    for cN = 1:nControlers
+        CF(cN).CF = simOut{cN}.CF;
+    end    
+else    
+
 %Baseline Stats 
 [blCF, blCF_Comp, blCF_Vars, blCF_Freq] = fCostFunction(metricsBase.Values, metricsBase.Values, pMetricsBC);
 BL = struct('blCF',blCF,'blCF_Comp',blCF_Comp,'blCF_Vars',blCF_Vars,'blCF_Freq',blCF_Freq);
@@ -132,4 +134,4 @@ end
 
 %plot the figures the user asked for 
 fBuildPlots(CF, BL, pMetricsBC, plotTag, ctrl_names)
-
+end
