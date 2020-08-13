@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.937"
+    ComputedModelVersion    "1.938"
     NumModelReferences	    0
     NumTestPointedSignals   4
     TestPointedSignal {
@@ -73,7 +73,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [1912.0, -8.0, 1936.0, 1096.0]
+      Location		      [-8.0, -8.0, 1936.0, 1096.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -133,9 +133,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "James"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jun 12 14:52:26 2020"
-  RTWModifiedTimeStamp	  513874304
-  ModelVersionFormat	  "1.%<AutoIncrement:937>"
+  LastModifiedDate	  "Tue Aug 11 22:05:37 2020"
+  RTWModifiedTimeStamp	  519084324
+  ModelVersionFormat	  "1.%<AutoIncrement:938>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "all"
@@ -2126,7 +2126,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "175"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "7340"
+    SIDHighWatermark	    "7341"
     Block {
       BlockType		      BusCreator
       Name		      "Bus\nCreator1"
@@ -2155,7 +2155,7 @@ Model {
       }
       System {
 	Name			"IPC"
-	Location		[1912, -8, 3848, 1088]
+	Location		[-8, -8, 1928, 1088]
 	Open			on
 	PortBlocksUseCompactNotation off
 	SetExecutionDomain	off
@@ -2384,11 +2384,20 @@ Model {
 	  BlockType		  Integrator
 	  Name			  "Integrator"
 	  SID			  "7338"
-	  Ports			  [2, 1]
-	  Position		  [555, 159, 590, 201]
+	  Ports			  [2, 1, 0, 0, 1]
+	  Position		  [555, 179, 590, 221]
 	  ZOrder		  365
 	  BlockMirror		  on
 	  InitialConditionSource  "external"
+	  ShowStatePort		  on
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  SID			  "7341"
+	  Position		  [505, 190, 525, 210]
+	  ZOrder		  367
+	  BlockMirror		  on
 	}
 	Block {
 	  BlockType		  Outport
@@ -2423,17 +2432,16 @@ Model {
 	  ZOrder		  167
 	  SrcBlock		  "Control_Law"
 	  SrcPort		  3
-	  Points		  [19, 0; 0, 50]
+	  Points		  [19, 0; 0, 70]
 	  DstBlock		  "Integrator"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  190
+	  ZOrder		  198
 	  SrcBlock		  "Integrator"
 	  SrcPort		  1
-	  Points		  [-75, 0]
-	  DstBlock		  "Control_Law"
-	  DstPort		  2
+	  DstBlock		  "Terminator"
+	  DstPort		  1
 	}
 	Line {
 	  Name			  "<OutData>"
@@ -2448,8 +2456,16 @@ Model {
 	  ZOrder		  194
 	  SrcBlock		  "Control_Law"
 	  SrcPort		  2
-	  Points		  [37, 0; 0, 95]
+	  Points		  [37, 0; 0, 115]
 	  DstBlock		  "Integrator"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  196
+	  SrcBlock		  "Integrator"
+	  SrcPort		  state
+	  Points		  [0, -12; -95, 0]
+	  DstBlock		  "Control_Law"
 	  DstPort		  2
 	}
       }
@@ -7268,9 +7284,6 @@ Stateflow {
     screen		    [1 1 3600 1200 1.180555555555556]
     treeNode		    [0 23 0 0]
     viewObj		    22
-    visible		    1
-    subviewS {
-    }
     ssIdHighWaterMark	    10
     decomposition	    CLUSTER_CHART
     type		    EML_CHART

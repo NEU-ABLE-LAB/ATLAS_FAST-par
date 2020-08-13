@@ -85,6 +85,7 @@ catch e
     disp('PAR_EVAL: Simulation returned error');
     simOut.CF = 1000;
     J = simOut.CF;
+    simOut.runCase = runCase;
 
 end
 
@@ -105,6 +106,7 @@ cd([parameters.RootOutputFolder '../'])
 warning(e.message)
 simOut.CF = 1000;
 J = simOut.CF;
+simOut.runCase = runCase;
 
 end
 

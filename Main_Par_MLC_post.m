@@ -17,14 +17,12 @@ Challenge               = 'Offshore'                                        ; % 
 % -- Load cases and OpenFAST inputs 
 FASTInputFolder         = [pwd '/_Inputs/LoadCases/']                       ; % directory of the FAST input files are (e.g. .fst files)
 case_file               = [pwd '/_Inputs/_inputs/Cases.csv']                ; % File defining the cases that are run
-case_subset             = MLC_Runcase                                       ; % run a subset of cases specified in the case_file, 
+case_subset             = []                                                ; % run a subset of cases specified in the case_file, 
                                                                               % Eg: [3 5 7] will run the third, fifth, and 7th load cases specified in case_file
                                                                               % Leave empty [] to run all cases specified in case_file
                                                                               % incert 'random' to run 1 random load case for easch controler specified                                       
-if case_subset == 'random'          %needs to be a number
-    case_subset = [];
-end
-
+                                                                                                                                                          
+                                                                              
 % -- Output Folders                                                                 
 BaselineFolder          = [pwd '/_BaselineResults/']                        ; % Folder where reference simulations Of baseline controler are located
 PreProFile              = []                                                ; % preprocessed baseline file to speed up preprocessing, leave empty to compute baseline stats from case file 
@@ -53,7 +51,7 @@ sysMdl                  = 'NREL5MW_Fcnblock_MLC_2018';
 
 % if multiple controller laws/parameters are to be tested ctrlMdls should be a cell array of all the
 % laws/parameters and should be compatible with the commands in the fSetControllerParameters.m file 
-ctrlMdls                = fcnText;    
+ctrlMdls                = text;    
 
 % handle to the function which sets the Controller parameter 
 hSetControllerParameter = @fSetControllerParametersMLC; 
@@ -80,9 +78,9 @@ metricsBase = fEvaluateMetrics(statsBase, pMetricsBC);
 Parameters = PVar_cfg(runCases ,sysMdl, ctrlMdls, hSetControllerParameter, ctrlFolder,...
     RootOutputFolder, FASTInputFolder, Challenge, verbose, statsBase, metricsBase);
 
-Parameters.MLC_parameters = MLC_params;
+Parameters.MLC_parameters = mlc.parameters;
 %% evaluation 
-
+MLC_Runcase = 'norand'
 % establish loop variables & Preallocate output array
 nCases = numel(Parameters.runCases);
 if MLC_Runcase == 'random' 

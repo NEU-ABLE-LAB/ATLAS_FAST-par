@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.947"
+    ComputedModelVersion    "1.948"
     NumModelReferences	    0
     NumTestPointedSignals   6
     TestPointedSignal {
@@ -125,7 +125,7 @@ Model {
 	  IsActive		  [0]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
-	  Extents		  [2033.0, 1080.0]
+	  Extents		  [1920.0, 1080.0]
 	  ZoomFactor		  [1.0]
 	  Offset		  [-122.26790387340043, 141.50681335787954]
 	}
@@ -133,10 +133,10 @@ Model {
 	  $ObjectID		  6
 	  IsActive		  [1]
 	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "6692"
+	  LoadSaveID		  "6699"
 	  Extents		  [1882.0, 912.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [-435.55685264987335, -217.99356295911559]
+	  ZoomFactor		  [0.8]
+	  Offset		  [-696.98575148809516, -200.58809523809509]
 	}
 	PropName		"EditorsInfo"
       }
@@ -172,9 +172,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "James"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jul 22 20:57:53 2020"
-  RTWModifiedTimeStamp	  517349080
-  ModelVersionFormat	  "1.%<AutoIncrement:947>"
+  LastModifiedDate	  "Wed Aug 12 18:49:00 2020"
+  RTWModifiedTimeStamp	  519158796
+  ModelVersionFormat	  "1.%<AutoIncrement:948>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "all"
@@ -2495,7 +2495,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "8076"
+    SIDHighWatermark	    "8077"
     Block {
       BlockType		      SubSystem
       Name		      "Assertions"
@@ -3563,7 +3563,7 @@ Model {
       System {
 	Name			"MLC_IPC"
 	Location		[-8, -8, 1928, 1088]
-	Open			on
+	Open			off
 	PortBlocksUseCompactNotation off
 	SetExecutionDomain	off
 	ExecutionDomainType	"Deduce"
@@ -3577,7 +3577,7 @@ Model {
 	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"125"
 	Block {
 	  BlockType		  Inport
 	  Name			  "y"
@@ -4346,11 +4346,12 @@ Model {
 	  BlockType		  Integrator
 	  Name			  "Integrator"
 	  SID			  "8076"
-	  Ports			  [2, 1]
-	  Position		  [525, 419, 560, 461]
+	  Ports			  [2, 1, 0, 0, 1]
+	  Position		  [525, 459, 560, 501]
 	  ZOrder		  3906
 	  BlockMirror		  on
 	  InitialConditionSource  "external"
+	  ShowStatePort		  on
 	}
 	Block {
 	  BlockType		  Product
@@ -4387,8 +4388,8 @@ Model {
 	  }
 	  System {
 	    Name		    "NREL 5MW Baseline Pitch Controller"
-	    Location		    [494, 24, 1561, 739]
-	    Open		    off
+	    Location		    [-8, -8, 1928, 1088]
+	    Open		    on
 	    PortBlocksUseCompactNotation off
 	    SetExecutionDomain	    off
 	    ExecutionDomainType	    "Deduce"
@@ -5194,6 +5195,14 @@ Model {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  SID			  "8077"
+	  Position		  [450, 470, 470, 490]
+	  ZOrder		  3907
+	  BlockMirror		  on
+	}
+	Block {
 	  BlockType		  Outport
 	  Name			  "theta_c "
 	  SID			  "6702"
@@ -5326,7 +5335,7 @@ Model {
 	  ZOrder		  430
 	  SrcBlock		  "Control_Law"
 	  SrcPort		  2
-	  Points		  [37, 0; 0, 95]
+	  Points		  [37, 0; 0, 135]
 	  DstBlock		  "Integrator"
 	  DstPort		  2
 	}
@@ -5340,20 +5349,27 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  432
+	  ZOrder		  449
 	  SrcBlock		  "Integrator"
 	  SrcPort		  1
-	  Points		  [-75, 0]
-	  DstBlock		  "Control_Law"
-	  DstPort		  2
+	  DstBlock		  "Terminator"
+	  DstPort		  1
 	}
 	Line {
 	  ZOrder		  433
 	  SrcBlock		  "Control_Law"
 	  SrcPort		  3
-	  Points		  [19, 0; 0, 50]
+	  Points		  [19, 0; 0, 90]
 	  DstBlock		  "Integrator"
 	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  448
+	  SrcBlock		  "Integrator"
+	  SrcPort		  state
+	  Points		  [0, -22; -95, 0]
+	  DstBlock		  "Control_Law"
+	  DstPort		  2
 	}
       }
     }

@@ -10,7 +10,7 @@
 %
 % Results should be
 %       the baseline controler will result in a cost function of 0.9999
-%       the large gain controler will result in a cost function of 3.3763
+%       the large gain controler will result in a cost function of 3.3762
 %       the small gain controler will result in a cost function of 1000, as load case 11 results in the roter speed cronstraint being exceeded
 %
 %
