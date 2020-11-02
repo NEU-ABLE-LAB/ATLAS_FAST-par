@@ -17,14 +17,10 @@ Challenge               = 'Offshore'                                        ; % 
 % -- Load cases and OpenFAST inputs 
 FASTInputFolder         = [pwd '/_Inputs/LoadCases/']                       ; % directory of the FAST input files are (e.g. .fst files)
 case_file               = [pwd '/_Inputs/_inputs/Cases.csv']                ; % File defining the cases that are run
-case_subset             = MLC_Runcase                                       ; % run a subset of cases specified in the case_file, 
+case_subset             = []                                                ; % run a subset of cases specified in the case_file, 
                                                                               % Eg: [3 5 7] will run the third, fifth, and 7th load cases specified in case_file
                                                                               % Leave empty [] to run all cases specified in case_file
                                                                               % incert 'random' to run 1 random load case for easch controler specified                                       
-if case_subset == 'random'          %needs to be a number
-    case_subset = [];
-end
-
 % -- Output Folders                                                                 
 BaselineFolder          = [pwd '/_BaselineResults/']                        ; % Folder where reference simulations Of baseline controler are located
 PreProFile              = []                                                ; % preprocessed baseline file to speed up preprocessing, leave empty to compute baseline stats from case file 
@@ -80,14 +76,11 @@ metricsBase = fEvaluateMetrics(statsBase, pMetricsBC);
 Parameters = PVar_cfg(runCases ,sysMdl, ctrlMdls, hSetControllerParameter, ctrlFolder,...
     RootOutputFolder, FASTInputFolder, Challenge, verbose, statsBase, metricsBase);
 
-Parameters.MLC_parameters = MLC_params;
+Parameters.MLC_parameters = mlc.parameters;
 %% evaluation 
 
 % establish loop variables & Preallocate output array
 nCases = numel(Parameters.runCases);
-if MLC_Runcase == 'random' 
-    nCases = 1;
-end
 
 nControlers = numel(ctrlMdls);                       
 J = cell(nCases, nControlers);
@@ -100,11 +93,7 @@ ppm = ParforProgMon(sprintf('Fast Turbine Eval - %i controlers w/ %i cases %s: '
 
 parfor idx = 1 : (nCases * nControlers)
     [caseN, controlerN] = ind2sub([nCases, nControlers], idx);    
-    
-    if MLC_Runcase == 'random'
-        caseN = randi(12)
-    end
-    
+        
     [J{idx}, simOut{idx}] = Par_eval(ctrlMdls{controlerN},Parameters.runCases{caseN}, Parameters);
 
     %increment PPM tracker and ignore the warning
@@ -115,13 +104,7 @@ end
 
 %preallocate 
 CF = struct('CF',-1, 'CF_Comp',-1,'CF_Vars',-1, 'CF_Freq',-1);
-CF(nControlers) = CF;
-
-if MLC_Runcase == 'random'
-    for cN = 1:nControlers
-        CF(cN).CF = simOut{cN}.CF;
-    end    
-else    
+CF(nControlers) = CF; 
 
 %Baseline Stats 
 [blCF, blCF_Comp, blCF_Vars, blCF_Freq] = fCostFunction(metricsBase.Values, metricsBase.Values, pMetricsBC);
@@ -135,4 +118,3 @@ end
 
 %plot the figures the user asked for 
 fBuildPlots(CF, BL, pMetricsBC, plotTag, ctrl_names)
-end
