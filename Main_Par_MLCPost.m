@@ -7,7 +7,7 @@ restoredefaultpath;
 addpath(genpath([pwd,'/_Functions']));    % Matlab functions for cost function and running cases - RaddEAD ONLY
 addpath(genpath([pwd,'/_Controller']));   % Simulink model, where user scripts and models are placed
 addpath(genpath([pwd,'/ParforProgMon'])); % Paralell progress monitor (https://github.com/fsaxen/ParforProgMon)
-addpath(genpath(['D:\Documents\GitHub\ATLAS_Offshore\OpenMLC-Matlab-2'])) % Needed for MLC object MLCParameters
+addpath(genpath(['C:\Users\James\Documents\GitHub\ATLAS_Offshore\OpenMLC-Matlab-2'])) % Needed for MLC object MLCParameters
 
 %% User Input Parameters
 %____________________________________________________________________________________________________________________________________
@@ -17,7 +17,7 @@ Challenge               = 'Offshore'                                        ; % 
 % -- Load cases and OpenFAST inputs 
 FASTInputFolder         = [pwd '/_Inputs/LoadCases/']                       ; % directory of the FAST input files are (e.g. .fst files)
 case_file               = [pwd '/_Inputs/_inputs/Cases.csv']                ; % File defining the cases that are run
-case_subset             = []                                                ; % run a subset of cases specified in the case_file, 
+case_subset             = LoadCase                                          ; % run a subset of cases specified in the case_file, 
                                                                               % Eg: [3 5 7] will run the third, fifth, and 7th load cases specified in case_file
                                                                               % Leave empty [] to run all cases specified in case_file
                                                                               % incert 'random' to run 1 random load case for easch controler specified                                       
@@ -49,7 +49,7 @@ sysMdl                  = 'NREL5MW_Fcnblock_MLC_2018';
 
 % if multiple controller laws/parameters are to be tested ctrlMdls should be a cell array of all the
 % laws/parameters and should be compatible with the commands in the fSetControllerParameters.m file 
-ctrlMdls                = fcnText;    
+ctrlMdls                = INdsToEval_Eqs;    
 
 % handle to the function which sets the Controller parameter 
 hSetControllerParameter = @fSetControllerParametersMLC; 
