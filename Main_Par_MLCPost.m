@@ -7,7 +7,7 @@ restoredefaultpath;
 addpath(genpath([pwd,'/_Functions']));    % Matlab functions for cost function and running cases - RaddEAD ONLY
 addpath(genpath([pwd,'/_Controller']));   % Simulink model, where user scripts and models are placed
 addpath(genpath([pwd,'/ParforProgMon'])); % Paralell progress monitor (https://github.com/fsaxen/ParforProgMon)
-addpath(genpath(['C:\Users\James\Documents\GitHub\ATLAS_Offshore\OpenMLC-Matlab-2'])) % Needed for MLC object MLCParameters
+addpath(genpath(['D:\Documents\GitHub\ATLAS_Offshore\OpenMLC-Matlab-2'])) % Needed for MLC object MLCParameters
 
 %% User Input Parameters
 %____________________________________________________________________________________________________________________________________
