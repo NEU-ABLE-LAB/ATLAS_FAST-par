@@ -7,7 +7,7 @@ restoredefaultpath;
 addpath(genpath([pwd,'/_Functions']));    % Matlab functions for cost function and running cases - RaddEAD ONLY
 addpath(genpath([pwd,'/_Controller']));   % Simulink model, where user scripts and models are placed
 addpath(genpath([pwd,'/ParforProgMon'])); % Paralell progress monitor (https://github.com/fsaxen/ParforProgMon)
-addpath(genpath(['C:\Users\James\Documents\GitHub\ATLAS_Offshore\OpenMLC-Matlab-2'])) % Needed for MLC object MLCParameters
+addpath(genpath(['D:\Documents\GitHub\ATLAS_Offshore\OpenMLC-Matlab-2'])) % Needed for MLC object MLCParameters
 
 %% User Input Parameters
 %____________________________________________________________________________________________________________________________________
@@ -51,7 +51,7 @@ sysMdl                  = 'NREL5MW_Fcnblock_MLC_2018';
 
 % if multiple controller laws/parameters are to be tested ctrlMdls should be a cell array of all the
 % laws/parameters and should be compatible with the commands in the fSetControllerParameters.m file 
-ctrlMdls                = text;    
+ctrlMdls                = fcnText;    
 
 % handle to the function which sets the Controller parameter 
 hSetControllerParameter = @fSetControllerParametersMLC; 
@@ -78,7 +78,7 @@ metricsBase = fEvaluateMetrics(statsBase, pMetricsBC);
 Parameters = PVar_cfg(runCases ,sysMdl, ctrlMdls, hSetControllerParameter, ctrlFolder,...
     RootOutputFolder, FASTInputFolder, Challenge, verbose, statsBase, metricsBase);
 
-Parameters.MLC_parameters = mlc.parameters;
+Parameters.MLC_parameters = MLCParameters;
 %% evaluation 
 MLC_Runcase = 'norand'
 % establish loop variables & Preallocate output array
@@ -99,10 +99,7 @@ ppm = ParforProgMon(sprintf('Fast Turbine Eval - %i controlers w/ %i cases %s: '
 parfor idx = 1 : (nCases * nControlers)
     [caseN, controlerN] = ind2sub([nCases, nControlers], idx);    
     
-    if MLC_Runcase == 'random'
-        caseN = randi(12)
-    end
-    
+
     [J{idx}, simOut{idx}] = Par_eval(ctrlMdls{controlerN},Parameters.runCases{caseN}, Parameters);
 
     %increment PPM tracker and ignore the warning

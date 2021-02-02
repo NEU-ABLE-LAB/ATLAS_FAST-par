@@ -14,7 +14,7 @@ nVars    = size(p.Vars,1)    ;
 nCases   = length(R.OutFiles);
 nRefFreq = size(p.FreqVars,1);
 % --- Allocations - The only important one is `Values`, the rest is for plotting
-Values      = cell(1,nVars)                   ;
+ Values      = cell(1,nVars)                   ;
 IMain       = nan(1,nVars)                    ;
 VarValues   = nan(nCases,nVars)               ;
 PlotValues  = nan(nCases,nVars)               ;
