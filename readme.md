@@ -12,7 +12,7 @@ See [ATLAS-modeling-control-simulation-final.pdf](docs/ATLAS-modeling-control-si
 
 # Usage
 
-To begin the simulation, metrics calculation, and controller scoring process, open Matlab and point it to the folder containing this `readme` file. This folder contains the following Matlab script. In each of these scripts, only modify code in the `%% User Input Parameters` code section.
+To begin the simulation, metrics calculation, and controller scoring process, open Matlab and point it to the folder containing this `readme` file. This folder contains the following Matlab scripts. In each of these scripts, only modify code in the `%% User Input Parameters` code section.
 
 This package contains the main function and 2 example setups as discribed below:
 
